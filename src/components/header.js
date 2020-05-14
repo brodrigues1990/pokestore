@@ -1,0 +1,35 @@
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import { makeStyles } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
+import Grid from '@material-ui/core/Grid';
+import Logo from '../assets/PokeStoreLogo.png'
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        marginBottom: 35
+    },
+    image: {
+        height: 70,
+    },
+}));
+
+const Header = (props) => {
+    const classes = useStyles();
+    return (
+        <>
+            <AppBar position="static" className={classes.root}>
+                <Toolbar>
+                    <Grid container justify="center" >
+                        <Grid item >
+                            <img src={Logo} alt="PokeStore" className={classes.image} />
+                        </Grid>
+                    </Grid>
+                </Toolbar>
+            </AppBar>
+        </>
+    );
+}
+
+export default Header;
