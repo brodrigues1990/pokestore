@@ -1,7 +1,6 @@
 {
   "name": "pokestore",
   "version": "0.1.0",
-  "private": true,
   "homepage": "https://brodrigues1990.github.io/pokestore/",
   "dependencies": {
     "@material-ui/core": "^4.9.12",
