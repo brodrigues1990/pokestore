@@ -28,7 +28,7 @@ const Error404 = () => {
     return (
         <>
             <Paper elevation={2} className={classes.root}>
-                <Grid container justify="center" alignItems="center">
+                <Grid container direction="column" justify="center" alignItems="center">
                     <Grid item xs={12} >
                         <img src={Error404Image} />
                     </Grid>

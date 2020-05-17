@@ -25,12 +25,15 @@ const Home = (props) => {
     const classes = useStyles();
     const [pokemon, setPokemon] = useState([]);
 
-    // Carrega todas as noticias
+    // Carrega todas os pokemons
     const loadPokemonByType = async () => {
-        await api.get("articles")
+        await api.get("type/12")
             .then(res => {
-                setPokemon(res.data);
+                setPokemon(res.data.pokemon.map(p => p.pokemon));
+                console.log(res.data.pokemon.map(p => p.pokemon))
             })
+            
+
     }
 
     useEffect(() => {
@@ -39,16 +42,10 @@ const Home = (props) => {
 
     return (
         <>
-            {pokemon.map((pokemon) => (
-                <TableRow key={pokemon.id}>
-                    <TableCell component="th" scope="row">{pokemon.title}</TableCell>
-                    <TableCell align="left">{pokemon.content}</TableCell>
-                    <TableCell align="right">
-                        <IconButton color="primary" component="span" onClick={() => null}>
-                            <EditIcon />
-                        </IconButton>
-                    </TableCell>
-                </TableRow>
+            {pokemon.map((pokemon) => (                
+                <ul >
+                    <li key={pokemon.id}>{pokemon.name}</li>
+                </ul>
             ))}
         </>
     );
