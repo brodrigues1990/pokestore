@@ -1,22 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from "@material-ui/core/styles";
 import { Grid, Card, CardMedia, CardContent, Typography, CircularProgress } from '@material-ui/core';
 import { Edit as EditIcon, Delete as DeleteIcon, Add as AddIcon } from '@material-ui/icons';
 import { grey } from '@material-ui/core/colors';
 import api from '../services/api';
 
 const useStyles = makeStyles((theme) => ({
-    table: {
-        minWidth: 650,
+    pokedexContainer: {
+        paddingTop: "20px",
+        paddingLeft: "50px",
+        paddingRight: "50px",
     },
-    tableRow: {
-        background: grey[100]
+    cardMedia: {
+        margin: "auto",
     },
-    fab: {
-        position: 'fixed',
-        bottom: theme.spacing(2),
-        right: theme.spacing(2),
+    cardContent: {
+        textAlign: "center",
+    },
+    searchContainer: {
+        display: "flex",
+        backgroundColor: fade(theme.palette.common.white, 0.15),
+        paddingLeft: "20px",
+        paddingRight: "20px",
+        marginTop: "5px",
+        marginBottom: "5px",
+    },
+    searchIcon: {
+        alignSelf: "flex-end",
+        marginBottom: "5px",
+    },
+    searchInput: {
+        width: "200px",
+        margin: "5px",
     },
 }));
 
@@ -27,7 +43,7 @@ const Home = (props) => {
 
     // Carrega todas os pokemons
     const loadPokemonByType = async () => {
-        api.get(`https://pokeapi.co/api/v2/pokemon?limit=807`)
+        api.get(`https://pokeapi.co/api/v2/pokemon?limit=11807`)
             .then(function (response) {
                 const { data } = response;
                 const { results } = data;
@@ -37,7 +53,8 @@ const Home = (props) => {
                         id: index + 1,
                         name: pokemon.name,
                         sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
-                        image: `https://pokeres.bastionbot.org/images/pokemon/${index + 1}.png`
+                        image: `https://pokeres.bastionbot.org/images/pokemon/${index + 1}.png`,
+                        price: Math.floor(Math.random() * 100)
                     };
                 });
                 console.log(newPokemonData);
@@ -51,7 +68,7 @@ const Home = (props) => {
     }, []);
 
     const getPokemonCard = (pokemonId) => {
-        const { id, name, image } = pokemon[pokemonId];
+        const { id, name, image, price } = pokemon[pokemonId];
         return (
             <Grid item xs={4} key={pokemonId}>
                 <Card >
@@ -62,6 +79,7 @@ const Home = (props) => {
                     />
                     <CardContent className={classes.cardContent}>
                         <Typography>{`${id}. ${name}`}</Typography>
+                        <Typography>{`R$ ${price},00`}</Typography>
                     </CardContent>
                 </Card>
             </Grid>
@@ -73,7 +91,7 @@ const Home = (props) => {
             {pokemon ? (
                 <Grid container spacing={2} className={classes.pokedexContainer}>
                     {Object.keys(pokemon).map((pokemonId) =>
-                            getPokemonCard(pokemonId)
+                        getPokemonCard(pokemonId)
                     )}
                 </Grid>
             ) : (
