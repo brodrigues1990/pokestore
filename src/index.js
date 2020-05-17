@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './global.css';
+import './styles/global.css';
 import App from './App';
 import { ThemeProvider } from '@material-ui/core/styles';
 import themePokeStore from './theme';

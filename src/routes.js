@@ -12,7 +12,7 @@ export default function Routes() {
 				<Route exact path="/" component={Home} />
 				<Route exact path="/pokestore" component={Home} />
 				<Route path="/market" component={Market} />
-				<Route path='*' component={Error404} />
+				<Route path="*" component={Error404} />
 			</Switch>
 		</BrowserRouter>
     );
