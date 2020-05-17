@@ -70,7 +70,7 @@ const Home = (props) => {
     const getPokemonCard = (pokemonId) => {
         const { id, name, image, price } = pokemon[pokemonId];
         return (
-            <Grid item xs={4} key={pokemonId}>
+            <Grid item sm={12} md={4} lg={3} key={pokemonId}>
                 <Card >
                     <CardMedia
                         className={classes.cardMedia}
