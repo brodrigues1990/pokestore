@@ -5,6 +5,7 @@ import { Grid, Card, CardMedia, CardContent, CardActions, Button, Typography, Ci
 import { AddShoppingCart } from '@material-ui/icons';
 import { grey } from '@material-ui/core/colors';
 import api from '../services/api';
+import ScrollTop from '../components/scrollTop'
 
 const useStyles = makeStyles((theme) => ({
     pokedexContainer: {
@@ -88,6 +89,8 @@ const Home = (props) => {
             ) : (
                     <CircularProgress />
                 )}
+
+            <ScrollTop {...props} />
         </>
     )
 

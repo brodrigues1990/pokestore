@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
             marginLeft: theme.spacing(1),
             width: 'auto',
         },
+        borderRadius: '100px'
     },
     searchIcon: {
         padding: theme.spacing(0, 2),
@@ -58,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            width: '12ch',
+            width: '0',
             '&:focus': {
                 width: '20ch',
             },
@@ -70,7 +71,7 @@ const Header = (props) => {
     const classes = useStyles();
     return (
         <>
-            <AppBar position="static" className={classes.root}>
+            <AppBar position="static" className={classes.root} id="back-to-top-anchor">
                 <Container fixed>
                     <Toolbar>
                         <div className={classes.logoContainer}>
@@ -81,7 +82,7 @@ const Header = (props) => {
                                 <SearchIcon />
                             </div>
                             <InputBase
-                                placeholder="Search…"
+                                placeholder="Caçar Pokémon..."
                                 classes={{
                                     root: classes.inputRoot,
                                     input: classes.inputInput,
