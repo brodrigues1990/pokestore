@@ -69,7 +69,7 @@ const Home = (props) => {
                     </CardContent>
                     <CardActions aligh="center">
                         <Button className={classes.cardButton} startIcon={<AddShoppingCart />} color="primary" href="#contained-buttons">
-                            Adicionar ao carrinho
+                            Capturar Pokemon
                         </Button>
                     </CardActions>
                 </Card>

@@ -12,15 +12,18 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         marginBottom: 35
     },
-    logoImage: {
-        height: 70,
-    },
     logoContainer: {
         flexGrow: 1,
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
+        textAlign: 'center'
+    },
+    logoImage: {
+        height: "110%",
+        position: 'absolute',
+        top: '15%'
     },
     search: {
         position: 'relative',
