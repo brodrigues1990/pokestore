@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { fade, makeStyles } from "@material-ui/core/styles";
-import { Grid, Card, CardMedia, CardContent, Typography, CircularProgress } from '@material-ui/core';
-import { Edit as EditIcon, Delete as DeleteIcon, Add as AddIcon } from '@material-ui/icons';
+import { Grid, Card, CardMedia, CardContent, CardActions, Button, Typography, CircularProgress } from '@material-ui/core';
+import { AddShoppingCart } from '@material-ui/icons';
 import { grey } from '@material-ui/core/colors';
 import api from '../services/api';
 
@@ -18,21 +18,8 @@ const useStyles = makeStyles((theme) => ({
     cardContent: {
         textAlign: "center",
     },
-    searchContainer: {
-        display: "flex",
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        paddingLeft: "20px",
-        paddingRight: "20px",
-        marginTop: "5px",
-        marginBottom: "5px",
-    },
-    searchIcon: {
-        alignSelf: "flex-end",
-        marginBottom: "5px",
-    },
-    searchInput: {
-        width: "200px",
-        margin: "5px",
+    cardButton: {
+        width: "100%",
     },
 }));
 
@@ -43,7 +30,7 @@ const Home = (props) => {
 
     // Carrega todas os pokemons
     const loadPokemonByType = async () => {
-        api.get(`https://pokeapi.co/api/v2/pokemon?limit=11807`)
+        api.get(`https://pokeapi.co/api/v2/pokemon?limit=100`)
             .then(function (response) {
                 const { data } = response;
                 const { results } = data;
@@ -57,20 +44,19 @@ const Home = (props) => {
                         price: Math.floor(Math.random() * 100)
                     };
                 });
-                console.log(newPokemonData);
+                console.log(results);
                 setPokemon(newPokemonData);
             });
     }
 
     useEffect(() => {
         loadPokemonByType();
-        console.log(pokemon)
     }, []);
 
     const getPokemonCard = (pokemonId) => {
         const { id, name, image, price } = pokemon[pokemonId];
         return (
-            <Grid item xs={12} sm={4} lg={3} key={pokemonId}>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={pokemonId}>
                 <Card >
                     <CardMedia
                         className={classes.cardMedia}
@@ -81,6 +67,11 @@ const Home = (props) => {
                         <Typography>{`${id}. ${name}`}</Typography>
                         <Typography>{`R$ ${price},00`}</Typography>
                     </CardContent>
+                    <CardActions aligh="center">
+                        <Button className={classes.cardButton} startIcon={<AddShoppingCart />} color="primary" href="#contained-buttons">
+                            Adicionar ao carrinho
+                        </Button>
+                    </CardActions>
                 </Card>
             </Grid>
         );
