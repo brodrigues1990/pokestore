@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: "20px",
         paddingLeft: "50px",
         paddingRight: "50px",
+        marginTop: '80px'
     },
     cardMedia: {
         margin: "auto",

@@ -10,7 +10,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        marginBottom: 35
+        marginBottom: 35,
+        position: 'fixed'
     },
     logoContainer: {
         flexGrow: 1,
@@ -71,7 +72,8 @@ const Header = (props) => {
     const classes = useStyles();
     return (
         <>
-            <AppBar position="static" className={classes.root} id="back-to-top-anchor">
+            <div id="back-to-top-anchor" />
+            <AppBar className={classes.root} >
                 <Container fixed>
                     <Toolbar>
                         <div className={classes.logoContainer}>
