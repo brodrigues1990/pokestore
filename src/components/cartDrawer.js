@@ -13,9 +13,12 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
+import { Container, Toolbar, InputBase } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Logo from './assets/PokeStoreLogo.png'
+import SearchIcon from '@material-ui/icons/Search';
 
 const drawerWidth = 240;
 
@@ -30,9 +33,10 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	appBar: {
+		zIndex: '1000000000000',
 		[theme.breakpoints.up('sm')]: {
 			width: `100%`,
-			zIndex: '10000'
+	
 		},
 	},
 	menuButton: {
@@ -55,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 function ResponsiveDrawer(props) {
 	const { window } = props;
 	const classes = useStyles();
-	const theme = useTheme();
+	
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 
 	const handleDrawerToggle = () => {
