@@ -54,6 +54,60 @@ const useStyles = makeStyles((theme) => ({
 		flexGrow: 1,
 		padding: theme.spacing(3),
 	},
+
+
+	logoContainer: {
+        flexGrow: 1,
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+            display: 'block',
+        },
+    },
+    logoImage: {
+        height: "75px",
+        position: 'absolute',
+        top: '5px'
+    },
+    search: {
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(theme.palette.common.white, 0.15),
+        '&:hover': {
+            backgroundColor: fade(theme.palette.common.white, 0.25),
+        },
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(1),
+            width: 'auto',
+        },
+        borderRadius: '100px'
+    },
+    searchIcon: {
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    inputRoot: {
+        color: 'inherit',
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            width: '0',
+            '&:focus': {
+                width: '20ch',
+            },
+        },
+    },
 }));
 
 function ResponsiveDrawer(props) {
@@ -94,10 +148,28 @@ function ResponsiveDrawer(props) {
 
 	return (
 		<div className={classes.root}>
-			<CssBaseline />
-			<AppBar position="fixed" className={classes.appBar}>
-				<Toolbar>
-					<IconButton
+			
+			<div id="back-to-top-anchor" />
+            <AppBar position="fixed" className={classes.appBar} >
+                <Container fixed>
+                    <Toolbar>
+                        <div className={classes.logoContainer}>
+                            <img src={Logo} alt="PokeStore" className={classes.logoImage} />
+                        </div>
+                        <div className={classes.search}>
+                            <div className={classes.searchIcon}>
+                                <SearchIcon />
+                            </div>
+                            <InputBase
+                                placeholder="Caçar Pokémon..."
+                                classes={{
+                                    root: classes.inputRoot,
+                                    input: classes.inputInput,
+                                }}
+                                inputProps={{ 'aria-label': 'Caçar Pokémon...' }}
+                            />
+                        </div>
+						<IconButton
 						color="inherit"
 						aria-label="open drawer"
 						edge="end"
@@ -106,12 +178,10 @@ function ResponsiveDrawer(props) {
 					>
 						<MenuIcon />
 					</IconButton>
-					<Typography variant="h6" noWrap>
-						Responsive drawer
-          			</Typography>
-				</Toolbar>
-			</AppBar>
-
+                    </Toolbar>
+                </Container>
+            </AppBar>
+			
 			<main className={classes.content}>
 				<div className={classes.toolbar} />
 				<Typography paragraph>

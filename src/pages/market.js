@@ -29,6 +29,7 @@ const Home = (props) => {
 
     const classes = useStyles();
     const [pokemon, setPokemon] = useState({});
+    const [pokemonDetail, setPokemonDetail] = useState({});
 
     // Carrega todas os pokemons
     const loadPokemonByType = async () => {
@@ -36,24 +37,40 @@ const Home = (props) => {
             .then(function (response) {
                 const { data } = response;
                 const { results } = data;
-                const newPokemonData = {};
+                const newPokemonData = [];
                 results.forEach((pokemon, index) => {
-                    newPokemonData[index + 1] = {
+                    newPokemonData.push( {
                         id: index + 1,
                         name: pokemon.name,
                         sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
                         image: `https://pokeres.bastionbot.org/images/pokemon/${index + 1}.png`,
                         price: Math.floor(Math.random() * 100)
-                    };
+                    });
                 });
-                console.log(results);
+                // console.log(results);
                 setPokemon(newPokemonData);
+                return true;
             });
     }
 
     useEffect(() => {
         loadPokemonByType();
     }, []);
+
+    // useEffect(() => {
+    //     console.log("teste");
+    //     // console.log(pokemon);
+
+    //     for(let i  =0; i < pokemon.length; i++)
+    //     {
+    //         let res = api.get
+    //     }
+
+    //     // pokemon.map((obj) => {
+    //     //     console.log(obj);
+    //     // });
+
+    // }, [pokemon]);
 
     const getPokemonCard = (pokemonId) => {
         const { id, name, image, price } = pokemon[pokemonId];
