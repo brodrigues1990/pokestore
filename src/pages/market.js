@@ -7,12 +7,12 @@ import { grey } from '@material-ui/core/colors';
 import api from '../services/api';
 import ScrollTop from '../components/scrollTop'
 
+import ResponsiveDrawer from '../components/marketTemplate'
+
 const useStyles = makeStyles((theme) => ({
     pokedexContainer: {
-        paddingTop: "20px",
-        paddingLeft: "50px",
-        paddingRight: "50px",
-        marginTop: '80px'
+        padding: 0,
+
     },
     cardMedia: {
         margin: "auto",
@@ -39,7 +39,7 @@ const Home = (props) => {
                 const { results } = data;
                 const newPokemonData = [];
                 results.forEach((pokemon, index) => {
-                    newPokemonData.push( {
+                    newPokemonData.push({
                         id: index + 1,
                         name: pokemon.name,
                         sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
@@ -98,17 +98,19 @@ const Home = (props) => {
 
     return (
         <>
-            {pokemon ? (
-                <Grid container spacing={2} className={classes.pokedexContainer}>
-                    {Object.keys(pokemon).map((pokemonId) =>
-                        getPokemonCard(pokemonId)
+            <ResponsiveDrawer>
+                {pokemon ? (
+                    <Grid container spacing={2} className={classes.pokedexContainer}>
+                        {Object.keys(pokemon).map((pokemonId) =>
+                            getPokemonCard(pokemonId)
+                        )}
+                    </Grid>
+                ) : (
+                        <CircularProgress />
                     )}
-                </Grid>
-            ) : (
-                    <CircularProgress />
-                )}
 
-            <ScrollTop {...props} />
+                <ScrollTop {...props} />
+            </ResponsiveDrawer>
         </>
     )
 

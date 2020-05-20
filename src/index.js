@@ -7,9 +7,9 @@ import themePokeStore from './theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 ReactDOM.render(
-  <ThemeProvider theme={themePokeStore}>
+  <>
     <App />
     <CssBaseline />
-  </ThemeProvider>,
+  </>,
   document.getElementById('root')
 );
