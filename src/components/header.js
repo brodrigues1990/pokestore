@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         marginBottom: 35,
-        position: 'fixed'
     },
     logoContainer: {
         flexGrow: 1,
@@ -19,12 +18,11 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
-        textAlign: 'center'
     },
     logoImage: {
-        height: "110%",
+        height: "75px",
         position: 'absolute',
-        top: '15%'
+        top: '5px'
     },
     search: {
         position: 'relative',
@@ -73,7 +71,7 @@ const Header = (props) => {
     return (
         <>
             <div id="back-to-top-anchor" />
-            <AppBar className={classes.root} >
+            <AppBar position="fixed" className={classes.root} >
                 <Container fixed>
                     <Toolbar>
                         <div className={classes.logoContainer}>
