@@ -9,7 +9,10 @@ const useStyles = makeStyles((theme) => ({
     root: {
         position: 'fixed',
         bottom: theme.spacing(2),
-        right: theme.spacing(2),
+        right: '265px',
+        [theme.breakpoints.down('xs')]: {
+            right: theme.spacing(2)    
+        },
     },
     ScrollTopFab: {
         background: '#005BAC',
@@ -32,6 +35,7 @@ const ScrollTop = (props) => {
     });
 
     const handleClick = (event) => {
+        event.preventDefault();
         const anchor = (event.target.ownerDocument || document).querySelector('#back-to-top-anchor');
         if (anchor) {
             anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });

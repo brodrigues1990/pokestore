@@ -7,9 +7,10 @@ import themePokeStore from './theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 ReactDOM.render(
-  <>
-    <App />
-    <CssBaseline />
-  </>,
-  document.getElementById('root')
+	<>
+		<div id="back-to-top-anchor" />
+		<App />
+		<CssBaseline />
+	</>,
+	document.getElementById('root')
 );

@@ -25,6 +25,7 @@ import {
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Logo from '../assets/PokeStoreLogo.png'
 
+import ScrollTop from './scrollTop'
 
 const drawerWidth = 250;
 
@@ -155,7 +156,6 @@ const MarketTemplate = (props) => {
 
 	return (
 		<div className={classes.root}>
-			<div id="back-to-top-anchor" />
 			<AppBar position="fixed" className={classes.appBar} >
 				<Toolbar>
 					<div className={classes.logoContainer}>
@@ -188,9 +188,9 @@ const MarketTemplate = (props) => {
 
 			<main className={classes.content}>
 				{children}
+				<ScrollTop {...props} />		
 			</main>
 			<nav className={classes.drawer} aria-label="mailbox folders">
-				{/* The implementation can be swapped with js to avoid SEO duplication of links. */}
 				<Hidden smUp implementation="css">
 					<Drawer
 						container={container}
