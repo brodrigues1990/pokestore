@@ -7,7 +7,7 @@ import { grey } from '@material-ui/core/colors';
 import api from '../services/api';
 import ScrollTop from '../components/scrollTop'
 
-import ResponsiveDrawer from '../components/marketTemplate'
+import MarketTemplate from '../components/marketTemplate'
 
 const useStyles = makeStyles((theme) => ({
     pokedexContainer: {
@@ -98,7 +98,7 @@ const Home = (props) => {
 
     return (
         <>
-            <ResponsiveDrawer>
+            <MarketTemplate>
                 {pokemon ? (
                     <Grid container spacing={2} className={classes.pokedexContainer}>
                         {Object.keys(pokemon).map((pokemonId) =>
@@ -110,7 +110,7 @@ const Home = (props) => {
                     )}
 
                 <ScrollTop {...props} />
-            </ResponsiveDrawer>
+            </MarketTemplate>
         </>
     )
 

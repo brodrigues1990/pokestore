@@ -1,25 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
-import Typography from '@material-ui/core/Typography';
+import {
+	AppBar,
+	Divider,
+	Drawer,
+	Hidden,
+	IconButton,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+	Typography,
+	Grid,
+	ListSubheader,
+	Toolbar,
+	InputBase
+} from '@material-ui/core';
+import {
+	Search as SearchIcon,
+	Mail as MailIcon,
+	MoveToInbox as InboxIcon,
+	Menu as MenuIcon,
+	ShoppingCart as ShoppingCartIcon
+} from '@material-ui/icons';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { Container, Toolbar, InputBase } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
 import Logo from '../assets/PokeStoreLogo.png'
-import SearchIcon from '@material-ui/icons/Search';
 
-const drawerWidth = 300;
+
+const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -33,9 +40,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 	appBar: {
 		zIndex: '1000000000000',
-		padding: theme.spacing(0, 2),
+		padding: theme.spacing(0),
 		[theme.breakpoints.up('sm')]: {
 			width: `100%`,
+			padding: theme.spacing(0, 2),
 		},
 	},
 	menuButton: {
@@ -108,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function ResponsiveDrawer(props) {
+const MarketTemplate = (props) => {
 	const { window, children } = props;
 	const classes = useStyles();
 
@@ -122,23 +130,24 @@ function ResponsiveDrawer(props) {
 		<div>
 			<div className={classes.toolbar} />
 			<Divider />
-			<List>
-				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-					<ListItem button key={text}>
-						<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-						<ListItemText primary={text} />
-					</ListItem>
-				))}
+			<List
+				subheader={
+					<ListSubheader component="div" id="nested-list-subheader">
+						Carrinho
+					</ListSubheader>
+				}
+			>
+		
 			</List>
 			<Divider />
-			<List>
+			{/* <List>
 				{['All mail', 'Trash', 'Spam'].map((text, index) => (
 					<ListItem button key={text}>
 						<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
 						<ListItemText primary={text} />
 					</ListItem>
 				))}
-			</List>
+			</List> */}
 		</div>
 	);
 
@@ -216,4 +225,4 @@ function ResponsiveDrawer(props) {
 	);
 }
 
-export default ResponsiveDrawer;
+export default MarketTemplate;
