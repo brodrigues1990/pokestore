@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7dc82116d9ab7db355a9512d0f83d4e5",
+    "revision": "b05c2c4a3a7ad78f481b59a768995c05",
     "url": "/pokestore/index.html"
   },
   {
-    "revision": "37053b604d6d5a40f0e2",
+    "revision": "edad616ba93e66fd23dc",
     "url": "/pokestore/static/css/main.623865d9.chunk.css"
   },
   {
-    "revision": "135dc5f82a921ce3b23b",
-    "url": "/pokestore/static/js/2.ad7c1d0a.chunk.js"
+    "revision": "56cd1b8f0b25999370bd",
+    "url": "/pokestore/static/js/2.41d80855.chunk.js"
   },
   {
     "revision": "0749163b59fbee32225059cb60c18af6",
-    "url": "/pokestore/static/js/2.ad7c1d0a.chunk.js.LICENSE.txt"
+    "url": "/pokestore/static/js/2.41d80855.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "37053b604d6d5a40f0e2",
-    "url": "/pokestore/static/js/main.7fb993c3.chunk.js"
+    "revision": "edad616ba93e66fd23dc",
+    "url": "/pokestore/static/js/main.390e0d52.chunk.js"
   },
   {
     "revision": "50156c4ef494ae7ec58c",
