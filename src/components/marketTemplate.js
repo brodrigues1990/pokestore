@@ -13,21 +13,28 @@ import {
 	Grid,
 	ListSubheader,
 	Toolbar,
-	InputBase
+	InputBase,
+	ListItemAvatar,
+	ListItemSecondaryAction,
+	Avatar,
+	Button,
+	Box
 } from '@material-ui/core';
 import {
 	Search as SearchIcon,
 	Mail as MailIcon,
 	MoveToInbox as InboxIcon,
 	Menu as MenuIcon,
-	ShoppingCart as ShoppingCartIcon
+	ShoppingCart as ShoppingCartIcon,
+	Folder as FolderIcon,
+	Delete as DeleteIcon
 } from '@material-ui/icons';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Logo from '../assets/PokeStoreLogo.png'
-
 import ScrollTop from './scrollTop'
 
-const drawerWidth = 250;
+
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -115,6 +122,24 @@ const useStyles = makeStyles((theme) => ({
 			},
 		},
 	},
+	buyButton:{
+		position: 'absolute',
+		bottom: 0,
+		right: 0,
+		width: '100%',
+		textAlign:'center',
+		height: '50px',
+		borderRadius: 0,
+	},
+	resumeBuy:{
+		position: 'absolute',
+		bottom: '55px',
+		right: 0,
+		width: '100%',
+		height: '30px',
+		borderTop: '1px solid rgba(0, 0, 0, 0.12)',
+		
+	}
 }));
 
 const MarketTemplate = (props) => {
@@ -127,20 +152,47 @@ const MarketTemplate = (props) => {
 		setMobileOpen(!mobileOpen);
 	};
 
+	function generate(element) {
+		return [0, 1, 2, 3, 4].map((value) =>
+			React.cloneElement(element, {
+				key: value,
+			}),
+		);
+	}
 	const drawer = (
 		<div>
 			<div className={classes.toolbar} />
-			<Divider />
 			<List
 				subheader={
 					<ListSubheader component="div" id="nested-list-subheader">
 						Carrinho
-					</ListSubheader>
+						</ListSubheader>
 				}
 			>
-		
+				<Divider />
+				{generate(
+					<ListItem>
+						<ListItemAvatar>
+							<Avatar alt="Pokemon" src="https://pokeres.bastionbot.org/images/pokemon/3.png" />
+						</ListItemAvatar>
+						<ListItemText
+							primary="Pokemon"
+							secondary={'R$ XX,XX'}
+						/>
+						<ListItemSecondaryAction>
+							<IconButton edge="end" aria-label="delete">
+								<DeleteIcon />
+							</IconButton>
+						</ListItemSecondaryAction>
+					</ListItem>,
+				)}
 			</List>
-			<Divider />
+			<Box className={classes.resumeBuy}>
+				teste
+			</Box>
+			<Button variant="contained" className={classes.buyButton} color="primary" href="#contained-buttons">
+				Finalizar
+			</Button>
 			{/* <List>
 				{['All mail', 'Trash', 'Spam'].map((text, index) => (
 					<ListItem button key={text}>
@@ -188,7 +240,7 @@ const MarketTemplate = (props) => {
 
 			<main className={classes.content}>
 				{children}
-				<ScrollTop {...props} />		
+				<ScrollTop {...props} />
 			</main>
 			<nav className={classes.drawer} aria-label="mailbox folders">
 				<Hidden smUp implementation="css">

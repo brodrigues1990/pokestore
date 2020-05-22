@@ -9,15 +9,15 @@ const useStyles = makeStyles((theme) => ({
     root: {
         position: 'fixed',
         bottom: theme.spacing(2),
-        right: '265px',
+        right: '315px',
         [theme.breakpoints.down('xs')]: {
             right: theme.spacing(2)    
         },
     },
     ScrollTopFab: {
-        background: '#005BAC',
+        backgroundColor: '#005BAC',
         color: '#fff',
-        "&:hover": {
+        "&:active": {
             color: '#000',
             boxShadow: "none"
         }
