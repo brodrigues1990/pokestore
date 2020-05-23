@@ -18,6 +18,7 @@ import {
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import { useCart, CartContext } from '../../context/cartContext';
+import PokedexImg from '../../assets/Pokedex.png'
 
 const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
@@ -40,13 +41,24 @@ const useStyles = makeStyles((theme) => ({
         borderTop: '1px solid rgba(0, 0, 0, 0.12)',
 
     },
+    avatarContainer: {
+        borderRadius: 0
+    },
+    pokedexImage: {
+        top: 5,
+        height: 25,
+        position: 'relative',
+        paddingRight: 10
+    }
+    
+
 }));
 
 const Cart = (props) => {
     const classes = useStyles();
     const { cartItem, setCartItem } = useCart(CartContext);
     console.log(cartItem);
-    
+
     // function generate(element) {
     //     return [0, 1, 2, 3, 4, 5].map((value) =>
     //         React.cloneElement(element, {
@@ -61,38 +73,39 @@ const Cart = (props) => {
             <List
                 subheader={
                     <ListSubheader component="div" id="nested-list-subheader">
-                        Carrinho
-                </ListSubheader>
+                        <img src={PokedexImg} alt="PokeStore" className={classes.pokedexImage} />Carrinho
+                    </ListSubheader>
                 }
             >
                 <Divider />
 
                 {cartItem ? (
-                    // cartItem.map(() => (
-                        <ListItem>
-                            <ListItemAvatar>
-                                <Avatar alt="Pokemon" src="https://pokeres.bastionbot.org/images/pokemon/3.png" />
-                            </ListItemAvatar>
-                            <ListItemText
-                                primary="Pokemon"
-                                secondary={'R$ XX,XX'}
-                            />
-                            <ListItemSecondaryAction>
-                                <IconButton edge="end" aria-label="delete">
-                                    <DeleteIcon />
-                                </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
+                    //  Object.keys(cartItem).map(() => (
 
-                    // ))
+                    <ListItem key={cartItem.id}>
+                        <ListItemAvatar>
+                            <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartItem.image} />
+                        </ListItemAvatar>
+                        <ListItemText
+                            primary="Pokemon"
+                            secondary={'R$ XX,XX'}
+                        />
+                        <ListItemSecondaryAction>
+                            <IconButton edge="end" aria-label="delete">
+                                <DeleteIcon />
+                            </IconButton>
+                        </ListItemSecondaryAction>
+                    </ListItem>
+
+                    //  ))
                 ) : (
                         'Carrinho Vazio'
                     )}
 
             </List>
-            <Box className={classes.resumeBuy}>
+            {/* <Box className={classes.resumeBuy}>
                 teste
-            </Box>
+            </Box> */}
             <Button variant="contained" className={classes.buyButton} color="primary" href="#contained-buttons">
                 Finalizar
             </Button>

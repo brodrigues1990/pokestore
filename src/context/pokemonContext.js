@@ -15,6 +15,7 @@ const PokemonProvider = ({ children }) => {
                 const { results } = data;
                 const newPokemonData = [];
                 results.forEach((pokemon, index) => {
+                    
                     newPokemonData.push({
                         id: index + 1,
                         name: pokemon.name,
@@ -31,6 +32,7 @@ const PokemonProvider = ({ children }) => {
 
     useEffect(() => {
         loadPokemonByType();
+        console.log(pokemon);
     }, []);
     // useEffect(() => {
     //     console.log("teste");
