@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Home from './pages/home';
-import Market from './pages/market';
-import Error404 from './pages/error404'
+import Home from './components/pages/home';
+import Market from './components/pages/market';
+import Error404 from './components/pages/error404'
 
 
 export default function Routes() {

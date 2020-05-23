@@ -4,9 +4,9 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import { Grid, Card, CardMedia, CardContent, CardActions, Button, Typography, CircularProgress } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
 import { grey } from '@material-ui/core/colors';
-import api from '../services/api';
+import api from '../../services/api';
 
-import MarketTemplate from '../components/marketTemplate'
+import MarketTemplate from '../template/marketTemplate'
 
 const useStyles = makeStyles((theme) => ({
     pokedexContainer: {

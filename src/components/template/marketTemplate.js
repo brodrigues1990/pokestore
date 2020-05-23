@@ -30,8 +30,8 @@ import {
 	Delete as DeleteIcon
 } from '@material-ui/icons';
 import { fade, makeStyles } from '@material-ui/core/styles';
-import Logo from '../assets/PokeStoreLogo.png'
-import ScrollTop from './scrollTop'
+import Logo from '../../assets/PokeStoreLogo.png'
+import ScrollTop from '../molecules/scrollTop'
 
 
 const drawerWidth = 300;
@@ -122,23 +122,23 @@ const useStyles = makeStyles((theme) => ({
 			},
 		},
 	},
-	buyButton:{
+	buyButton: {
 		position: 'absolute',
 		bottom: 0,
 		right: 0,
 		width: '100%',
-		textAlign:'center',
+		textAlign: 'center',
 		height: '50px',
 		borderRadius: 0,
 	},
-	resumeBuy:{
+	resumeBuy: {
 		position: 'absolute',
 		bottom: '55px',
 		right: 0,
 		width: '100%',
 		height: '30px',
 		borderTop: '1px solid rgba(0, 0, 0, 0.12)',
-		
+
 	}
 }));
 
@@ -153,7 +153,7 @@ const MarketTemplate = (props) => {
 	};
 
 	function generate(element) {
-		return [0, 1, 2, 3, 4].map((value) =>
+		return [0, 1, 2, 3, 4,5,6,7,8,9].map((value) =>
 			React.cloneElement(element, {
 				key: value,
 			}),
@@ -166,7 +166,7 @@ const MarketTemplate = (props) => {
 				subheader={
 					<ListSubheader component="div" id="nested-list-subheader">
 						Carrinho
-						</ListSubheader>
+					</ListSubheader>
 				}
 			>
 				<Divider />
@@ -268,7 +268,7 @@ const MarketTemplate = (props) => {
 						variant="permanent"
 						anchor='right'
 						open
-					>
+					> 
 						{drawer}
 					</Drawer>
 				</Hidden>
