@@ -4,7 +4,7 @@ import api from '../services/api';
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-    const [cartList, setCartList] = useState();
+    const [cartList, setCartList] = useState([]);
 
     return (
         <CartContext.Provider value={{ cartList, setCartList }}>

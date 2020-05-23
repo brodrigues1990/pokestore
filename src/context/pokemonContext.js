@@ -41,54 +41,28 @@ const PokemonProvider = ({ children }) => {
             await api.get(`/pokemon/${i}`)
                 .then(function (response) {
                     const { data } = response;
-                    console.log(data);
+                   // console.log(data);
                     newPokemonData.push({
                         id: i,
                         name: data.name,
                         sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
                         image: `https://pokeres.bastionbot.org/images/pokemon/${i}.png`,
                         price: Math.floor(Math.random() * 100),
-                        // types: [
-                        //     data.types.map(() => (
-                        //         'teste'
-                        //     )))
-                        // ]
+                        type: data.types[0].type.name,
                     });
                 });
 
         }
-        console.log(newPokemonData);
+        //console.log(newPokemonData);
         setPokemon(newPokemonData);
     }
 
     useEffect(() => {
         loadPokemonByType();
-        // const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
-        // const pokemonArray = []
-        // for (let i = 1; i <= 150; i++) {
-        //     pokemonArray.push(fetch(getPokemonUrl(i)).then(res => res.json()))
-        // }
-
-        // console.log(pokemonArray);
     }, []);
 
     useEffect(() => {
-        console.log(pokemon);
-        // console.log(pokemon);
-
-        // pokemon.map((poke) => (
-        //     console.log(poke.name)
-        // ))
-        // for(let i  =0; i < pokemon.length; i++)
-        // {
-        //     let res = api.get
-        // }
-
-        // pokemon.map((obj) => {
-        //     console.log(obj);
-        // });
-
-
+        
     }, [pokemon]);
 
 

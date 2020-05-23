@@ -77,18 +77,18 @@ const CartPokedex = (props) => {
                 <Divider />
 
                 {cartList ? (
-                    Object.keys(cartList).map(() => (
+                    cartList.map((cartItem) => (
 
                         <ListItem >
                             <ListItemAvatar>
-                                <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartList.image} />
+                                <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartItem.image} />
                             </ListItemAvatar>
                             <ListItemText
-                                primary="Pokemon"
-                                secondary={'R$ XX,XX'}
+                                primary={cartItem.name}
+                                secondary={`R$ ${cartItem.price},00`}
                             />
                             <ListItemSecondaryAction>
-                                <IconButton edge="end" aria-label="delete" onClick={() => handleRemovePokemonCart(cartList.id)}>
+                                <IconButton edge="end" aria-label="delete" onClick={() => handleRemovePokemonCart(cartItem.id)}>
                                     <DeleteIcon />
                                 </IconButton>
                             </ListItemSecondaryAction>
