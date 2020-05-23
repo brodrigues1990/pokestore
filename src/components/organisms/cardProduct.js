@@ -2,7 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, CardContent, CardActions, Typography, Grid, Button } from '@material-ui/core';
 import { AddShoppingCart as AddShoppingCartIcon } from '@material-ui/icons';
-import { usePokemon, PokemonContext } from '../../context/pokemon'
+import { usePokemon, PokemonContext } from '../../context/pokemonContext';
+import { useCart, CartContext } from '../../context/cartContext';
+import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts'
 
 const useStyles = makeStyles((theme) => ({
     cardMedia: {
@@ -25,10 +27,17 @@ const useStyles = makeStyles((theme) => ({
 
 const CardProduct = ({ pokemonId }) => {
     const classes = useStyles();
-    const { pokemon, setPokemon } = usePokemon(PokemonContext);
+    const { pokemon } = usePokemon(PokemonContext);
+    const { setCartItem } = useCart(CartContext);
     const { id, name, image, price } = pokemon[pokemonId];
+
+    // adiciona pokemon ao carrinho
+    const handleAddCart = (id) => {
+        setCartItem(pokemon[id - 1]);
+    }
+
     return (
-        <Grid item xs={12} sm={6} md={4} lg={3} key={pokemonId}>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
             <Card >
                 <CardMedia className={classes.cardMedia} image={image} />
                 <CardContent className={classes.cardContent}>
@@ -36,7 +45,7 @@ const CardProduct = ({ pokemonId }) => {
                     <Typography>{`R$ ${price},00`}</Typography>
                 </CardContent>
                 <CardActions className={classes.cardActions} aligh="center">
-                    <Button className={classes.cardButton} startIcon={<AddShoppingCartIcon />} color="primary" href="#contained-buttons">
+                    <Button className={classes.cardButton} onClick={() => handleAddCart(id)} startIcon={<AddShoppingCartIcon />} color="primary" href="#contained-buttons">
                         Capturar Pokemon
                     </Button>
                 </CardActions>

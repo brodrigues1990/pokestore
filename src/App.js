@@ -1,12 +1,15 @@
 import React from 'react';
 import Routes from './routes';
-import PokemonProvider from './context/pokemon'
+import PokemonProvider from './context/pokemonContext'
+import CartProvider from './context/cartContext'
 
 function App() {
 	return (
 		<>
 			<PokemonProvider>
-				<Routes />
+				<CartProvider>
+					<Routes />
+				</CartProvider>
 			</PokemonProvider>
 		</>
 	);
