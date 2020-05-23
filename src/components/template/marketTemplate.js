@@ -1,38 +1,20 @@
 import React from 'react';
 import {
 	AppBar,
-	Divider,
 	Drawer,
 	Hidden,
 	IconButton,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	Typography,
-	Grid,
-	ListSubheader,
 	Toolbar,
 	InputBase,
-	ListItemAvatar,
-	ListItemSecondaryAction,
-	Avatar,
-	Button,
-	Box
 } from '@material-ui/core';
 import {
 	Search as SearchIcon,
-	Mail as MailIcon,
-	MoveToInbox as InboxIcon,
 	Menu as MenuIcon,
-	ShoppingCart as ShoppingCartIcon,
-	Folder as FolderIcon,
-	Delete as DeleteIcon
 } from '@material-ui/icons';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Logo from '../../assets/PokeStoreLogo.png'
 import ScrollTop from '../molecules/scrollTop'
-
+import Cart from '../organisms/cart'
 
 const drawerWidth = 300;
 
@@ -40,36 +22,7 @@ const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 	},
-	drawer: {
-		[theme.breakpoints.up('sm')]: {
-			width: drawerWidth,
-			flexShrink: 0,
-		},
-	},
-	appBar: {
-		zIndex: '1000000000000',
-		padding: theme.spacing(0),
-		[theme.breakpoints.up('sm')]: {
-			width: `100%`,
-			padding: theme.spacing(0, 2),
-		},
-	},
-	menuButton: {
-		[theme.breakpoints.up('sm')]: {
-			display: 'none',
-		},
-	},
-	// necessary for content to be below app bar
-	toolbar: theme.mixins.toolbar,
-	drawerPaper: {
-		width: drawerWidth,
-	},
-	content: {
-		flexGrow: 1,
-		padding: theme.spacing(13, 5, 5, 5),
-	},
-
-
+	//header
 	logoContainer: {
 		flexGrow: 1,
 		display: 'none',
@@ -84,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	search: {
 		position: 'relative',
-		borderRadius: theme.shape.borderRadius,
 		backgroundColor: fade(theme.palette.common.white, 0.15),
 		'&:hover': {
 			backgroundColor: fade(theme.palette.common.white, 0.25),
@@ -95,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 			marginLeft: theme.spacing(1),
 			width: 'auto',
 		},
-		borderRadius: '100px'
+		borderRadius: 100,
 	},
 	searchIcon: {
 		padding: theme.spacing(0, 2),
@@ -122,24 +74,32 @@ const useStyles = makeStyles((theme) => ({
 			},
 		},
 	},
-	buyButton: {
-		position: 'absolute',
-		bottom: 0,
-		right: 0,
-		width: '100%',
-		textAlign: 'center',
-		height: '50px',
-		borderRadius: 0,
+	drawer: {
+		[theme.breakpoints.up('sm')]: {
+			width: drawerWidth,
+			flexShrink: 0,
+		},
 	},
-	resumeBuy: {
-		position: 'absolute',
-		bottom: '55px',
-		right: 0,
-		width: '100%',
-		height: '30px',
-		borderTop: '1px solid rgba(0, 0, 0, 0.12)',
-
-	}
+	appBar: {
+		zIndex: '1000000000000',
+		padding: theme.spacing(0),
+		[theme.breakpoints.up('sm')]: {
+			width: `100%`,
+			padding: theme.spacing(0, 2),
+		},
+	},
+	menuButton: {
+		[theme.breakpoints.up('sm')]: {
+			display: 'none',
+		},
+	},
+	drawerPaper: {
+		width: drawerWidth,
+	},
+	content: {
+		flexGrow: 1,
+		padding: theme.spacing(13, 5, 5, 5),
+	},
 }));
 
 const MarketTemplate = (props) => {
@@ -152,57 +112,6 @@ const MarketTemplate = (props) => {
 		setMobileOpen(!mobileOpen);
 	};
 
-	function generate(element) {
-		return [0, 1, 2, 3, 4,5,6,7,8,9].map((value) =>
-			React.cloneElement(element, {
-				key: value,
-			}),
-		);
-	}
-	const drawer = (
-		<div>
-			<div className={classes.toolbar} />
-			<List
-				subheader={
-					<ListSubheader component="div" id="nested-list-subheader">
-						Carrinho
-					</ListSubheader>
-				}
-			>
-				<Divider />
-				{generate(
-					<ListItem>
-						<ListItemAvatar>
-							<Avatar alt="Pokemon" src="https://pokeres.bastionbot.org/images/pokemon/3.png" />
-						</ListItemAvatar>
-						<ListItemText
-							primary="Pokemon"
-							secondary={'R$ XX,XX'}
-						/>
-						<ListItemSecondaryAction>
-							<IconButton edge="end" aria-label="delete">
-								<DeleteIcon />
-							</IconButton>
-						</ListItemSecondaryAction>
-					</ListItem>,
-				)}
-			</List>
-			<Box className={classes.resumeBuy}>
-				teste
-			</Box>
-			<Button variant="contained" className={classes.buyButton} color="primary" href="#contained-buttons">
-				Finalizar
-			</Button>
-			{/* <List>
-				{['All mail', 'Trash', 'Spam'].map((text, index) => (
-					<ListItem button key={text}>
-						<ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-						<ListItemText primary={text} />
-					</ListItem>
-				))}
-			</List> */}
-		</div>
-	);
 
 	const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -242,6 +151,7 @@ const MarketTemplate = (props) => {
 				{children}
 				<ScrollTop {...props} />
 			</main>
+
 			<nav className={classes.drawer} aria-label="mailbox folders">
 				<Hidden smUp implementation="css">
 					<Drawer
@@ -257,7 +167,7 @@ const MarketTemplate = (props) => {
 							keepMounted: true, // Better open performance on mobile.
 						}}
 					>
-						{drawer}
+						<Cart/>
 					</Drawer>
 				</Hidden>
 				<Hidden xsDown implementation="css">
@@ -268,8 +178,8 @@ const MarketTemplate = (props) => {
 						variant="permanent"
 						anchor='right'
 						open
-					> 
-						{drawer}
+					>
+						<Cart/>
 					</Drawer>
 				</Hidden>
 			</nav>
