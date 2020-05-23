@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, CardContent, CardActions, Typography, Grid, Button } from '@material-ui/core';
 import { AddShoppingCart as AddShoppingCartIcon } from '@material-ui/icons';
@@ -25,15 +25,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const CardProduct = ({ pokemonId }) => {
+const CardPokemon = ({ pokemonId }) => {
     const classes = useStyles();
     const { pokemon } = usePokemon(PokemonContext);
-    const { setCartItem } = useCart(CartContext);
+    const { cartList, setCartList } = useCart(CartContext);
+    const newCartList = [];
     const { id, name, image, price } = pokemon[pokemonId];
-
+    console.log(cartList);
     // adiciona pokemon ao carrinho
     const handleAddCart = (id) => {
-        setCartItem(pokemon[id - 1]);
+    //    const pokeItem = []
+    //    pokeItem.push( pokemon[id - 1]);
+    //     newCartList.push(...cartList , ...pokeItem);
+    //     setCartList(newCartList);
+        setCartList(pokemon[id - 1]);
     }
 
     return (
@@ -54,4 +59,4 @@ const CardProduct = ({ pokemonId }) => {
     );
 };
 
-export default CardProduct;
+export default CardPokemon;

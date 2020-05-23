@@ -4,10 +4,10 @@ import api from '../services/api';
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-    const [cartItem, setCartItem] = useState();
+    const [cartList, setCartList] = useState();
 
     return (
-        <CartContext.Provider value={{ cartItem, setCartItem }}>
+        <CartContext.Provider value={{ cartList, setCartList }}>
             {children}
         </CartContext.Provider>
     )
@@ -15,8 +15,8 @@ const CartProvider = ({ children }) => {
 
 export const useCart = () => {
     const context = useContext(CartContext);
-    const { cartItem, setCartItem } = context;
-    return { cartItem, setCartItem };
+    const { cartList, setCartList } = context;
+    return { cartList, setCartList };
 }
 
 export default CartProvider;

@@ -50,22 +50,19 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         paddingRight: 10
     }
-    
+
 
 }));
 
-const Cart = (props) => {
+const CartPokedex = (props) => {
     const classes = useStyles();
-    const { cartItem, setCartItem } = useCart(CartContext);
-    console.log(cartItem);
+    const { cartList, setCartList } = useCart(CartContext);
+    console.log(cartList);
 
-    // function generate(element) {
-    //     return [0, 1, 2, 3, 4, 5].map((value) =>
-    //         React.cloneElement(element, {
-    //             key: value,
-    //         }),
-    //     );
-    // }
+    // Deleta noticia selecionada
+    const handleRemovePokemonCart = async (id) => {
+        await setCartList(cartList.filter(cartItem => cartItem.id !== id));
+    }
 
     return (
         <>
@@ -79,25 +76,25 @@ const Cart = (props) => {
             >
                 <Divider />
 
-                {cartItem ? (
-                    //  Object.keys(cartItem).map(() => (
+                {cartList ? (
+                    Object.keys(cartList).map(() => (
 
-                    <ListItem key={cartItem.id}>
-                        <ListItemAvatar>
-                            <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartItem.image} />
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary="Pokemon"
-                            secondary={'R$ XX,XX'}
-                        />
-                        <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="delete">
-                                <DeleteIcon />
-                            </IconButton>
-                        </ListItemSecondaryAction>
-                    </ListItem>
+                        <ListItem >
+                            <ListItemAvatar>
+                                <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartList.image} />
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary="Pokemon"
+                                secondary={'R$ XX,XX'}
+                            />
+                            <ListItemSecondaryAction>
+                                <IconButton edge="end" aria-label="delete" onClick={() => handleRemovePokemonCart(cartList.id)}>
+                                    <DeleteIcon />
+                                </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
 
-                    //  ))
+                    ))
                 ) : (
                         'Carrinho Vazio'
                     )}
@@ -113,4 +110,4 @@ const Cart = (props) => {
     );
 };
 
-export default Cart;
+export default CartPokedex;

@@ -14,7 +14,7 @@ import {
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Logo from '../../assets/PokeStoreLogo.png'
 import ScrollTop from '../molecules/scrollTop'
-import Cart from '../organisms/cart'
+import CartPokedex from '../organisms/cartPokedex'
 
 const drawerWidth = 300;
 
@@ -167,7 +167,7 @@ const MarketTemplate = (props) => {
 							keepMounted: true, // Better open performance on mobile.
 						}}
 					>
-						<Cart/>
+						<CartPokedex/>
 					</Drawer>
 				</Hidden>
 				<Hidden xsDown implementation="css">
@@ -179,7 +179,7 @@ const MarketTemplate = (props) => {
 						anchor='right'
 						open
 					>
-						<Cart/>
+						<CartPokedex/>
 					</Drawer>
 				</Hidden>
 			</nav>
