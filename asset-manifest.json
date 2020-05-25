@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/pokestore/static/css/main.623865d9.chunk.css",
-    "main.js": "/pokestore/static/js/main.a10b2481.chunk.js",
-    "main.js.map": "/pokestore/static/js/main.a10b2481.chunk.js.map",
+    "main.js": "/pokestore/static/js/main.4207d8c9.chunk.js",
+    "main.js.map": "/pokestore/static/js/main.4207d8c9.chunk.js.map",
     "runtime-main.js": "/pokestore/static/js/runtime-main.8508d414.js",
     "runtime-main.js.map": "/pokestore/static/js/runtime-main.8508d414.js.map",
-    "static/js/2.3819f084.chunk.js": "/pokestore/static/js/2.3819f084.chunk.js",
-    "static/js/2.3819f084.chunk.js.map": "/pokestore/static/js/2.3819f084.chunk.js.map",
+    "static/js/2.8e7ea167.chunk.js": "/pokestore/static/js/2.8e7ea167.chunk.js",
+    "static/js/2.8e7ea167.chunk.js.map": "/pokestore/static/js/2.8e7ea167.chunk.js.map",
     "index.html": "/pokestore/index.html",
-    "precache-manifest.85727bcf03f004d66c7ff0061c76422f.js": "/pokestore/precache-manifest.85727bcf03f004d66c7ff0061c76422f.js",
+    "precache-manifest.215de998bcf34d83b19e51e1dca60ac5.js": "/pokestore/precache-manifest.215de998bcf34d83b19e51e1dca60ac5.js",
     "service-worker.js": "/pokestore/service-worker.js",
     "static/css/main.623865d9.chunk.css.map": "/pokestore/static/css/main.623865d9.chunk.css.map",
-    "static/js/2.3819f084.chunk.js.LICENSE.txt": "/pokestore/static/js/2.3819f084.chunk.js.LICENSE.txt",
+    "static/js/2.8e7ea167.chunk.js.LICENSE.txt": "/pokestore/static/js/2.8e7ea167.chunk.js.LICENSE.txt",
     "static/media/Error404.png": "/pokestore/static/media/Error404.b47d9f87.png",
     "static/media/PokeStoreLogo.png": "/pokestore/static/media/PokeStoreLogo.7cc2f872.png",
     "static/media/Pokedex.png": "/pokestore/static/media/Pokedex.1575f911.png"
   },
   "entrypoints": [
     "static/js/runtime-main.8508d414.js",
-    "static/js/2.3819f084.chunk.js",
+    "static/js/2.8e7ea167.chunk.js",
     "static/css/main.623865d9.chunk.css",
-    "static/js/main.a10b2481.chunk.js"
+    "static/js/main.4207d8c9.chunk.js"
   ]
 }
