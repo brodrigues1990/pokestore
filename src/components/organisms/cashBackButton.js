@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -7,6 +7,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import { useCart, CartContext } from '../../context/cartContext';
+
 
 const useStyles = makeStyles((theme) => ({
     buyButton: {
@@ -28,21 +30,22 @@ export default function AlertDialogSlide(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [cashBack, setCashBack] = useState(0);
-    
+    const { setCartList } = useCart(CartContext);
     const handleClickOpen = () => {
         setOpen(true);
     };
 
     const handleClose = () => {
         setOpen(false);
+        setCartList([]);
     };
 
     // Calcula valor extornado (CashBack)
     const calcCashBack = async () => {
         var preco = props.resumeBuy;
         //var porcentagem = parseFloat('1.3') ;
-        var porcentagem = 3 ;
-        setCashBack(preco * (porcentagem/100)); 
+        var porcentagem = 3;
+        setCashBack(preco * (porcentagem / 100));
     }
     useEffect(() => {
         calcCashBack()
