@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 	//header
 	logoContainer: {
 		flexGrow: 1,
-		display: 'none',
+		//display: 'none',
 		[theme.breakpoints.up('sm')]: {
 			display: 'block',
 		},
@@ -34,7 +34,12 @@ const useStyles = makeStyles((theme) => ({
 	logoImage: {
 		height: "75px",
 		position: 'absolute',
-		top: '5px'
+		top: '5px',
+		[theme.breakpoints.down('xs')]: {
+			position: 'relative',
+			paddingRight: 10,
+			height: "45px",
+		},
 	},
 	search: {
 		position: 'relative',

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Home = (props) => {
+const PokemonByType = (props) => {
 
     const { pokemon, setPokemon } = usePokemon(PokemonContext);
     // console.log(pokemon);
@@ -45,4 +45,4 @@ const Home = (props) => {
 
 }
 
-export default Home;
+export default PokemonByType;
