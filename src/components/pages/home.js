@@ -1,43 +1,48 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import { Fab } from '@material-ui/core';
-import { Edit as EditIcon, Delete as DeleteIcon, Add as AddIcon } from '@material-ui/icons';
-import { grey } from '@material-ui/core/colors';
-import api from '../../services/api';
-import { ThemeProvider } from '@material-ui/core/styles';
-import defaultTheme from '../../styles/themes/pokeTheme';
+import React from 'react';
+import { makeStyles } from "@material-ui/core/styles";
+import { Grid, CircularProgress } from '@material-ui/core';
+import { usePokemon, PokemonContext } from '../../context/pokemonContext'
+import MarketTemplate from '../template/marketTemplate'
+import CardPokemon from '../organisms/cardPokemon'
+
+const windowHeight = window.innerHeight;
 
 const useStyles = makeStyles((theme) => ({
-
-    fab: {
-        position: 'fixed',
-        bottom: theme.spacing(2),
-        right: theme.spacing(2),
+    pokedexContainer: {
+        padding: 0,
+    },
+    loadingContainer: {
+        height: windowHeight - 200,
     },
 }));
 
-const Home = (props) => {
+const Market = (props) => {
 
+    const { pokemon, setPokemon } = usePokemon(PokemonContext);
+    // console.log(pokemon);
     const classes = useStyles();
-    let history = useHistory();
-    const [articles, setArticle] = useState([]);
-
-    useEffect(() => {
-
-    }, []);
 
     return (
         <>
-           
-                <Link to="/market">
-                    <Fab color="primary" aria-label="Adicionar Noticia" className={classes.fab}>
-                        <AddIcon />
-                    </Fab>
-                </Link>
-    
+            <MarketTemplate>
+                {pokemon ? (
+                    <Grid container spacing={2} className={classes.pokedexContainer}>
+                        {Object.keys(pokemon).map((pokemonId) =>
+                            // getPokemonCard(pokemonId)
+                            <CardPokemon pokemonId={pokemonId} key={pokemonId} />
+                        )}
+                    </Grid>
+                ) : (
+                        <Grid container className={classes.loadingContainer} direction="row" justify="center" alignItems="center">
+                            <Grid item >
+                                <CircularProgress />
+                            </Grid>
+                        </Grid>
+                    )}
+            </MarketTemplate>
         </>
-    );
+    )
+
 }
 
-export default Home;
+export default Market;

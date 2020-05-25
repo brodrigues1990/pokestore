@@ -10,7 +10,8 @@ import {
     ListItemSecondaryAction,
     Avatar,
     Button,
-    Box
+    Grid,
+    Typography
 } from '@material-ui/core';
 import {
     ShoppingCart as ShoppingCartIcon,
@@ -19,19 +20,11 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { useCart, CartContext } from '../../context/cartContext';
 import PokedexImg from '../../assets/Pokedex.png'
+import CashBackButton from './cashBackButton.js';
 
 const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
-    buyButton: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        width: '100%',
-        textAlign: 'center',
-        height: '50px',
-        borderRadius: 0,
-    },
     resumeBuy: {
         position: 'absolute',
         bottom: '55px',
@@ -39,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '30px',
         borderTop: '1px solid rgba(0, 0, 0, 0.12)',
-
+        padding: '0 16px'
     },
     avatarContainer: {
         borderRadius: 0
@@ -61,7 +54,6 @@ const CartPokedex = (props) => {
     // Deleta noticia selecionada
     const handleRemovePokemonCart = async (id) => {
         await setCartList(cartList.filter(cartItem => cartItem.id !== id));
-
     }
 
     // Calcula preco total do Carrinho
@@ -110,13 +102,21 @@ const CartPokedex = (props) => {
 
             </List>
             {totalCart ?
-                <Box className={classes.resumeBuy}>
-                    {`Total:  R$${totalCart},00`}
-                </Box>
+                <Grid container className={classes.resumeBuy} direction="row" justify="space-between" alignItems="center">
+                    <Grid item xs="6">
+                        <Typography>
+                            {`Total: `}
+                        </Typography>
+                    </Grid>
+                    <Grid item end>
+                        <Typography xs="6">
+                            {`R$ ${totalCart},00`}
+                         </Typography>
+                    </Grid>
+                </Grid>
                 : ``}
-            <Button variant="contained" className={classes.buyButton} color="primary" href="#contained-buttons">
-                Finalizar
-            </Button>
+
+            <CashBackButton resumeBuy={totalCart} />
         </>
     );
 };

@@ -54,7 +54,7 @@ const CardPokemon = ({ pokemonId }) => {
                     <strong>{types}</strong>
                 </CardContent>
                 <CardActions className={classes.cardActions} aligh="center">
-                    <Button className={classes.cardButton} onClick={() => handleAddCart(id)} startIcon={<AddShoppingCartIcon />} color="primary" href="#contained-buttons">
+                    <Button className={classes.cardButton} onClick={() => handleAddCart(id)} startIcon={<AddShoppingCartIcon />} color="primary">
                         Capturar Pokemon
                     </Button>
                 </CardActions>

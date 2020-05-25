@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Market = (props) => {
+const Home = (props) => {
 
     const { pokemon, setPokemon } = usePokemon(PokemonContext);
     // console.log(pokemon);
@@ -45,4 +45,4 @@ const Market = (props) => {
 
 }
 
-export default Market;
+export default Home;
