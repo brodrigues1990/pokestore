@@ -13,6 +13,7 @@ import {
 	Menu as MenuIcon,
 } from '@material-ui/icons';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Logo from '../../assets/PokeStoreLogo.png'
 import ScrollTop from '../molecules/scrollTop'
 import CartPokedex from '../organisms/cartPokedex'
@@ -160,12 +161,12 @@ const MarketTemplate = (props) => {
 
 			<nav className={classes.drawer} aria-label="mailbox folders">
 				<Hidden smUp implementation="css">
-					<Drawer
+					<SwipeableDrawer
 						container={container}
-						variant="temporary"
 						anchor='right'
 						open={mobileOpen}
 						onClose={handleDrawerToggle}
+						onOpen={handleDrawerToggle}
 						classes={{
 							paper: classes.drawerPaper,
 						}}
@@ -174,7 +175,7 @@ const MarketTemplate = (props) => {
 						}}
 					>
 						<CartPokedex />
-					</Drawer>
+					</SwipeableDrawer>
 				</Hidden>
 				<Hidden xsDown implementation="css">
 					<Drawer
