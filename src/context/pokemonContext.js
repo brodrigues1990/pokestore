@@ -5,35 +5,10 @@ export const PokemonContext = createContext();
 
 const PokemonProvider = ({ children }) => {
     const [pokemon, setPokemon] = useState([]);
-    const [pokemonDetail, setPokemonDetail] = useState([]);
 
     // Carrega todas os pokemons
     const loadPokemonByType = async () => {
-        //codigo antigo
-        // await api.get(`/pokemon?limit=20000`)
-        //     .then(function (response) {
-        //         const { data } = response;
-        //         const { results } = data;
-        //         const newPokemonData = [];
-        //         //const results = response.data.results;
-        //         console.log(results);
 
-        //         results.forEach((pokemon, index) => {
-
-        //             newPokemonData.push({
-        //                 id: index + 1,
-        //                 name: pokemon.name,
-        //                 sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`,
-        //                 image: `https://pokeres.bastionbot.org/images/pokemon/${index + 1}.png`,
-        //                 price: Math.floor(Math.random() * 100)
-        //             });
-        //         });
-        //         console.log(results);
-        //         setPokemon(newPokemonData);
-        //         return true;
-        //     });
-
-        //codigo novo
         const qtdPokemon = 151;
         const newPokemonData = [];
         
@@ -60,11 +35,6 @@ const PokemonProvider = ({ children }) => {
     useEffect(() => {
         loadPokemonByType();
     }, []);
-
-    useEffect(() => {
-        
-    }, [pokemon]);
-
 
     return (
         <PokemonContext.Provider value={{ pokemon, setPokemon }}>

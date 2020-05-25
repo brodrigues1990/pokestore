@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Divider,
     IconButton,
@@ -51,18 +51,27 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: 10
     }
 
-
 }));
 
 const CartPokedex = (props) => {
     const classes = useStyles();
     const { cartList, setCartList } = useCart(CartContext);
-    console.log(cartList);
+    const [totalCart, setTotalCart] = useState(0);
 
     // Deleta noticia selecionada
     const handleRemovePokemonCart = async (id) => {
         await setCartList(cartList.filter(cartItem => cartItem.id !== id));
+
     }
+
+    // Calcula preco total do Carrinho
+    const totalPrice = async () => {
+        await setTotalCart(cartList.reduce((acumulador, item) => acumulador + item.price, 0));
+    }
+
+    useEffect(() => {
+        totalPrice()
+    }, [cartList]);
 
     return (
         <>
@@ -76,33 +85,35 @@ const CartPokedex = (props) => {
             >
                 <Divider />
 
-                {cartList ? (
-                    cartList.map((cartItem) => (
+            {cartList ? (
+                cartList.map((cartItem) => (
 
-                        <ListItem >
-                            <ListItemAvatar>
-                                <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartItem.image} />
-                            </ListItemAvatar>
-                            <ListItemText
-                                primary={cartItem.name}
-                                secondary={`R$ ${cartItem.price},00`}
-                            />
-                            <ListItemSecondaryAction>
-                                <IconButton edge="end" aria-label="delete" onClick={() => handleRemovePokemonCart(cartItem.id)}>
-                                    <DeleteIcon />
-                                </IconButton>
-                            </ListItemSecondaryAction>
-                        </ListItem>
+                    <ListItem key={cartItem.id}>
+                        <ListItemAvatar>
+                            <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartItem.image} />
+                        </ListItemAvatar>
+                        <ListItemText
+                            primary={cartItem.name}
+                            secondary={`R$ ${cartItem.price},00`}
+                        />
+                        <ListItemSecondaryAction>
+                            <IconButton edge="end" aria-label="delete" onClick={() => handleRemovePokemonCart(cartItem.id)}>
+                                <DeleteIcon />
+                            </IconButton>
+                        </ListItemSecondaryAction>
+                    </ListItem>
 
-                    ))
-                ) : (
-                        'Carrinho Vazio'
-                    )}
+                ))
+            ) : (
+                    'Carrinho Vazio'
+                )}
 
             </List>
-            {/* <Box className={classes.resumeBuy}>
-                teste
-            </Box> */}
+            {totalCart ?
+                <Box className={classes.resumeBuy}>
+                    `Total:  R${totalCart},00`
+                </Box>
+            : ``}
             <Button variant="contained" className={classes.buyButton} color="primary" href="#contained-buttons">
                 Finalizar
             </Button>

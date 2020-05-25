@@ -31,7 +31,7 @@ const CardPokemon = ({ pokemonId }) => {
     const { cartList, setCartList } = useCart(CartContext);
     const newCartList = [];
     const { id, name, image, price, type } = pokemon[pokemonId];
-    console.log(cartList);
+    //console.log(cartList);
 
     // adiciona pokemon ao carrinho
     const handleAddCart = (id) => {
