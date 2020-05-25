@@ -85,35 +85,35 @@ const CartPokedex = (props) => {
             >
                 <Divider />
 
-            {cartList ? (
-                cartList.map((cartItem) => (
+                {cartList ? (
+                    cartList.map((cartItem, index) => (
 
-                    <ListItem key={cartItem.id}>
-                        <ListItemAvatar>
-                            <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartItem.image} />
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary={cartItem.name}
-                            secondary={`R$ ${cartItem.price},00`}
-                        />
-                        <ListItemSecondaryAction>
-                            <IconButton edge="end" aria-label="delete" onClick={() => handleRemovePokemonCart(cartItem.id)}>
-                                <DeleteIcon />
-                            </IconButton>
-                        </ListItemSecondaryAction>
-                    </ListItem>
+                        <ListItem key={index}>
+                            <ListItemAvatar>
+                                <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartItem.image} />
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary={cartItem.name}
+                                secondary={`R$ ${cartItem.price},00`}
+                            />
+                            <ListItemSecondaryAction>
+                                <IconButton edge="end" aria-label="delete" onClick={() => handleRemovePokemonCart(cartItem.id)}>
+                                    <DeleteIcon />
+                                </IconButton>
+                            </ListItemSecondaryAction>
+                        </ListItem>
 
-                ))
-            ) : (
-                    'Carrinho Vazio'
-                )}
+                    ))
+                ) : (
+                        'Carrinho Vazio'
+                    )}
 
             </List>
             {totalCart ?
                 <Box className={classes.resumeBuy}>
-                    `Total:  R${totalCart},00`
+                    {`Total:  R$${totalCart},00`}
                 </Box>
-            : ``}
+                : ``}
             <Button variant="contained" className={classes.buyButton} color="primary" href="#contained-buttons">
                 Finalizar
             </Button>

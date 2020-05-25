@@ -8,6 +8,7 @@ import {
 	InputBase,
 } from '@material-ui/core';
 import {
+	ShoppingCart as ShoppingCartIcon,
 	Search as SearchIcon,
 	Menu as MenuIcon,
 } from '@material-ui/icons';
@@ -142,7 +143,7 @@ const MarketTemplate = (props) => {
 						onClick={handleDrawerToggle}
 						className={classes.menuButton}
 					>
-						<MenuIcon />
+						<ShoppingCartIcon />
 					</IconButton>
 				</Toolbar>
 			</AppBar>
@@ -167,7 +168,7 @@ const MarketTemplate = (props) => {
 							keepMounted: true, // Better open performance on mobile.
 						}}
 					>
-						<CartPokedex/>
+						<CartPokedex />
 					</Drawer>
 				</Hidden>
 				<Hidden xsDown implementation="css">
@@ -179,7 +180,7 @@ const MarketTemplate = (props) => {
 						anchor='right'
 						open
 					>
-						<CartPokedex/>
+						<CartPokedex />
 					</Drawer>
 				</Hidden>
 			</nav>
