@@ -103,13 +103,13 @@ const CartPokedex = (props) => {
             </List>
             {totalCart ?
                 <Grid container className={classes.resumeBuy} direction="row" justify="space-between" alignItems="center">
-                    <Grid item xs="6">
+                    <Grid item >
                         <Typography>
                             {`Total: `}
                         </Typography>
                     </Grid>
-                    <Grid item end>
-                        <Typography xs="6">
+                    <Grid item >
+                        <Typography>
                             {`R$ ${totalCart},00`}
                          </Typography>
                     </Grid>
