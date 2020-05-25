@@ -30,18 +30,17 @@ const CardPokemon = ({ pokemonId }) => {
     const { pokemon } = usePokemon(PokemonContext);
     const { cartList, setCartList } = useCart(CartContext);
     const { id, name, image, price, types } = pokemon[pokemonId];
-    //console.log(cartList);
+    const pokeItem = [];
 
     // adiciona pokemon ao carrinho
     const handleAddCart = (id) => {
-        const pokeItem = [];
-
-        if(cartList){
-            pokeItem.push(...cartList,pokemon[id - 1]);
-        }else{
-            pokeItem.push(pokemon[id - 1]);
+        let existItem = cartList.find((i) => i === pokemon[id - 1]);
+        if (!existItem) {
+            pokeItem.push(...cartList, pokemon[id - 1]);
+            setCartList(pokeItem);
+        } else {
+            ToastsStore.warning("Pokemon ja capturado !")
         }
-        setCartList(pokeItem);
     }
 
     return (
