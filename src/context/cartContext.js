@@ -15,6 +15,7 @@ const CartProvider = ({ children }) => {
 
 export const useCart = () => {
     const context = useContext(CartContext);
+    if(!context) throw new Error("useCart must be used within a CartProvider");
     const { cartList, setCartList } = context;
     return { cartList, setCartList };
 }
