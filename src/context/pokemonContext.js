@@ -23,14 +23,14 @@ const PokemonProvider = ({ children }) => {
                         sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
                         image: `https://pokeres.bastionbot.org/images/pokemon/${i}.png`,
                         price: Math.floor(Math.random() * 100),
-                        type:  data.types.map((t) => (
+                        types:  data.types.map((t) => (
                             t.type.name
                         ))
                     });
                 });
 
         }
-        //console.log(newPokemonData);
+        console.log(newPokemonData);
         setPokemon(newPokemonData);
     }
 

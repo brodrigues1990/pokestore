@@ -30,7 +30,7 @@ const CardPokemon = ({ pokemonId }) => {
     const { pokemon } = usePokemon(PokemonContext);
     const { cartList, setCartList } = useCart(CartContext);
     const newCartList = [];
-    const { id, name, image, price, type } = pokemon[pokemonId];
+    const { id, name, image, price, types } = pokemon[pokemonId];
     //console.log(cartList);
 
     // adiciona pokemon ao carrinho
@@ -52,7 +52,7 @@ const CardPokemon = ({ pokemonId }) => {
                 <CardContent className={classes.cardContent}>
                     <Typography>{`${id}. ${name}`}</Typography>
                     <Typography>{`R$ ${price},00`}</Typography>
-                    <strong>{type}</strong>
+                    <strong>{types}</strong>
                 </CardContent>
                 <CardActions className={classes.cardActions} aligh="center">
                     <Button className={classes.cardButton} onClick={() => handleAddCart(id)} startIcon={<AddShoppingCartIcon />} color="primary" href="#contained-buttons">
