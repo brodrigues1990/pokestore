@@ -23,7 +23,9 @@ const PokemonProvider = ({ children }) => {
                         sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
                         image: `https://pokeres.bastionbot.org/images/pokemon/${i}.png`,
                         price: Math.floor(Math.random() * 100),
-                        type: data.types[0].type.name,
+                        type:  data.types.map((t) => (
+                            t.type.name
+                        ))
                     });
                 });
 
