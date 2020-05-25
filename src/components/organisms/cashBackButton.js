@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Slide from '@material-ui/core/Slide';
+import { Dialog, DialogContent, DialogContentText, DialogTitle, Slide, Grid } from '@material-ui/core';
 import { useCart, CartContext } from '../../context/cartContext';
-
+import PikachuFace from '../../assets/pikachu-face.png'
 
 const useStyles = makeStyles((theme) => ({
+    dialogContainer: {
+        background: '#f4cd17',
+        textAlign: 'center',
+    },
     buyButton: {
         position: 'absolute',
         bottom: 0,
@@ -20,6 +19,12 @@ const useStyles = makeStyles((theme) => ({
         height: '50px',
         borderRadius: 0,
     },
+    pikachuFaceContainer: {
+        padding: "20px 25px 10px"
+    },
+    PikachuFaceImage: {
+        width: "40%"
+    }
 }));
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -70,15 +75,23 @@ export default function AlertDialogSlide(props) {
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-slide-title"
                 aria-describedby="alert-dialog-slide-description"
+                
             >
-                <DialogTitle id="alert-dialog-slide-title">
-                    {`Obrigado !!!`}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-slide-description">
-                        {`Voce ganhou de volta R$ ${cashBack}`}
-                    </DialogContentText>
-                </DialogContent>
+                <div className={classes.dialogContainer}>
+                    <Grid container className={classes.pikachuFaceContainer} direction="row" justify="center" alignItems="center">
+                        <Grid item >
+                            <img src={PikachuFace} alt="PokeStore" className={classes.PikachuFaceImage} />
+                        </Grid>
+                    </Grid>
+                    <DialogTitle id="alert-dialog-slide-title">
+                        {`Obrigado !!!`}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-slide-description">
+                            {`Voce ganhou de volta R$ ${cashBack}`}
+                        </DialogContentText>
+                    </DialogContent>
+                    </div>
             </Dialog>
         </div>
     );

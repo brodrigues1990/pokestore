@@ -51,7 +51,7 @@ const CartPokedex = (props) => {
     const { cartList, setCartList } = useCart(CartContext);
     const [totalCart, setTotalCart] = useState(0);
 
-    // Deleta noticia selecionada
+    // Deleta pokemon selecionado
     const handleRemovePokemonCart = async (id) => {
         await setCartList(cartList.filter(cartItem => cartItem.id !== id));
     }
@@ -111,7 +111,7 @@ const CartPokedex = (props) => {
                     <Grid item >
                         <Typography>
                             {`R$ ${totalCart},00`}
-                         </Typography>
+                        </Typography>
                     </Grid>
                 </Grid>
                 : ``}
