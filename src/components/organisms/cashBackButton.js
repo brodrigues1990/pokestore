@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Dialog, DialogContent, DialogContentText, DialogTitle, Slide, Grid } from '@material-ui/core';
 import { useCart, CartContext } from '../../context/cartContext';
-import PikachuFace from '../../assets/pikachu-face.png'
+import PikachuFace from '../../assets/images/pikachu-face.png'
 
 const useStyles = makeStyles((theme) => ({
     dialogContainer: {

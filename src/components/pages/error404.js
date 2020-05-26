@@ -6,7 +6,7 @@ import {
     Box,
     CardMedia, 
 } from '@material-ui/core';
-import Error404Image from '../../assets/Error404.png'
+import Error404Image from '../../assets/images/Error404.png'
 import { makeStyles } from '@material-ui/core/styles';
 import { Close as CloseIcon } from '@material-ui/icons';
 

@@ -19,13 +19,14 @@ import {
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import { useCart, CartContext } from '../../context/cartContext';
-import PokedexImg from '../../assets/Pokedex.png'
+import PokedexImg from '../../assets/images/Pokedex.png'
 import CashBackButton from './cashBackButton.js';
 import { ToastsStore } from 'react-toasts'
 
 const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
+    //'calc(100% - 85px)'
     resumeBuy: {
         position: 'absolute',
         bottom: '55px',
@@ -56,11 +57,11 @@ const CartPokedex = (props) => {
     const handleRemovePokemonCart = async (id, name) => {
         try {
             await setCartList(cartList.filter(cartItem => cartItem.id !== id));
-            ToastsStore.warning(`${name} deletado !`)    
+            ToastsStore.warning(`${name} deletado !`)
         } catch (error) {
-            ToastsStore.error(`Erro ao deletar !`)    
+            ToastsStore.error(`Erro ao deletar !`)
         }
-        
+
     }
 
     // Calcula preco total do Carrinho

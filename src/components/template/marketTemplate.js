@@ -14,7 +14,7 @@ import {
 } from '@material-ui/icons';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Logo from '../../assets/PokeStoreLogo.png'
+import Logo from '../../assets/images/PokeStoreLogo.png'
 import ScrollTop from '../molecules/scrollTop'
 import CartPokedex from '../organisms/cartPokedex'
 
