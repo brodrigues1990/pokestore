@@ -21,6 +21,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useCart, CartContext } from '../../context/cartContext';
 import PokedexImg from '../../assets/Pokedex.png'
 import CashBackButton from './cashBackButton.js';
+import { ToastsStore } from 'react-toasts'
 
 const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
@@ -52,8 +53,14 @@ const CartPokedex = (props) => {
     const [totalCart, setTotalCart] = useState(0);
 
     // Deleta pokemon selecionado
-    const handleRemovePokemonCart = async (id) => {
-        await setCartList(cartList.filter(cartItem => cartItem.id !== id));
+    const handleRemovePokemonCart = async (id, name) => {
+        try {
+            await setCartList(cartList.filter(cartItem => cartItem.id !== id));
+            ToastsStore.warning(`${name} deletado !`)    
+        } catch (error) {
+            ToastsStore.error(`Erro ao deletar !`)    
+        }
+        
     }
 
     // Calcula preco total do Carrinho
@@ -89,7 +96,7 @@ const CartPokedex = (props) => {
                                 secondary={`R$ ${cartItem.price},00`}
                             />
                             <ListItemSecondaryAction>
-                                <IconButton edge="end" aria-label="delete" onClick={() => handleRemovePokemonCart(cartItem.id)}>
+                                <IconButton edge="end" aria-label="delete" onClick={() => handleRemovePokemonCart(cartItem.id, cartItem.name)}>
                                     <DeleteIcon />
                                 </IconButton>
                             </ListItemSecondaryAction>

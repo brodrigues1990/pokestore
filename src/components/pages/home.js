@@ -8,7 +8,7 @@ import CardPokemon from '../organisms/cardPokemon'
 const windowHeight = window.innerHeight;
 
 const useStyles = makeStyles((theme) => ({
-    pokedexContainer: {
+    mainContainer: {
         padding: 0,
     },
     loadingContainer: {
@@ -21,23 +21,23 @@ const Market = (props) => {
     const { pokemon, setPokemon } = usePokemon(PokemonContext);
     // console.log(pokemon);
     const classes = useStyles();
-
+    console.log(pokemon.length);
     return (
         <>
             <MarketTemplate>
-                {pokemon ? (
-                    <Grid container spacing={2} className={classes.pokedexContainer}>
+                {pokemon.length !== 0 || pokemon.length !== 'undefined' ? (
+                    <Grid container spacing={2} className={classes.mainContainer}>
                         {Object.keys(pokemon).map((pokemonId) =>
                             // getPokemonCard(pokemonId)
                             <CardPokemon pokemonId={pokemonId} key={pokemonId} />
                         )}
                     </Grid>
                 ) : (
-                        <Grid container className={classes.loadingContainer} direction="row" justify="center" alignItems="center">
-                            <Grid item >
-                                <CircularProgress />
-                            </Grid>
+                    <Grid container className={classes.loadingContainer} direction="row" justify="center" alignItems="center">
+                        <Grid item >
+                            <CircularProgress />
                         </Grid>
+                    </Grid>
                     )}
             </MarketTemplate>
         </>

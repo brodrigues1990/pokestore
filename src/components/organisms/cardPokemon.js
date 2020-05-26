@@ -4,7 +4,7 @@ import { Card, CardMedia, CardContent, CardActions, Typography, Grid, Button } f
 import { AddShoppingCart as AddShoppingCartIcon } from '@material-ui/icons';
 import { usePokemon, PokemonContext } from '../../context/pokemonContext';
 import { useCart, CartContext } from '../../context/cartContext';
-import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts'
+import { ToastsStore } from 'react-toasts'
 
 const useStyles = makeStyles((theme) => ({
     cardMedia: {
