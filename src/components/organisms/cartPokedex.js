@@ -19,7 +19,7 @@ import {
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import { useCart, CartContext } from '../../context/cartContext';
-import PokedexImg from '../../assets/Pokedex.png'
+import PokedexImg from '../../assets/images/Pokedex.png'
 import CashBackButton from './cashBackButton.js';
 import { ToastsStore } from 'react-toasts'
 

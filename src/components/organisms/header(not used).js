@@ -2,7 +2,7 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { IconButton,Toolbar, InputBase } from '@material-ui/core';
-import Logo from '../assets/PokeStoreLogo.png'
+import Logo from '../assets/images/PokeStoreLogo.png'
 import {
     Search as SearchIcon,
     Menu as MenuIcon,

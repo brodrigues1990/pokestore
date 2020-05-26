@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     ScrollTopFab: {
-        backgroundColor: '#005BAC',
         color: '#fff',
         "&:active": {
             color: '#000',
@@ -43,9 +42,9 @@ const ScrollTop = (props) => {
     };
 
     return (
-        <Zoom in={trigger}>
+        <Zoom in={trigger} >
             <div onClick={handleClick} role="presentation" className={classes.root}>
-                <Fab className={classes.ScrollTopFab} size="small" aria-label="de volta ao inicio">
+                <Fab className={classes.ScrollTopFab} color="primary" size="small" aria-label="de volta ao inicio">
                     <KeyboardArrowUpIcon />
                 </Fab>
             </div>
