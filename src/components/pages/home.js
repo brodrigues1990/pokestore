@@ -25,7 +25,7 @@ const Market = (props) => {
     return (
         <>
             <MarketTemplate>
-                {pokemon.length !== 0 || pokemon.length !== 'undefined' ? (
+                {pokemon.length !== 0 ? (
                     <Grid container spacing={2} className={classes.mainContainer}>
                         {Object.keys(pokemon).map((pokemonId) =>
                             // getPokemonCard(pokemonId)
