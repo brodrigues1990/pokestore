@@ -5,6 +5,7 @@ import { AddShoppingCart as AddShoppingCartIcon } from '@material-ui/icons';
 import { usePokemon, PokemonContext } from '../../context/pokemonContext';
 import { useCart, CartContext } from '../../context/cartContext';
 import { ToastsStore } from 'react-toasts'
+import Price from '../atoms/price';
 
 const useStyles = makeStyles((theme) => ({
     cardMedia: {
@@ -49,7 +50,7 @@ const CardPokemon = ({ pokemonId }) => {
                 <CardMedia className={classes.cardMedia} image={image} />
                 <CardContent className={classes.cardContent}>
                     <Typography>{`${id}. ${name}`}</Typography>
-                    <Typography>{`R$ ${price},00`}</Typography>
+                    <Typography><Price value={price}/></Typography>
                     <strong>{types}</strong>
                 </CardContent>
                 <CardActions className={classes.cardActions} aligh="center">

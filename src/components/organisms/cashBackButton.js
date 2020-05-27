@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Dialog, DialogContent, DialogContentText, DialogTitle, Slide, Grid } from '@material-ui/core';
 import { useCart, CartContext } from '../../context/cartContext';
+import Price from '../atoms/price';
 import PikachuFace from '../../assets/images/pikachu-face.png'
 
 const useStyles = makeStyles((theme) => ({
@@ -36,6 +37,8 @@ export default function AlertDialogSlide(props) {
     const [open, setOpen] = useState(false);
     const [cashBack, setCashBack] = useState(0);
     const { setCartList } = useCart(CartContext);
+    var preco = props.resumeBuy;
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -47,13 +50,18 @@ export default function AlertDialogSlide(props) {
 
     // Calcula valor extornado (CashBack)
     const calcCashBack = async () => {
-        var preco = props.resumeBuy;
+        
         //var porcentagem = parseFloat('1.3') ;
         var porcentagem = 3;
-        setCashBack(preco * (porcentagem / 100));
+        let valor = preco * (porcentagem / 100);
+        //valor = valor.toFixed(2).replace(".",","); // converto em string de novo, com vírgula e 2 casas decimais
+        setCashBack(valor);
     }
     useEffect(() => {
-        calcCashBack()
+        if(preco > 0){
+            calcCashBack()
+        }
+        
     }, [props.resumeBuy]);
 
     return (
@@ -75,7 +83,7 @@ export default function AlertDialogSlide(props) {
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-slide-title"
                 aria-describedby="alert-dialog-slide-description"
-                
+
             >
                 <div className={classes.dialogContainer}>
                     <Grid container className={classes.pikachuFaceContainer} direction="row" justify="center" alignItems="center">
@@ -88,10 +96,10 @@ export default function AlertDialogSlide(props) {
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-slide-description">
-                            {`Voce ganhou de volta R$ ${cashBack}`}
+                            {`Voce ganhou de volta `}<Price value={cashBack}/>
                         </DialogContentText>
                     </DialogContent>
-                    </div>
+                </div>
             </Dialog>
         </div>
     );

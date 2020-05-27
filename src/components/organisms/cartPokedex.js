@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 10
     },
     emptyCartContainer: {
-        marginTop: '60%'
+        marginTop: '45%'
     },
     emptyCartImage: {
         height: "135px",
@@ -124,7 +124,7 @@ const CartPokedex = (props) => {
                             </Grid>
                             <Grid item >
                                 <Typography className={classes.emptyCartText} variant="caption" gutterBottom>
-                                   Para encher basta capturar alguns pokemon.
+                                   Para encher, basta capturar alguns pokemon.
                                 </Typography>
                             </Grid>
                         </Grid>
