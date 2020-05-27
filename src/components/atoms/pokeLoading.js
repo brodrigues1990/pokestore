@@ -23,7 +23,7 @@ const useStyles = makeStyles({
             position: 'absolute',
             width: 60,
             height: 30,
-            backgroundColor: 'red',
+            backgroundColor: '#ff0000ab',
             borderBottom: '4px solid',
             top: 0,
         },

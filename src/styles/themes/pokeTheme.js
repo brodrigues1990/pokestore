@@ -23,7 +23,7 @@ export const waterTheme = createMuiTheme({
     palette: {
         primary: {
             light: '#97d1f4',
-            main: '#74bbe8',
+            main: '#2d92d1',
             dark: '#2d92d1',
             contrastText: '#fff',
         },

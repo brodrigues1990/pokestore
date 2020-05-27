@@ -11,9 +11,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '18px',
     },
     pokeAmeLogo: {
-        height: 24,
+        height: 25,
         paddingRight: 10,
-        top: 7,
+        top: 10,
         position: 'relative'
 
     },
