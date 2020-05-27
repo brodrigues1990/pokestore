@@ -19,11 +19,9 @@ import {
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import { useCart, CartContext } from '../../context/cartContext';
-import PokedexImg from '../../assets/images/Pokedex.png'
 import CashBackButton from './cashBackButton.js';
 import { ToastsStore } from 'react-toasts'
 import emptyCartImage from '../../assets/images/pokeLazyPB.png'
-
 
 const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
@@ -41,11 +39,11 @@ const useStyles = makeStyles((theme) => ({
     avatarContainer: {
         borderRadius: 0
     },
-    pokedexImage: {
+    CartIcon: {
         top: 5,
-        height: 25,
+        height: 20,
         position: 'relative',
-        paddingRight: 10
+        marginRight: 10
     },
     emptyCartContainer: {
         marginTop: '60%'
@@ -89,7 +87,7 @@ const CartPokedex = (props) => {
             <List
                 subheader={
                     <ListSubheader component="div" id="nested-list-subheader">
-                        <img src={PokedexImg} alt="PokeStore" className={classes.pokedexImage} />Carrinho
+                        <ShoppingCartIcon className={classes.CartIcon}/>Carrinho
                     </ListSubheader>
                 }
             >
