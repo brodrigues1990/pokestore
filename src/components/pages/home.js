@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, CircularProgress } from '@material-ui/core';
 import { usePokemon, PokemonContext } from '../../context/pokemonContext'
 import MarketTemplate from '../template/marketTemplate'
-import CardPokemon from '../organisms/cardPokemon'
+import CardPokemon from '../molecules/cardPokemon'
 
 const windowHeight = window.innerHeight;
 
@@ -29,15 +29,22 @@ const Market = (props) => {
                     <Grid container spacing={2} className={classes.mainContainer}>
                         {Object.keys(pokemon).map((pokemonId) =>
                             // getPokemonCard(pokemonId)
-                            <CardPokemon pokemonId={pokemonId} key={pokemonId} />
+                            <CardPokemon
+                                pokemonId={pokemonId}
+                                key={pokemonId}
+                                xs={12}
+                                sm={6}
+                                md={4}
+                                lg={3}
+                            />
                         )}
                     </Grid>
                 ) : (
-                    <Grid container className={classes.loadingContainer} direction="row" justify="center" alignItems="center">
-                        <Grid item >
-                            <CircularProgress />
+                        <Grid container className={classes.loadingContainer} direction="row" justify="center" alignItems="center">
+                            <Grid item >
+                                <CircularProgress />
+                            </Grid>
                         </Grid>
-                    </Grid>
                     )}
             </MarketTemplate>
         </>

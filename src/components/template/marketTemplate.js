@@ -5,7 +5,7 @@ import {
 	Hidden,
 	IconButton,
 	Toolbar,
-	InputBase,
+	TextField,
 } from '@material-ui/core';
 import {
 	ShoppingCart as ShoppingCartIcon,
@@ -14,9 +14,15 @@ import {
 } from '@material-ui/icons';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import parse from 'autosuggest-highlight/parse';
+import match from 'autosuggest-highlight/match';
 import Logo from '../../assets/images/PokeStoreLogo.png'
-import ScrollTop from '../molecules/scrollTop'
+import ScrollTop from '../atoms/scrollTop'
 import CartPokedex from '../organisms/cartPokedex'
+
+
+
 
 const drawerWidth = 300;
 
@@ -119,6 +125,40 @@ const MarketTemplate = (props) => {
 		setMobileOpen(!mobileOpen);
 	};
 
+	const top100Films = [
+		{ title: 'The Shawshank Redemption', year: 1994 },
+		{ title: 'The Godfather', year: 1972 },
+		{ title: 'The Godfather: Part II', year: 1974 },
+		{ title: 'The Dark Knight', year: 2008 },
+		{ title: '12 Angry Men', year: 1957 },
+		{ title: "Schindler's List", year: 1993 },
+		{ title: 'Pulp Fiction', year: 1994 },
+		{ title: 'The Lord of the Rings: The Return of the King', year: 2003 },
+		{ title: 'The Good, the Bad and the Ugly', year: 1966 },
+		{ title: 'Fight Club', year: 1999 },
+		{ title: 'The Lord of the Rings: The Fellowship of the Ring', year: 2001 },
+		{ title: 'Star Wars: Episode V - The Empire Strikes Back', year: 1980 },
+		{ title: 'Forrest Gump', year: 1994 },
+		{ title: 'Inception', year: 2010 },
+		{ title: 'The Lord of the Rings: The Two Towers', year: 2002 },
+		{ title: "One Flew Over the Cuckoo's Nest", year: 1975 },
+		{ title: 'Goodfellas', year: 1990 },
+		{ title: 'The Matrix', year: 1999 },
+		{ title: 'Seven Samurai', year: 1954 },
+		{ title: 'Star Wars: Episode IV - A New Hope', year: 1977 },
+		{ title: 'City of God', year: 2002 },
+		{ title: 'Se7en', year: 1995 },
+		{ title: 'The Silence of the Lambs', year: 1991 },
+		{ title: "It's a Wonderful Life", year: 1946 },
+		{ title: 'Life Is Beautiful', year: 1997 },
+		{ title: 'The Usual Suspects', year: 1995 },
+		{ title: 'Léon: The Professional', year: 1994 },
+		{ title: 'Spirited Away', year: 2001 },
+		{ title: 'Saving Private Ryan', year: 1998 },
+		{ title: 'Once Upon a Time in the West', year: 1968 },
+		{ title: 'American History X', year: 1998 },
+		{ title: 'Interstellar', year: 2014 },
+	];
 
 	const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -129,19 +169,45 @@ const MarketTemplate = (props) => {
 					<div className={classes.logoContainer}>
 						<img src={Logo} alt="PokeStore" className={classes.logoImage} />
 					</div>
-					<div className={classes.search}>
-						<div className={classes.searchIcon}>
-							<SearchIcon />
-						</div>
-						<InputBase
-							placeholder="Caçar Pokémon..."
-							classes={{
-								root: classes.inputRoot,
-								input: classes.inputInput,
-							}}
-							inputProps={{ 'aria-label': 'Caçar Pokémon...' }}
-						/>
-					</div>
+
+
+					<Autocomplete
+						id="search-pokemon"
+						style={{ width: 300 }}
+						options={top100Films}
+						getOptionLabel={(option) => option.title}
+						renderInput={(params) => (
+							<div className={classes.search}>
+								<div className={classes.searchIcon}>
+									<SearchIcon />
+								</div>
+								<TextField {...params} classes={{
+										root: classes.inputRoot,
+										input: classes.inputInput,
+									}}
+									variant="outlined"
+									label="Caçar Pokémon..."
+									placeholder="Escolha alguns Pokémon ..."
+								/>
+							</div>
+						)}
+						renderOption={(option, { inputValue }) => {
+							const matches = match(option.title, inputValue);
+							const parts = parse(option.title, matches);
+
+							return (
+								<div>
+									{parts.map((part, index) => (
+										<span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
+											{part.text}
+										</span>
+									))}
+								</div>
+							);
+						}}
+					/>
+
+
 					<IconButton
 						color="inherit"
 						aria-label="open drawer"

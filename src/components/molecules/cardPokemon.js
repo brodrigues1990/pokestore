@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const CardPokemon = ({ pokemonId }) => {
+const CardPokemon = ({ xs, sm, md, lg, pokemonId }) => {
     const classes = useStyles();
     const { pokemon } = usePokemon(PokemonContext);
     const { cartList, setCartList } = useCart(CartContext);
@@ -45,12 +45,12 @@ const CardPokemon = ({ pokemonId }) => {
     }
 
     return (
-        <Grid item xs={12} sm={6} md={4} lg={3}>
+        <Grid item xs={xs} sm={sm} md={md} lg={lg}>
             <Card >
                 <CardMedia className={classes.cardMedia} image={image} />
                 <CardContent className={classes.cardContent}>
                     <Typography>{`${id}. ${name}`}</Typography>
-                    <Typography><Price value={price}/></Typography>
+                    <Typography><Price value={price} /></Typography>
                     <strong>{types}</strong>
                 </CardContent>
                 <CardActions className={classes.cardActions} aligh="center">
