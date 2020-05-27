@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/pokestore/static/css/main.8bc326e6.chunk.css",
-    "main.js": "/pokestore/static/js/main.8ef68faa.chunk.js",
-    "main.js.map": "/pokestore/static/js/main.8ef68faa.chunk.js.map",
+    "main.js": "/pokestore/static/js/main.e8e4665a.chunk.js",
+    "main.js.map": "/pokestore/static/js/main.e8e4665a.chunk.js.map",
     "runtime-main.js": "/pokestore/static/js/runtime-main.8508d414.js",
     "runtime-main.js.map": "/pokestore/static/js/runtime-main.8508d414.js.map",
     "static/js/2.7cab7ff6.chunk.js": "/pokestore/static/js/2.7cab7ff6.chunk.js",
     "static/js/2.7cab7ff6.chunk.js.map": "/pokestore/static/js/2.7cab7ff6.chunk.js.map",
     "index.html": "/pokestore/index.html",
-    "precache-manifest.3a544d111a630dca142d050c9c8965c5.js": "/pokestore/precache-manifest.3a544d111a630dca142d050c9c8965c5.js",
+    "precache-manifest.07c43a21a30f0be5f7f0728554d1f9d2.js": "/pokestore/precache-manifest.07c43a21a30f0be5f7f0728554d1f9d2.js",
     "service-worker.js": "/pokestore/service-worker.js",
     "static/css/main.8bc326e6.chunk.css.map": "/pokestore/static/css/main.8bc326e6.chunk.css.map",
     "static/js/2.7cab7ff6.chunk.js.LICENSE.txt": "/pokestore/static/js/2.7cab7ff6.chunk.js.LICENSE.txt",
     "static/media/Error404.png": "/pokestore/static/media/Error404.b47d9f87.png",
     "static/media/PokeStoreLogo.png": "/pokestore/static/media/PokeStoreLogo.7cc2f872.png",
     "static/media/pikachu-face.png": "/pokestore/static/media/pikachu-face.70afa18b.png",
-    "static/media/pokeAmeLogo.png": "/pokestore/static/media/pokeAmeLogo.438ed215.png",
+    "static/media/pokeAmeLogo.png": "/pokestore/static/media/pokeAmeLogo.d273d896.png",
     "static/media/pokeLazyPB.png": "/pokestore/static/media/pokeLazyPB.a6e18362.png"
   },
   "entrypoints": [
     "static/js/runtime-main.8508d414.js",
     "static/js/2.7cab7ff6.chunk.js",
     "static/css/main.8bc326e6.chunk.css",
-    "static/js/main.8ef68faa.chunk.js"
+    "static/js/main.e8e4665a.chunk.js"
   ]
 }

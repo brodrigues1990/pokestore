@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b41810e05c56cc792d76fb4ef73328b9",
+    "revision": "01938af6b281504b33a061112602e527",
     "url": "/pokestore/index.html"
   },
   {
-    "revision": "57afa7ef5f527db413cc",
+    "revision": "f0c001b138f019572071",
     "url": "/pokestore/static/css/main.8bc326e6.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pokestore/static/js/2.7cab7ff6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "57afa7ef5f527db413cc",
-    "url": "/pokestore/static/js/main.8ef68faa.chunk.js"
+    "revision": "f0c001b138f019572071",
+    "url": "/pokestore/static/js/main.e8e4665a.chunk.js"
   },
   {
     "revision": "50156c4ef494ae7ec58c",
@@ -36,8 +36,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pokestore/static/media/pikachu-face.70afa18b.png"
   },
   {
-    "revision": "438ed215ba8d981ce54c5a8775438dd5",
-    "url": "/pokestore/static/media/pokeAmeLogo.438ed215.png"
+    "revision": "d273d89661f161d3598ae39b1b9f5377",
+    "url": "/pokestore/static/media/pokeAmeLogo.d273d896.png"
   },
   {
     "revision": "a6e18362198dc28d7ae54385d84805fd",
