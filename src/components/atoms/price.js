@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
     pokeAmeLogo: {
         height: 24,
-        paddingRight: 10,
+        paddingRight: 5,
         top: 7,
         position: 'relative'
 
@@ -39,7 +39,6 @@ const Price = ({ type, value }) => {
             let valor = value * (porcentagem / 100);
             setPricePokeAme(valor.toFixed(2).replace(".", ","));
         }
-
     }, [value]);
     return (
         <>
