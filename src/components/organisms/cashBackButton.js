@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { Dialog, DialogContent, DialogContentText, DialogTitle, Slide, Grid } from '@material-ui/core';
+import { Dialog, DialogContent, DialogContentText, DialogTitle, Slide, Grid, Typography } from '@material-ui/core';
 import { useCart, CartContext } from '../../context/cartContext';
 import Price from '../atoms/price';
 import PikachuFace from '../../assets/images/pikachu-face.png'
@@ -50,14 +50,14 @@ export default function AlertDialogSlide(props) {
 
     // Calcula valor extornado (CashBack)
     const calcCashBack = async () => {
-        
+
         //var porcentagem = parseFloat('1.3') ;
         const porcentagem = 2;
         let valor = preco * (porcentagem / 100);
         setCashBack(valor);
     }
     useEffect(() => {
-        if(preco > 0){
+        if (preco > 0) {
             calcCashBack()
         }
     }, [props.resumeBuy]);
@@ -90,11 +90,16 @@ export default function AlertDialogSlide(props) {
                         </Grid>
                     </Grid>
                     <DialogTitle id="alert-dialog-slide-title">
-                        {`Obrigado !!!`}
+                        <Typography className={classes.emptyCartText} variant="h6" >
+                            {`Obrigado !!!`}
+                        </Typography>
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-slide-description">
-                            {`Voce ganhou de volta `}<Price value={cashBack}/>
+                            <Typography className={classes.emptyCartText} variant="h8" gutterBottom >
+                                {`Voce ganhou de volta `}
+                            </Typography>
+                            <Price value={cashBack} />
                         </DialogContentText>
                     </DialogContent>
                 </div>

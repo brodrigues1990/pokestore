@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
     pokeAmeLogo: {
         height: 24,
-        paddingRight: 5,
+        paddingRight: 10,
         top: 7,
         position: 'relative'
 
@@ -44,7 +44,7 @@ const Price = ({ type, value }) => {
         <>
             <Grid container className={classes.emptyCartContainer} direction="column" justify="space-between" alignItems="center">
                 <Grid item >
-                    <Typography className={classes.priceSpan} variant="span" >
+                    <Typography className={classes.priceSpan} variant="span" gutterBottom>
                         {maskPrice(price)}
                     </Typography>
                 </Grid>
