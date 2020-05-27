@@ -2,8 +2,9 @@ import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, CircularProgress } from '@material-ui/core';
 import { usePokemon, PokemonContext } from '../../context/pokemonContext'
-import MarketTemplate from '../template/marketTemplate'
+import PokeLoader from '../atoms/pokeLoader'
 import CardPokemon from '../molecules/cardPokemon'
+import MarketTemplate from '../template/marketTemplate'
 
 const windowHeight = window.innerHeight;
 
@@ -43,8 +44,11 @@ const Market = (props) => {
                         <Grid container className={classes.loadingContainer} direction="row" justify="center" alignItems="center">
                             <Grid item >
                                 <CircularProgress />
+                                {/* Novo Loading Pokeball */}
+                                {/* <PokeLoader/> */}
                             </Grid>
                         </Grid>
+                        
                     )}
             </MarketTemplate>
         </>
