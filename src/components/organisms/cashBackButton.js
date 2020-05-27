@@ -52,16 +52,14 @@ export default function AlertDialogSlide(props) {
     const calcCashBack = async () => {
         
         //var porcentagem = parseFloat('1.3') ;
-        var porcentagem = 3;
+        const porcentagem = 2;
         let valor = preco * (porcentagem / 100);
-        //valor = valor.toFixed(2).replace(".",","); // converto em string de novo, com vírgula e 2 casas decimais
         setCashBack(valor);
     }
     useEffect(() => {
         if(preco > 0){
             calcCashBack()
         }
-        
     }, [props.resumeBuy]);
 
     return (

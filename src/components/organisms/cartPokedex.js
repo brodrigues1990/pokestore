@@ -123,7 +123,7 @@ const CartPokedex = (props) => {
                                 </Typography>
                             </Grid>
                             <Grid item >
-                                <Typography className={classes.emptyCartText} variant="caption" gutterBottom>
+                                <Typography className={classes.emptyCartText} variant="caption" >
                                    Para encher, basta capturar alguns pokemon.
                                 </Typography>
                             </Grid>
