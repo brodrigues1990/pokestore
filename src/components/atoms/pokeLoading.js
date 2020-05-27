@@ -9,9 +9,6 @@ const useStyles = makeStyles({
         // -moz-box-sizing: border-box,
         //      box-sizing: border-box,
     },
-    wrapper: {
-        transform: 'translate(-50%, -50%)'
-    },
     pokeball: {
         width: 60,
         height: 60,
@@ -42,7 +39,7 @@ const useStyles = makeStyles({
             right: 17,
             zIndex: 1,
         },
- 
+
     },
     [`@keyframes ${frames}`]: {
         from: {
@@ -54,16 +51,14 @@ const useStyles = makeStyles({
     },
 });
 
-const PokeLoader = () => {
+const PokeLoading = () => {
     const classes = useStyles();
     return (
         <>
-            <div className={classes[`wrapper`]} >
-                <div className={classes[`pokeball`]} />
-            </div>
+            <div className={classes[`pokeball`]} />
         </>
     )
 
 }
 
-export default PokeLoader;
+export default PokeLoading;

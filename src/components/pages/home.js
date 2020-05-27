@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, CircularProgress } from '@material-ui/core';
 import { usePokemon, PokemonContext } from '../../context/pokemonContext'
-import PokeLoader from '../atoms/pokeLoader'
+import PokeLoading from '../atoms/pokeLoading'
 import CardPokemon from '../molecules/cardPokemon'
 import MarketTemplate from '../template/marketTemplate'
 
@@ -45,7 +45,7 @@ const Market = (props) => {
                             <Grid item >
                                 {/* <CircularProgress /> */}
                                 {/* Novo Loading Pokeball */}
-                                <PokeLoader/>
+                                <PokeLoading/>
                             </Grid>
                         </Grid>
                         
