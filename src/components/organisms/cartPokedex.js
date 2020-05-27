@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     emptyCartImage: {
         height: "135px",
     },
-    emptyCartText:{
+    emptyCartText: {
         color: 'rgba(0, 0, 0, 0.4)'
     }
 }));
@@ -87,7 +87,7 @@ const CartPokedex = (props) => {
             <List
                 subheader={
                     <ListSubheader component="div" id="nested-list-subheader">
-                        <ShoppingCartIcon className={classes.CartIcon}/>Carrinho
+                        <ShoppingCartIcon className={classes.CartIcon} />Carrinho
                     </ListSubheader>
                 }
             >
@@ -119,7 +119,12 @@ const CartPokedex = (props) => {
                             </Grid>
                             <Grid item >
                                 <Typography className={classes.emptyCartText} variant="h6">
-                                    Carrinho Vazio
+                                    Carrinho Vazio . . .
+                                </Typography>
+                            </Grid>
+                            <Grid item >
+                                <Typography className={classes.emptyCartText} variant="caption" gutterBottom>
+                                   Para encher basta capturar alguns pokemon.
                                 </Typography>
                             </Grid>
                         </Grid>
