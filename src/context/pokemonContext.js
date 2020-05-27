@@ -9,7 +9,7 @@ const PokemonProvider = ({ children }) => {
     // Carrega todas os pokemons
     const loadPokemonByType = async () => {
 
-        const qtdPokemon = 151;
+        const qtdPokemon = 911;
         const newPokemonData = [];
         
         for (let i = 1; i <= qtdPokemon; i++) {

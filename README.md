@@ -2,9 +2,9 @@
     <!-- <img alt="Desafio B2W" src=""  width="800px" style="border-radius:16px;"/> -->
 </h1>
 
-<h3 align="center" >
+<h2 align="center" >
   PokeStore
-</h3>
+</h2>
 
 <p align="center">
 

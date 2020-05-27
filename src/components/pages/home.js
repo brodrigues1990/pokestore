@@ -43,9 +43,9 @@ const Market = (props) => {
                 ) : (
                         <Grid container className={classes.loadingContainer} direction="row" justify="center" alignItems="center">
                             <Grid item >
-                                <CircularProgress />
+                                {/* <CircularProgress /> */}
                                 {/* Novo Loading Pokeball */}
-                                {/* <PokeLoader/> */}
+                                <PokeLoader/>
                             </Grid>
                         </Grid>
                         

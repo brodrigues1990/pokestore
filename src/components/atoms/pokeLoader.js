@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
-    mixins: {
+const frames = "frames";
 
+const useStyles = makeStyles({
+    mixins: {
         boxSizing: 'border-box',
         // -moz-box-sizing: border-box,
         //      box-sizing: border-box,
@@ -19,49 +20,46 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         overflow: 'hidden',
         border: '3px solid',
-        animation: 'frames .8s  linear 0s infinite',
+        animation: `$${frames} .8s linear 0s infinite`,
         '&::after': {
             content: '""',
             position: 'absolute',
             width: 60,
             height: 30,
-            backgroundColor: '#ff0000ad',
+            backgroundColor: 'red',
             borderBottom: '4px solid',
-            top: 0
+            top: 0,
         },
         '&::before': {
             content: '""',
             position: 'absolute',
             backgroundColor: '#fff',
-            width: 19,
-            height: 19,
+            width: 20,
+            height: 20,
             border: '4px solid',
             borderRadius: '50%',
             bottom: 17,
-            right: 18,
+            right: 17,
             zIndex: 1,
-
         },
-
+ 
     },
-    '@keyframes frames': {
-        '0%': {
-            opacity: 1
+    [`@keyframes ${frames}`]: {
+        from: {
+            transform: 'rotate(0deg)'
         },
-        '100%': {
-            opacity: 0.7
-        },
+        to: {
+            transform: 'rotate(360deg)'
+        }
     },
-
-
-}));
+});
 
 const PokeLoader = () => {
     const classes = useStyles();
     return (
         <>
-            <div className={[classes.mixins, classes.wrapper]} >
-                <div className={classes.pokeball} />
+            <div className={classes[`wrapper`]} >
+                <div className={classes[`pokeball`]} />
             </div>
         </>
     )
