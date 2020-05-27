@@ -22,6 +22,8 @@ import { useCart, CartContext } from '../../context/cartContext';
 import PokedexImg from '../../assets/images/Pokedex.png'
 import CashBackButton from './cashBackButton.js';
 import { ToastsStore } from 'react-toasts'
+import emptyCartImage from '../../assets/images/pokeLazyPB.png'
+
 
 const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
@@ -44,8 +46,16 @@ const useStyles = makeStyles((theme) => ({
         height: 25,
         position: 'relative',
         paddingRight: 10
+    },
+    emptyCartContainer: {
+        marginTop: '60%'
+    },
+    emptyCartImage: {
+        height: "135px",
+    },
+    emptyCartText:{
+        color: 'rgba(0, 0, 0, 0.4)'
     }
-
 }));
 
 const CartPokedex = (props) => {
@@ -85,7 +95,7 @@ const CartPokedex = (props) => {
             >
                 <Divider />
 
-                {cartList ? (
+                {cartList.length !== 0 ? (
                     cartList.map((cartItem, index) => (
 
                         <ListItem key={index}>
@@ -105,7 +115,17 @@ const CartPokedex = (props) => {
 
                     ))
                 ) : (
-                        'Carrinho Vazio'
+                        <Grid container className={classes.emptyCartContainer} direction="column" justify="space-between" alignItems="center">
+                            <Grid item >
+                                <img src={emptyCartImage} alt="carrinho vazio" className={classes.emptyCartImage} />
+                            </Grid>
+                            <Grid item >
+                                <Typography className={classes.emptyCartText} variant="h6">
+                                    Carrinho Vazio
+                                </Typography>
+                            </Grid>
+                        </Grid>
+
                     )}
 
             </List>
