@@ -44,7 +44,7 @@ const Price = ({ type, value }) => {
         <>
             <Grid container className={classes.emptyCartContainer} direction="column" justify="space-between" alignItems="center">
                 <Grid item >
-                    <Typography className={classes.priceSpan} variant="span" gutterBottom>
+                    <Typography className={classes.priceSpan} gutterBottom>
                         {maskPrice(price)}
                     </Typography>
                 </Grid>

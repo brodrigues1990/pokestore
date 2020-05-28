@@ -90,17 +90,16 @@ export default function AlertDialogSlide(props) {
                         </Grid>
                     </Grid>
                     <DialogTitle id="alert-dialog-slide-title">
-                        <Typography className={classes.emptyCartText} variant="h6" >
+
+                    </DialogTitle>
+                    <DialogContent id="alert-dialog-slide-description">
+                        <Typography variant="h6">
                             {`Obrigado !!!`}
                         </Typography>
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-slide-description">
-                            <Typography className={classes.emptyCartText} variant="h8" gutterBottom >
-                                {`Voce ganhou de volta `}
-                            </Typography>
-                            <Price value={cashBack} />
-                        </DialogContentText>
+                        <Typography variant="subtitle1" gutterBottom >
+                            {`Voce ganhou de volta `}
+                        </Typography>
+                        <Price value={cashBack} />
                     </DialogContent>
                 </div>
             </Dialog>

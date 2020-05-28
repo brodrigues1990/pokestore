@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLocation, useHistory, Link } from 'react-router-dom';
 import {
 	AppBar,
 	Drawer,
@@ -72,8 +73,9 @@ const useStyles = makeStyles((theme) => ({
 const MarketTemplate = (props) => {
 	const { window, children } = props;
 	const classes = useStyles();
-
-	const [mobileOpen, setMobileOpen] = React.useState(false);
+	const location = useLocation();
+	let history = useHistory();
+	const [mobileOpen, setMobileOpen] = useState(false);
 
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
@@ -85,11 +87,12 @@ const MarketTemplate = (props) => {
 		<div className={classes.root}>
 			<AppBar position="fixed" className={classes.appBar} >
 				<Toolbar>
-					<div className={classes.logoContainer}>
+					<Link className={classes.logoContainer} to="/pokestore">
 						<img src={Logo} alt="PokeStore" className={classes.logoImage} />
-					</div>
+					</Link>
 
-					<SearchBar />
+
+					{/* <SearchBar /> */}
 
 					<IconButton
 						color="inherit"

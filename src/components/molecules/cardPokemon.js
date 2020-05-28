@@ -50,7 +50,7 @@ const CardPokemon = ({ xs, sm, md, lg, pokemonId }) => {
                 <CardMedia className={classes.cardMedia} image={image} />
                 <CardContent className={classes.cardContent}>
                     <Typography>{name}</Typography>
-                    <Typography><Price type="pokeame" value={price} /></Typography>
+                    <Price type="pokeame" value={price} />
                     <strong>{types}</strong>
                 </CardContent>
                 <CardActions className={classes.cardActions} aligh="center">
