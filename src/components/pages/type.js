@@ -25,7 +25,7 @@ const Type = (props) => {
     console.log(pokemon.length);
 
     if(pokemon.length !== 0){
-      
+      console.log(pokemon)
     }
 
     return (

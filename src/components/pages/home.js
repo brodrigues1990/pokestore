@@ -48,9 +48,10 @@ const Home = (props) => {
                     <>
                         <Grid container spacing={2} className={classes.mainContainer}>
                             {
-                                pokemonTypes.map((t) =>
+                                pokemonTypes.map((t, index) =>
                                     <CardType
                                         typePokemon={t.type}
+                                        key={index}
                                         xs={12}
                                         md={4}
                                     />

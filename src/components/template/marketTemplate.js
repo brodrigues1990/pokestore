@@ -80,8 +80,7 @@ const MarketTemplate = (props) => {
 	const { window, children } = props;
 	const classes = useStyles();
 	const [mobileOpen, setMobileOpen] = useState(false);
-
-	const [typeTheme, setTypeTheme] = useState('');
+	const [typeTheme, setTypeTheme] = useState(defaultTheme);
 	const typePokemon = props.match.params.type;
 	const handleTypeTheme = async () => {
 		switch (props.match.params.type) {
