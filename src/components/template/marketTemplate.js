@@ -147,6 +147,7 @@ const MarketTemplate = (props) => {
 							open={mobileOpen}
 							onClose={handleDrawerToggle}
 							onOpen={handleDrawerToggle}
+							swipeAreaWidth={40}
 							classes={{
 								paper: classes.drawerPaper,
 							}}
