@@ -14,10 +14,7 @@ import {
 
 
 const useStyles = makeStyles((theme) => ({
-    cardContainer: {
-        margin: theme.spacing(1, 0, 4, 0),
-    },
-    //mudar 
+
     cardContent: {
         textAlign: "center",
     },
@@ -67,7 +64,7 @@ const CardType = ({ xs, sm, md, lg, typePokemon }) => {
 
         <Grid item xs={xs} sm={sm} md={md} lg={lg} >
             <ThemeProvider theme={typeTheme}>
-                <Card className={classes.cardContainer}>
+                <Card >
                     {/* <CardMedia className={classes.cardMedia} image={image} /> */}
                     <CardActions className={classes.cardActions} aligh="center">
                         <Button

@@ -11,7 +11,7 @@ const windowHeight = window.innerHeight;
 
 const useStyles = makeStyles((theme) => ({
     mainContainer: {
-        padding: 0,
+        margin: theme.spacing(0, 0, 1, 0),
     },
     loadingContainer: {
         height: windowHeight - 200,
