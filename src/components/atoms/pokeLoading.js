@@ -9,6 +9,20 @@ const useStyles = makeStyles({
         // -moz-box-sizing: border-box,
         //      box-sizing: border-box,
     },
+    pokeballButton: {
+        '&::before': {
+            content: '""',
+            position: 'absolute',
+            backgroundColor: '#FFFF',
+            width: 10,
+            height: 10,
+            border: '2px solid',
+            borderRadius: '50%',
+            bottom: 22,
+            right: 22,
+            zIndex: 1,
+        },
+    },
     pokeball: {
         width: 60,
         height: 60,
@@ -33,7 +47,7 @@ const useStyles = makeStyles({
             backgroundColor: '#fff',
             width: 20,
             height: 20,
-            border: '4px solid',
+            border: '3px solid',
             borderRadius: '50%',
             bottom: 17,
             right: 17,
@@ -42,20 +56,23 @@ const useStyles = makeStyles({
 
     },
     [`@keyframes ${frames}`]: {
-        from: {
-            transform: 'rotate(0deg)'
-        },
-        to: {
-            transform: 'rotate(360deg)'
-        }
+    from: {
+        transform: 'rotate(0deg)'
     },
+    to: {
+        transform: 'rotate(360deg)'
+    },
+ 
+},
 });
 
 const PokeLoading = () => {
     const classes = useStyles();
     return (
         <>
-            <div className={classes[`pokeball`]} />
+            <div className={classes[`pokeball`]} >
+                <div className={classes[`pokeballButton`]} />
+            </div>
         </>
     )
 
