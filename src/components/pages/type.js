@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, CircularProgress } from '@material-ui/core';
 import { usePokemon, PokemonContext } from '../../context/pokemonContext'
@@ -20,25 +21,40 @@ const useStyles = makeStyles((theme) => ({
 const Type = (props) => {
 
     const { pokemon, setPokemon } = usePokemon(PokemonContext);
+    const [pokemonByType, setPokemonByType] = useState([]);
     console.log('entrou na pagina Type');
     const classes = useStyles();
     console.log(pokemon.length);
+    const newPokemonData = [];
+    const typePokemon = props.match.params.type;
 
-    if(pokemon.length !== 0){
-      console.log(pokemon)
+    //Traz os pokemon por Typo 
+    const handlePokemonByType = () => {
+        if (pokemon.length !== 0) {
+            pokemon.map((p, key) => {
+                p.types.filter((elem) => {
+                    if (elem === typePokemon) { return newPokemonData.push(p.id - 1) }
+                });
+            })
+            console.log(newPokemonData)
+            setPokemonByType(newPokemonData)
+        }
     }
+
+    useEffect(() => {
+        handlePokemonByType()
+    }, [pokemon]);
 
     return (
         <>
             <MarketTemplate>
-                {pokemon.length !== 0 ? (
+                {pokemonByType.length !== 0 ? (
                     <>
                         <Grid container spacing={2} className={classes.mainContainer}>
-                            {Object.keys(pokemon).map((pokemonId) =>
-                                // getPokemonCard(pokemonId)
+                            {pokemonByType.map((p) =>
                                 <CardPokemon
-                                    pokemonId={pokemonId}
-                                    key={pokemonId}
+                                    pokemonId={p}
+                                    key={p}
                                     xs={12}
                                     sm={6}
                                     md={4}
@@ -63,4 +79,4 @@ const Type = (props) => {
 
 }
 
-export default Type;
+export default withRouter(Type);
