@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useLocation, useHistory, Link } from 'react-router-dom';
+import React, { useState , useEffect} from 'react';
+import { withRouter, useLocation, useHistory, Link } from 'react-router-dom';
 import {
 	AppBar,
 	Drawer,
@@ -11,12 +11,18 @@ import {
 import {
 	ShoppingCart as ShoppingCartIcon,
 } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Logo from '../../assets/images/PokeStoreLogo.png'
 import ScrollTop from '../atoms/scrollTop'
 import SearchBar from '../molecules/searchBar'
 import CartPokedex from '../organisms/cartPokedex'
+import {
+	defaultTheme,
+	waterTheme,
+	grassTheme,
+	fireTheme
+} from '../../styles/themes/pokeTheme';
 
 const drawerWidth = 300;
 
@@ -73,77 +79,100 @@ const useStyles = makeStyles((theme) => ({
 const MarketTemplate = (props) => {
 	const { window, children } = props;
 	const classes = useStyles();
-	const location = useLocation();
-	let history = useHistory();
 	const [mobileOpen, setMobileOpen] = useState(false);
+
+	const [typeTheme, setTypeTheme] = useState('');
+	const typePokemon = props.match.params.type;
+	const handleTypeTheme = async () => {
+		switch (props.match.params.type) {
+			case 'water':
+				setTypeTheme(waterTheme)
+				break
+			case 'grass':
+				setTypeTheme(grassTheme)
+				break
+			case 'fire':
+				setTypeTheme(fireTheme)
+				break
+			default:
+				setTypeTheme(defaultTheme)
+				return
+		}
+	}
 
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
 
+	useEffect(() => {
+        handleTypeTheme()
+    }, [typePokemon]);
+
 	const container = window !== undefined ? () => window().document.body : undefined;
 
 	return (
 		<div className={classes.root}>
-			<AppBar position="fixed" className={classes.appBar} >
-				<Toolbar>
-					<Link className={classes.logoContainer} to="/pokestore">
-						<img src={Logo} alt="PokeStore" className={classes.logoImage} />
-					</Link>
+			<ThemeProvider theme={typeTheme}>
+				<AppBar position="fixed" className={classes.appBar} >
+					<Toolbar>
+						<Link className={classes.logoContainer} to="/pokestore">
+							<img src={Logo} alt="PokeStore" className={classes.logoImage} />
+						</Link>
 
 
-					{/* <SearchBar /> */}
+						{/* <SearchBar /> */}
 
-					<IconButton
-						color="inherit"
-						aria-label="open drawer"
-						edge="end"
-						onClick={handleDrawerToggle}
-						className={classes.menuButton}
-					>
-						<ShoppingCartIcon />
-					</IconButton>
-				</Toolbar>
-			</AppBar>
+						<IconButton
+							color="inherit"
+							aria-label="open drawer"
+							edge="end"
+							onClick={handleDrawerToggle}
+							className={classes.menuButton}
+						>
+							<ShoppingCartIcon />
+						</IconButton>
+					</Toolbar>
+				</AppBar>
 
-			<main className={classes.content}>
-				{children}
-				<ScrollTop {...props} />
-			</main>
+				<main className={classes.content}>
+					{children}
+					<ScrollTop {...props} />
+				</main>
 
-			<nav className={classes.drawer} aria-label="mailbox folders">
-				<Hidden smUp implementation="css">
-					<SwipeableDrawer
-						container={container}
-						anchor='right'
-						open={mobileOpen}
-						onClose={handleDrawerToggle}
-						onOpen={handleDrawerToggle}
-						classes={{
-							paper: classes.drawerPaper,
-						}}
-						ModalProps={{
-							keepMounted: true, // Better open performance on mobile.
-						}}
-					>
-						<CartPokedex />
-					</SwipeableDrawer>
-				</Hidden>
-				<Hidden xsDown implementation="css">
-					<Drawer
-						classes={{
-							paper: classes.drawerPaper,
-						}}
-						variant="permanent"
-						anchor='right'
-						open
-					>
-						<CartPokedex />
-					</Drawer>
-				</Hidden>
-			</nav>
+				<nav className={classes.drawer} aria-label="mailbox folders">
+					<Hidden smUp implementation="css">
+						<SwipeableDrawer
+							container={container}
+							anchor='right'
+							open={mobileOpen}
+							onClose={handleDrawerToggle}
+							onOpen={handleDrawerToggle}
+							classes={{
+								paper: classes.drawerPaper,
+							}}
+							ModalProps={{
+								keepMounted: true, // Better open performance on mobile.
+							}}
+						>
+							<CartPokedex />
+						</SwipeableDrawer>
+					</Hidden>
+					<Hidden xsDown implementation="css">
+						<Drawer
+							classes={{
+								paper: classes.drawerPaper,
+							}}
+							variant="permanent"
+							anchor='right'
+							open
+						>
+							<CartPokedex />
+						</Drawer>
+					</Hidden>
+				</nav>
+			</ThemeProvider>
 		</div>
 	);
 }
 
-export default MarketTemplate;
+export default withRouter(MarketTemplate);

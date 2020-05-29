@@ -40,7 +40,7 @@ const CardType = ({ xs, sm, md, lg, typePokemon }) => {
     // 
     const handleLinkTypePage = () => {
         history.push({
-            pathname: `/pokestore/type/${typePokemon}`,
+            pathname: `/pokestore/type=${typePokemon}`,
         });
     }
 

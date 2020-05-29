@@ -24,18 +24,40 @@ const Home = (props) => {
     // console.log(pokemon);
     const classes = useStyles();
     console.log(pokemon.length);
+    // if(pokemon.length !== 0){
+    //     let lgs = pokemon.reduce((l, i) => {
+    //          if (l.indexOf(i.types.type.name) === -1) { 
+    //              //l.push(i.type); 
+    //              console.log('entra')
+    //             }
+    //         // return l;
+    //         console.log(JSON.stringify(l));
+    //         console.log(JSON.stringify(i));
+    //     }, []);
+    //     console.log(lgs);
+    // }
+    const pokemonTypes = [
+        { 'type': 'water', 'name': 'agua' },
+        { 'type': 'fire', 'name': 'fogo' },
+        { 'type': 'grass', 'name': 'grama ' }
+    ]
     return (
         <>
             <MarketTemplate>
                 {pokemon.length !== 0 ? (
                     <>
-                        <CardType
-                            typePokemon="fire"
-                            xs={12}
-                            sm={6}
-                            md={4}
-                            lg={3}
-                        />
+                        <Grid container spacing={2} className={classes.mainContainer}>
+                            {
+                                pokemonTypes.map((t) =>
+                                    <CardType
+                                        typePokemon={t.type}
+                                        xs={12}
+                                        md={4}
+
+                                    />
+                                )
+                            }
+                        </Grid>
                         <Grid container spacing={2} className={classes.mainContainer}>
                             {Object.keys(pokemon).map((pokemonId) =>
                                 // getPokemonCard(pokemonId)
@@ -43,7 +65,6 @@ const Home = (props) => {
                                     pokemonId={pokemonId}
                                     key={pokemonId}
                                     xs={12}
-                                    sm={6}
                                     md={4}
                                     lg={3}
                                 />

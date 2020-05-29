@@ -23,6 +23,11 @@ const Type = (props) => {
     console.log('entrou na pagina Type');
     const classes = useStyles();
     console.log(pokemon.length);
+
+    if(pokemon.length !== 0){
+      
+    }
+
     return (
         <>
             <MarketTemplate>
