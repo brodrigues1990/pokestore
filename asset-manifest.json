@@ -1,27 +1,30 @@
 {
   "files": {
     "main.css": "/pokestore/static/css/main.8bc326e6.chunk.css",
-    "main.js": "/pokestore/static/js/main.a335c7de.chunk.js",
-    "main.js.map": "/pokestore/static/js/main.a335c7de.chunk.js.map",
+    "main.js": "/pokestore/static/js/main.01cad2e1.chunk.js",
+    "main.js.map": "/pokestore/static/js/main.01cad2e1.chunk.js.map",
     "runtime-main.js": "/pokestore/static/js/runtime-main.8508d414.js",
     "runtime-main.js.map": "/pokestore/static/js/runtime-main.8508d414.js.map",
-    "static/js/2.be398210.chunk.js": "/pokestore/static/js/2.be398210.chunk.js",
-    "static/js/2.be398210.chunk.js.map": "/pokestore/static/js/2.be398210.chunk.js.map",
+    "static/js/2.d0d7a001.chunk.js": "/pokestore/static/js/2.d0d7a001.chunk.js",
+    "static/js/2.d0d7a001.chunk.js.map": "/pokestore/static/js/2.d0d7a001.chunk.js.map",
     "index.html": "/pokestore/index.html",
-    "precache-manifest.3194f7aa13a4ea3de143662250e1fbfc.js": "/pokestore/precache-manifest.3194f7aa13a4ea3de143662250e1fbfc.js",
+    "precache-manifest.f31164648fa276777a56f15620f01f8f.js": "/pokestore/precache-manifest.f31164648fa276777a56f15620f01f8f.js",
     "service-worker.js": "/pokestore/service-worker.js",
     "static/css/main.8bc326e6.chunk.css.map": "/pokestore/static/css/main.8bc326e6.chunk.css.map",
-    "static/js/2.be398210.chunk.js.LICENSE.txt": "/pokestore/static/js/2.be398210.chunk.js.LICENSE.txt",
+    "static/js/2.d0d7a001.chunk.js.LICENSE.txt": "/pokestore/static/js/2.d0d7a001.chunk.js.LICENSE.txt",
     "static/media/Error404.png": "/pokestore/static/media/Error404.dd00f18e.png",
     "static/media/PokeStoreLogo.png": "/pokestore/static/media/PokeStoreLogo.7cc2f872.png",
+    "static/media/fire.svg": "/pokestore/static/media/fire.33d14b30.svg",
+    "static/media/grass.svg": "/pokestore/static/media/grass.d589dd00.svg",
     "static/media/pikachu-face.png": "/pokestore/static/media/pikachu-face.70afa18b.png",
     "static/media/pokeAmeLogo.png": "/pokestore/static/media/pokeAmeLogo.d273d896.png",
-    "static/media/pokeLazyPB.png": "/pokestore/static/media/pokeLazyPB.a6e18362.png"
+    "static/media/pokeLazyPB.png": "/pokestore/static/media/pokeLazyPB.a6e18362.png",
+    "static/media/water.svg": "/pokestore/static/media/water.e29fb8e3.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.8508d414.js",
-    "static/js/2.be398210.chunk.js",
+    "static/js/2.d0d7a001.chunk.js",
     "static/css/main.8bc326e6.chunk.css",
-    "static/js/main.a335c7de.chunk.js"
+    "static/js/main.01cad2e1.chunk.js"
   ]
 }
