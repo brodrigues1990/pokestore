@@ -4,10 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, CardContent, CardActions, Typography, Grid, Button } from '@material-ui/core';
 import { AddShoppingCart as AddShoppingCartIcon } from '@material-ui/icons';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { usePokemon, PokemonContext } from '../../context/pokemonContext';
-import { useCart, CartContext } from '../../context/cartContext';
-import { ToastsStore } from 'react-toasts'
-import Price from '../atoms/price';
+import TypeIcon from '../atoms/PokeTypeIcon'
 import {
     defaultTheme,
     waterTheme,
@@ -18,7 +15,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     cardContainer: {
-        margin: theme.spacing(0, 0, 5, 0),
+        margin: theme.spacing(1, 0, 4, 0),
     },
     //mudar 
     cardContent: {
@@ -29,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardButton: {
         width: "100%",
+        opacity: '0.7',
     },
 }));
 
@@ -66,18 +64,26 @@ const CardType = ({ xs, sm, md, lg, typePokemon }) => {
     }, [typePokemon]);
 
     return (
-        <ThemeProvider theme={typeTheme}>
-            <Grid item xs={xs} sm={sm} md={md} lg={lg} className={classes.cardContainer}>
-                <Card >
+
+        <Grid item xs={xs} sm={sm} md={md} lg={lg} >
+            <ThemeProvider theme={typeTheme}>
+                <Card className={classes.cardContainer}>
                     {/* <CardMedia className={classes.cardMedia} image={image} /> */}
                     <CardActions className={classes.cardActions} aligh="center">
-                        <Button className={classes.cardButton} onClick={() => handleLinkTypePage(typePokemon)} startIcon={<AddShoppingCartIcon />} color="primary">
-                            {`Tipo Pokemon ${typePokemon}`}
+                        <Button
+                            className={classes.cardButton}
+                            onClick={() => handleLinkTypePage(typePokemon)}
+                            startIcon={<TypeIcon type={typePokemon} />}
+                            color="primary"
+                            variant="contained"
+                        >
+                            {typePokemon}
                         </Button>
                     </CardActions>
                 </Card>
-            </Grid>
-        </ThemeProvider>
+            </ThemeProvider>
+        </Grid>
+
     );
 };
 

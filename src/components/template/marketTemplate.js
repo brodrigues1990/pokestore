@@ -100,6 +100,7 @@ const MarketTemplate = (props) => {
 		}
 	}
 
+	//abre e fecha menu carrinho lateral no mobile
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};

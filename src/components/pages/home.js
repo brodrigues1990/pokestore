@@ -53,22 +53,23 @@ const Home = (props) => {
                                         typePokemon={t.type}
                                         xs={12}
                                         md={4}
-
                                     />
                                 )
                             }
                         </Grid>
                         <Grid container spacing={2} className={classes.mainContainer}>
-                            {Object.keys(pokemon).map((pokemonId) =>
-                                // getPokemonCard(pokemonId)
-                                <CardPokemon
-                                    pokemonId={pokemonId}
-                                    key={pokemonId}
-                                    xs={12}
-                                    md={4}
-                                    lg={3}
-                                />
-                            )}
+                            {
+                                Object.keys(pokemon).map((pokemonId) =>
+                                    // getPokemonCard(pokemonId)
+                                    <CardPokemon
+                                        pokemonId={pokemonId}
+                                        key={pokemonId}
+                                        xs={12}
+                                        md={4}
+                                        lg={3}
+                                    />
+                                )
+                            }
                         </Grid>
                     </>
                 ) : (
