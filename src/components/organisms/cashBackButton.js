@@ -79,7 +79,6 @@ export default function AlertDialogSlide(props) {
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-slide-title"
                 aria-describedby="alert-dialog-slide-description"
-
             >
                 <div className={classes.dialogContainer}>
                     <Grid container className={classes.pikachuFaceContainer} direction="row" justify="center" alignItems="center">

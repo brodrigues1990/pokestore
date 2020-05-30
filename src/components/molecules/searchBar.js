@@ -11,45 +11,79 @@ import { usePokeFilter, PokeFilterContext } from '../../context/pokeFilterContex
 import Price from '../atoms/price';
 
 const useStyles = makeStyles((theme) => ({
-    // search: {
-    //     position: 'relative',
-    //     backgroundColor: fade(theme.palette.common.white, 0.15),
-    //     '&:hover': {
-    //         backgroundColor: fade(theme.palette.common.white, 0.25),
-    //     },
-    //     marginLeft: 0,
-    //     width: '100%',
-    //     [theme.breakpoints.up('sm')]: {
-    //         marginLeft: theme.spacing(1),
-    //         width: 'auto',
-    //     },
-    //     borderRadius: 100,
-    // },
-    // searchIcon: {
-    //     padding: theme.spacing(0, 2),
-    //     height: '100%',
-    //     position: 'absolute',
-    //     pointerEvents: 'none',
-    //     display: 'flex',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    // },
-    // inputRoot: {
-    //     color: 'inherit',
-    // },
-    // inputInput: {
-    //     padding: theme.spacing(1, 1, 1, 0),
-    //     // vertical padding + font size from searchIcon
-    //     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    //     transition: theme.transitions.create('width'),
-    //     width: '100%',
-    //     [theme.breakpoints.up('sm')]: {
-    //         width: '0',
-    //         '&:focus': {
-    //             width: '20ch',
-    //         },
-    //     },
-    // },
+    autoComplete: {
+        width: 300,
+        
+    },
+    search: {
+        // position: 'relative',
+        // backgroundColor: fade(theme.palette.common.white, 0.15),
+        // '&:hover': {
+        //     backgroundColor: fade(theme.palette.common.white, 0.25),
+        // },
+        // marginLeft: 0,
+        // width: '100%',
+        // [theme.breakpoints.up('sm')]: {
+        //     marginLeft: theme.spacing(1),
+        //     width: 'auto',
+        // },
+        // borderRadius: 100,
+        position: 'relative',
+        marginLeft: 8,
+        marginRight: 16,
+        borderRadius: 4,
+        backgroundColor: 'rgba(255, 255, 255, 0.15)'
+    },
+    searchIcon: {
+        // padding: theme.spacing(0, 2),
+        // height: '100%',
+        // position: 'absolute',
+        // pointerEvents: 'none',
+        // display: 'flex',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        width: 72,
+        height: '100%',
+        display: 'flex',
+        position: 'absolute',
+        alignItems: 'center',
+        pointerEvents: 'none',
+        justifyContent: 'center',
+
+    },
+    inputRoot: {
+        border: 0,
+        //paddingLeft: 60
+    },
+    inputInput: {
+        //     padding: theme.spacing(1, 1, 1, 0),
+        //     // vertical padding + font size from searchIcon
+        //     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        //     transition: theme.transitions.create('width'),
+        //     width: '100%',
+        //     [theme.breakpoints.up('sm')]: {
+        //         width: '0',
+        //         '&:focus': {
+        //             width: '20ch',
+        //         },
+        //     },
+        width: 120,
+        transition: 'width 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        borderColor: 'transparent',
+        boxShadow: 'none',
+        opacity: 1,
+        background: 'none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0)',
+        '&:focus': {
+            width: 170,
+        },
+
+    },
+    textFieldContainer: {
+        paddingLeft: 60
+    }
 }));
 
 
@@ -66,7 +100,7 @@ const SearchBar = ({ value }) => {
     return (
         <Autocomplete
             id="search-pokemon"
-            style={{ width: 300 }}
+            className={classes.autoComplete}
             options={pokemon}
             getOptionLabel={(option) => option.name}
             onInputChange={(event, newInputValue) => {
@@ -80,14 +114,22 @@ const SearchBar = ({ value }) => {
                     {/* <div className={classes.searchIcon}>
                         <SearchIcon />
                     </div> */}
-                    <TextField {...params} classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                    }}
-                        variant="outlined"
-                        label="Caçar Pokémon..."
-                        placeholder="Escolha alguns Pokémon ..."
-                    />
+
+                    <div >
+                        <TextField {...params} classes={{
+                            root: classes.inputRoot,
+                            //input: classes.inputInput,
+                        }}
+                        // InputProps={{
+                        //     classes: {
+                        //         ///root: classes.inputRoot,
+                        //         focused: classes.textFieldContainer
+                        //     }
+                        // }}
+                            variant="outlined"
+                            placeholder="Buscar Pokémon..."
+                        />
+                    </div>
                 </div>
             )}
             renderOption={(option, { inputValue }) => {
