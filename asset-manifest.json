@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/pokestore/static/css/main.8bc326e6.chunk.css",
-    "main.js": "/pokestore/static/js/main.58789f6e.chunk.js",
-    "main.js.map": "/pokestore/static/js/main.58789f6e.chunk.js.map",
+    "main.js": "/pokestore/static/js/main.225d4e03.chunk.js",
+    "main.js.map": "/pokestore/static/js/main.225d4e03.chunk.js.map",
     "runtime-main.js": "/pokestore/static/js/runtime-main.8508d414.js",
     "runtime-main.js.map": "/pokestore/static/js/runtime-main.8508d414.js.map",
-    "static/js/2.b9201a8d.chunk.js": "/pokestore/static/js/2.b9201a8d.chunk.js",
-    "static/js/2.b9201a8d.chunk.js.map": "/pokestore/static/js/2.b9201a8d.chunk.js.map",
+    "static/js/2.0b9b44da.chunk.js": "/pokestore/static/js/2.0b9b44da.chunk.js",
+    "static/js/2.0b9b44da.chunk.js.map": "/pokestore/static/js/2.0b9b44da.chunk.js.map",
     "index.html": "/pokestore/index.html",
-    "precache-manifest.20c98fc02ffc4337b0b77b20b166ac30.js": "/pokestore/precache-manifest.20c98fc02ffc4337b0b77b20b166ac30.js",
+    "precache-manifest.a2fd899b9ee75a6f7a49dacc8753f813.js": "/pokestore/precache-manifest.a2fd899b9ee75a6f7a49dacc8753f813.js",
     "service-worker.js": "/pokestore/service-worker.js",
     "static/css/main.8bc326e6.chunk.css.map": "/pokestore/static/css/main.8bc326e6.chunk.css.map",
-    "static/js/2.b9201a8d.chunk.js.LICENSE.txt": "/pokestore/static/js/2.b9201a8d.chunk.js.LICENSE.txt",
+    "static/js/2.0b9b44da.chunk.js.LICENSE.txt": "/pokestore/static/js/2.0b9b44da.chunk.js.LICENSE.txt",
     "static/media/Error404.png": "/pokestore/static/media/Error404.dd00f18e.png",
     "static/media/PokeStoreLogo.png": "/pokestore/static/media/PokeStoreLogo.7cc2f872.png",
     "static/media/fire.svg": "/pokestore/static/media/fire.33d14b30.svg",
@@ -23,8 +23,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.8508d414.js",
-    "static/js/2.b9201a8d.chunk.js",
+    "static/js/2.0b9b44da.chunk.js",
     "static/css/main.8bc326e6.chunk.css",
-    "static/js/main.58789f6e.chunk.js"
+    "static/js/main.225d4e03.chunk.js"
   ]
 }
