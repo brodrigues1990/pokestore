@@ -27,7 +27,6 @@ const TypeIcon = ({ type }) => {
                 setTypeIcon(FireIcon)
                 break
             default:
-                //setTypeIcon(defaultTheme)
                 return
         }
     }

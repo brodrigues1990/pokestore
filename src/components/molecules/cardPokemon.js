@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, CardContent, CardActions, Typography, Grid, Button } from '@material-ui/core';
 import { AddShoppingCart as AddShoppingCartIcon } from '@material-ui/icons';
@@ -52,11 +52,11 @@ const CardPokemon = ({ xs, sm, md, lg, pokeCard }) => {
                 <CardContent className={classes.cardContent}>
                     <Typography>{name}</Typography>
                     <Price type="pokeame" value={price} />
-                    <strong>{types}</strong>
+                    {/* <strong>{types}</strong> */}
                 </CardContent>
                 <CardActions className={classes.cardActions} aligh="center">
                     <Button className={classes.cardButton} onClick={() => handleAddCart(id)} startIcon={<AddShoppingCartIcon />} color="primary">
-                        Capturar Pokemon
+                        {`Capturar Pokemon`}
                     </Button>
                 </CardActions>
             </Card>

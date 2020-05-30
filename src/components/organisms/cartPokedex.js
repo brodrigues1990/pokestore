@@ -69,7 +69,6 @@ const CartPokedex = (props) => {
         } catch (error) {
             ToastsStore.error(`Erro ao deletar !`)
         }
-
     }
 
     // Calcula preco total do Carrinho
@@ -92,7 +91,6 @@ const CartPokedex = (props) => {
                 }
             >
                 <Divider />
-
                 {cartList.length !== 0 ? (
                     cartList.map((cartItem, index) => (
 
@@ -119,18 +117,17 @@ const CartPokedex = (props) => {
                             </Grid>
                             <Grid item >
                                 <Typography className={classes.emptyCartText} variant="h6">
-                                    Carrinho Vazio . . .
+                                    {`Carrinho Vazio . . .`}
                                 </Typography>
                             </Grid>
                             <Grid item >
                                 <Typography className={classes.emptyCartText} variant="caption" gutterBottom>
-                                   Para encher, basta capturar alguns pokemon.
+                                    {`Para encher, basta capturar alguns pokemon.`}
                                 </Typography>
                             </Grid>
                         </Grid>
 
                     )}
-
             </List>
             {totalCart ?
                 <Grid container className={classes.resumeBuy} direction="row" justify="space-between" alignItems="center">
@@ -146,7 +143,6 @@ const CartPokedex = (props) => {
                     </Grid>
                 </Grid>
                 : ``}
-
             <CashBackButton resumeBuy={totalCart} />
         </>
     );

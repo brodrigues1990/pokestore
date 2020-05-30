@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography } from '@material-ui/core';
-import { yellow } from '@material-ui/core/colors';
 import PokeAmeLogo from '../../assets/images/pokeAmeLogo.png'
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +55,7 @@ const Price = ({ type, value }) => {
                             </Typography>
                         </Grid>
                         <Grid item >
-                            <img className={classes.pokeAmeLogo} src={PokeAmeLogo} />
+                            <img className={classes.pokeAmeLogo} src={PokeAmeLogo} alt="PokeAmee" />
                             <Typography className={classes.emptyCartText} variant="caption" >
                                 {`Receba ${maskPrice(pricePokeAme)} `}
                             </Typography>

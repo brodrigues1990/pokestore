@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardMedia, CardContent, CardActions, Typography, Grid, Button } from '@material-ui/core';
-import { AddShoppingCart as AddShoppingCartIcon } from '@material-ui/icons';
+import { Card, CardActions, Grid, Button } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 import TypeIcon from '../atoms/PokeTypeIcon'
 import {
@@ -14,7 +13,6 @@ import {
 
 
 const useStyles = makeStyles((theme) => ({
-
     cardContent: {
         textAlign: "center",
     },

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { Dialog, DialogContent, DialogContentText, DialogTitle, Slide, Grid, Typography } from '@material-ui/core';
+import { Dialog, DialogContent, Slide, Grid, Typography } from '@material-ui/core';
 import { useCart, CartContext } from '../../context/cartContext';
 import Price from '../atoms/price';
 import PikachuFace from '../../assets/images/pikachu-face.png'
@@ -50,8 +50,6 @@ export default function AlertDialogSlide(props) {
 
     // Calcula valor extornado (CashBack)
     const calcCashBack = async () => {
-
-        //var porcentagem = parseFloat('1.3') ;
         const porcentagem = 2;
         let valor = preco * (porcentagem / 100);
         setCashBack(valor);
@@ -89,9 +87,6 @@ export default function AlertDialogSlide(props) {
                             <img src={PikachuFace} alt="PokeStore" className={classes.PikachuFaceImage} />
                         </Grid>
                     </Grid>
-                    <DialogTitle id="alert-dialog-slide-title">
-
-                    </DialogTitle>
                     <DialogContent id="alert-dialog-slide-description">
                         <Typography variant="h6">
                             {`Obrigado !!!`}

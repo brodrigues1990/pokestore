@@ -93,7 +93,6 @@ const SearchBar = ({ value }) => {
             renderOption={(option, { inputValue }) => {
                 const matches = match(option.name, inputValue);
                 const parts = parse(option.name, matches);
-
                 return (
                     <div>
                         {parts.map((part, index) => (

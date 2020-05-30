@@ -3,6 +3,7 @@ import { useLocation, useHistory, Link } from 'react-router-dom';
 import {
     Paper,
     Grid,
+    Typography
 } from '@material-ui/core';
 import { Close as CloseIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
@@ -16,10 +17,13 @@ const useStyles = makeStyles((theme) => ({
     grid404: {
         margin: theme.spacing(2, 2),
     },
+    closeIconContainer: {
+        textAlign: 'right',
+        padding: theme.spacing(2, 3, 0, 0),
+    },
 }));
 
 const Error404 = () => {
-
     const location = useLocation();
     let history = useHistory();
     const classes = useStyles();
@@ -28,17 +32,19 @@ const Error404 = () => {
         <>
             <MarketTemplate>
                 <Paper elevation={2} className={classes.root}>
-                    <Grid container direction="column" justify="center" alignItems="center">
+                    <Grid item xs={12} className={classes.closeIconContainer}>
+                        <Link onClick={e => history.goBack()}>
+                            <CloseIcon color="action" style={{ fontSize: 30 }} />
+                        </Link>
+                    </Grid>
+                    <Grid className={classes.grid404} container direction="column" justify="center" alignItems="center">
                         <Grid item xs={12} >
-                            <img src={Error404Image} />
+                            <img src={Error404Image} alt='Error 404' />
                         </Grid>
                         <Grid item xs={12} >
-                            Nenhum resultado para <strong>{location.pathname}</strong>
-                        </Grid>
-                        <Grid item xs={12} >
-                            <Link onClick={e => history.goBack()}>
-                                <CloseIcon color="action" style={{ fontSize: 30 }} />
-                            </Link>
+                            <Typography variant="h6" gutterBottom>
+                                {`Nenhum resultado para `}<strong>{location.pathname}</strong>
+                            </Typography >
                         </Grid>
                     </Grid>
                 </Paper>
