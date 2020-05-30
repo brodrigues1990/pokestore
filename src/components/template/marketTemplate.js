@@ -73,6 +73,9 @@ const useStyles = makeStyles((theme) => ({
 	content: {
 		flexGrow: 1,
 		padding: theme.spacing(12, 5, 5, 5),
+		[theme.breakpoints.down('xs')]: {
+			padding: theme.spacing(9, 5, 5, 5),
+		},
 	},
 }));
 
@@ -120,7 +123,7 @@ const MarketTemplate = (props) => {
 						</Link>
 
 
-						{/* <SearchBar /> */}
+						<SearchBar />
 
 						<IconButton
 							color="inherit"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
@@ -6,58 +6,62 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import { usePokemon, PokemonContext } from '../../context/pokemonContext';
+import { usePokeFilter, PokeFilterContext } from '../../context/pokeFilterContext';
 import Price from '../atoms/price';
 
 const useStyles = makeStyles((theme) => ({
-    search: {
-        position: 'relative',
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(1),
-            width: 'auto',
-        },
-        borderRadius: 100,
-    },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    inputRoot: {
-        color: 'inherit',
-    },
-    inputInput: {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            width: '0',
-            '&:focus': {
-                width: '20ch',
-            },
-        },
-    },
+    // search: {
+    //     position: 'relative',
+    //     backgroundColor: fade(theme.palette.common.white, 0.15),
+    //     '&:hover': {
+    //         backgroundColor: fade(theme.palette.common.white, 0.25),
+    //     },
+    //     marginLeft: 0,
+    //     width: '100%',
+    //     [theme.breakpoints.up('sm')]: {
+    //         marginLeft: theme.spacing(1),
+    //         width: 'auto',
+    //     },
+    //     borderRadius: 100,
+    // },
+    // searchIcon: {
+    //     padding: theme.spacing(0, 2),
+    //     height: '100%',
+    //     position: 'absolute',
+    //     pointerEvents: 'none',
+    //     display: 'flex',
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    // },
+    // inputRoot: {
+    //     color: 'inherit',
+    // },
+    // inputInput: {
+    //     padding: theme.spacing(1, 1, 1, 0),
+    //     // vertical padding + font size from searchIcon
+    //     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    //     transition: theme.transitions.create('width'),
+    //     width: '100%',
+    //     [theme.breakpoints.up('sm')]: {
+    //         width: '0',
+    //         '&:focus': {
+    //             width: '20ch',
+    //         },
+    //     },
+    // },
 }));
 
 
 const SearchBar = ({ value }) => {
     const classes = useStyles();
     const { pokemon } = usePokemon(PokemonContext);
-    // 
-    // const handleFilterName = (id) => {
+    const { pokeFilter, setPokeFilter } = usePokeFilter(PokeFilterContext);
+    //const [pokeFilter, setPokeFilter] = useState([]);
 
-    // }
+
+    useEffect(() => {
+        console.log(pokeFilter)
+    }, [pokeFilter]);
 
     return (
         <Autocomplete
@@ -65,6 +69,10 @@ const SearchBar = ({ value }) => {
             style={{ width: 300 }}
             options={pokemon}
             getOptionLabel={(option) => option.name}
+            onInputChange={(event, newInputValue) => {
+                setPokeFilter(newInputValue);
+
+            }}
             renderInput={(params) => (
                 <div className={classes.search}>
                     <div className={classes.searchIcon}>
@@ -87,8 +95,8 @@ const SearchBar = ({ value }) => {
                 return (
                     <div>
                         {parts.map((part, index) => (
-                            <span key={index} style={{ fontWeight: part.highlight ? 700 : 400 }}>
-                                {console.log(part)}
+                            <span key={index} style={{ fontWeight: part.highlight ? 800 : 400 }}>
+                                {/* {console.log(part)} */}
                                 {part.text}
                             </span>
                         ))}
