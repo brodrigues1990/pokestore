@@ -77,9 +77,9 @@ const SearchBar = ({ value }) => {
             }}
             renderInput={(params) => (
                 <div className={classes.search}>
-                    <div className={classes.searchIcon}>
+                    {/* <div className={classes.searchIcon}>
                         <SearchIcon />
-                    </div>
+                    </div> */}
                     <TextField {...params} classes={{
                         root: classes.inputRoot,
                         input: classes.inputInput,

@@ -33,7 +33,7 @@ const Type = (props) => {
         if (pokemon.length !== 0) {
             pokemon.map((p, key) => {
                 p.types.filter((elem) => {
-                    if (elem === typePokemon) { return newPokemonData.push(p.id - 1) }
+                    if (elem === typePokemon) { return newPokemonData.push(p) }
                 });
             })
             console.log(newPokemonData)
@@ -53,7 +53,7 @@ const Type = (props) => {
                         <Grid container spacing={2} className={classes.mainContainer}>
                             {pokemonByType.map((p) =>
                                 <CardPokemon
-                                    pokemonId={p}
+                                    pokeCard={p}
                                     key={p}
                                     xs={12}
                                     sm={6}

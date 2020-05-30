@@ -26,11 +26,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const CardPokemon = ({ xs, sm, md, lg, pokemonId }) => {
+const CardPokemon = ({ xs, sm, md, lg, pokeCard }) => {
+    console.log(pokeCard)
     const classes = useStyles();
     const { pokemon } = usePokemon(PokemonContext);
     const { cartList, setCartList } = useCart(CartContext);
-    const { id, name, image, price, types } = pokemon[pokemonId];
+    const { id, name, image, price, types } = pokeCard;
     const pokeItem = [];
 
     // adiciona pokemon ao carrinho

@@ -77,11 +77,11 @@ const Home = (props) => {
                         </Grid>
                         <Grid container spacing={2} className={classes.mainContainer}>
                             {
-                                Object.keys(pokemonCards).map((pokemonId) =>
-                                    // getPokemonCard(pokemonId)
+                                pokemonCards.map((p) =>
+                                    //console.log(p)
                                     <CardPokemon
-                                        pokemonId={pokemonId}
-                                        key={pokemonId}
+                                        pokeCard={p}
+                                        key={p}
                                         xs={12}
                                         md={4}
                                         lg={3}
