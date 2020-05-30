@@ -32,7 +32,8 @@ const CardType = ({ xs, sm, md, lg, typePokemon }) => {
     const classes = useStyles();
     const history = useHistory();
     const [typeTheme, setTypeTheme] = useState({});
-    // 
+
+    // Direciona para a pagina do tipo selecionado
     const handleLinkTypePage = () => {
         history.push({
             pathname: `/pokestore/type=${typePokemon}`,

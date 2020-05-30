@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { TextField } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
@@ -54,10 +55,9 @@ const useStyles = makeStyles((theme) => ({
 
 const SearchBar = ({ value }) => {
     const classes = useStyles();
+    const history = useHistory();
     const { pokemon } = usePokemon(PokemonContext);
     const { pokeFilter, setPokeFilter } = usePokeFilter(PokeFilterContext);
-    //const [pokeFilter, setPokeFilter] = useState([]);
-
 
     useEffect(() => {
         console.log(pokeFilter)
@@ -71,7 +71,9 @@ const SearchBar = ({ value }) => {
             getOptionLabel={(option) => option.name}
             onInputChange={(event, newInputValue) => {
                 setPokeFilter(newInputValue);
-
+                history.push({
+                    pathname: `/pokestore/`,
+                });
             }}
             renderInput={(params) => (
                 <div className={classes.search}>

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, CircularProgress } from '@material-ui/core';
 import { usePokemon, PokemonContext } from '../../context/pokemonContext'
+import { usePokeFilter, PokeFilterContext } from '../../context/pokeFilterContext';
 import PokeLoading from '../atoms/pokeLoading'
 import CardPokemon from '../molecules/cardPokemon'
 import CardType from '../molecules/cardType'
@@ -21,21 +22,37 @@ const useStyles = makeStyles((theme) => ({
 const Home = (props) => {
 
     const { pokemon, setPokemon } = usePokemon(PokemonContext);
+    const { pokeFilter, setPokeFilter } = usePokeFilter(PokeFilterContext);
+    const [pokemonCards, setPokemonCards] = useState([]);
     // console.log(pokemon);
     const classes = useStyles();
-    console.log(pokemon.length);
-    // if(pokemon.length !== 0){
-    //     let lgs = pokemon.reduce((l, i) => {
-    //          if (l.indexOf(i.types.type.name) === -1) { 
-    //              //l.push(i.type); 
-    //              console.log('entra')
-    //             }
-    //         // return l;
-    //         console.log(JSON.stringify(l));
-    //         console.log(JSON.stringify(i));
-    //     }, []);
-    //     console.log(lgs);
-    // }
+    const newPokemonData = [];
+
+    //Traz o pokemon pelo Filtro
+    const handlePokemonCards = () => {
+        if (pokemon.length !== 0) {
+            if (pokeFilter.length !== 0) {
+                pokemon.filter((elem) => {
+                    if (elem.name === pokeFilter) { return newPokemonData.push(elem) }
+                });
+                console.log(newPokemonData)
+                setPokemonCards(newPokemonData)
+            } else {
+                setPokemonCards(pokemon)
+            }
+
+        }
+    }
+
+    useEffect(() => {
+        handlePokemonCards()
+        console.log(pokeFilter);
+    }, [pokemon, pokeFilter]);
+
+
+
+
+
     const pokemonTypes = [
         { 'type': 'water', 'name': 'agua' },
         { 'type': 'fire', 'name': 'fogo' },
@@ -60,7 +77,7 @@ const Home = (props) => {
                         </Grid>
                         <Grid container spacing={2} className={classes.mainContainer}>
                             {
-                                Object.keys(pokemon).map((pokemonId) =>
+                                Object.keys(pokemonCards).map((pokemonId) =>
                                     // getPokemonCard(pokemonId)
                                     <CardPokemon
                                         pokemonId={pokemonId}
