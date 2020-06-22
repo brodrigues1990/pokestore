@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "43bc69e927252462bfa23807e94048ba",
+    "revision": "d91d76573fdb9eb60294d71330425744",
     "url": "/pokestore/index.html"
   },
   {
-    "revision": "f0a8e952df7ee10829e1",
+    "revision": "f3f62975184618dd3448",
     "url": "/pokestore/static/css/main.8bc326e6.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pokestore/static/js/2.2c65e1d3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f0a8e952df7ee10829e1",
-    "url": "/pokestore/static/js/main.3c137e6d.chunk.js"
+    "revision": "f3f62975184618dd3448",
+    "url": "/pokestore/static/js/main.11d40505.chunk.js"
   },
   {
     "revision": "50156c4ef494ae7ec58c",
@@ -52,7 +52,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pokestore/static/media/pokeLazyPB.a6e18362.png"
   },
   {
-    "revision": "e29fb8e379f9ed5335a02eb3881d25d6",
-    "url": "/pokestore/static/media/water.e29fb8e3.svg"
+    "revision": "fba54fcda2c58ae9350528b07ef8ae5c",
+    "url": "/pokestore/static/media/water.fba54fcd.svg"
   }
 ]);
