@@ -34,12 +34,12 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '30px',
         borderTop: '1px solid rgba(0, 0, 0, 0.12)',
-        padding: '0 16px'
+        padding: '5px 16px 0 16px'
     },
     avatarContainer: {
         borderRadius: 0
     },
-    CartIcon: {
+    cartIcon: {
         top: 5,
         height: 20,
         position: 'relative',
@@ -50,6 +50,12 @@ const useStyles = makeStyles((theme) => ({
     },
     emptyCartImage: {
         height: "135px",
+    },
+    listCart: {
+        overflowY: 'auto',
+        marginBottom: 35,
+        padding: 0,
+        height: '100vh'
     },
     emptyCartText: {
         color: 'rgba(0, 0, 0, 0.4)'
@@ -83,18 +89,16 @@ const CartPokedex = (props) => {
     return (
         <>
             <div className={classes.toolbar} />
-            <List
-                subheader={
-                    <ListSubheader component="div" id="nested-list-subheader">
-                        <ShoppingCartIcon className={classes.CartIcon} />Carrinho
-                    </ListSubheader>
-                }
-            >
-                <Divider />
+            <ListSubheader component="div" id="nested-list-subheader">
+                <ShoppingCartIcon className={classes.cartIcon} DWADADADADADADAWDADDA />Carrinho
+            </ListSubheader>
+            <Divider />
+            <List className={classes.listCart}>
+
                 {cartList.length !== 0 ? (
                     cartList.map((cartItem, index) => (
 
-                        <ListItem key={index}>
+                        <ListItem key={index} >
                             <ListItemAvatar>
                                 <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartItem.image} />
                             </ListItemAvatar>

@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
     },
     buyButton: {
-        position: 'absolute',
+        position: 'relative',
         bottom: 0,
         right: 0,
         width: '100%',
