@@ -37,7 +37,8 @@
 ## :page_facing_up: Sobre
 
 Projeto desafio B2W.<br/>
-O projeto faz uso do padrão do Framework Material Ui.
+
+Front-end de um e-commerce com a tematica de pokemon utilizando a lib ReactJs com Framework Material Ui.
 
 ## :computer: Linguagens
 
@@ -60,4 +61,4 @@ This project is under MIT. See at here [LICENSE](/LICENSE) for more informations
 ---
 
 
-Made by :green_heart: by [Bruno Rodrigues](https://github.com/brodrigues1990)
+Made by [Bruno Rodrigues](https://github.com/brodrigues1990)
