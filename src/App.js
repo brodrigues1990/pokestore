@@ -6,15 +6,15 @@ import CartProvider from './context/cartContext'
 
 function App() {
 	return (
-		<>
-			<PokeFilterProvider>
-				<PokemonProvider>
-					<CartProvider>
-						<Routes />
-					</CartProvider>
-				</PokemonProvider>
-			</PokeFilterProvider>
-		</>
+
+		<PokeFilterProvider>
+			<PokemonProvider>
+				<CartProvider>
+					<Routes />
+				</CartProvider>
+			</PokemonProvider>
+		</PokeFilterProvider>
+
 	);
 }
 

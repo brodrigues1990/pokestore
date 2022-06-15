@@ -84,13 +84,13 @@ const CartPokedex = (props) => {
 
     useEffect(() => {
         totalPrice()
-    }, [cartList]);
+    }, [cartList, totalPrice]);
 
     return (
         <>
             <div className={classes.toolbar} />
             <ListSubheader component="div" id="nested-list-subheader">
-                <ShoppingCartIcon className={classes.cartIcon} DWADADADADADADAWDADDA />Carrinho
+                <ShoppingCartIcon className={classes.cartIcon} />Carrinho
             </ListSubheader>
             <Divider />
             <List className={classes.listCart}>
@@ -100,7 +100,7 @@ const CartPokedex = (props) => {
 
                         <ListItem key={index} >
                             <ListItemAvatar>
-                                <Avatar className={classes.avatarContainer} alt="Pokemon" src={cartItem.image} />
+                                <Avatar className={classes.avatarContainer} alt={cartItem.name} src={cartItem.sprite} />
                             </ListItemAvatar>
                             <ListItemText
                                 primary={cartItem.name}

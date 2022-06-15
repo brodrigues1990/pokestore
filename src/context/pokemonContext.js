@@ -16,12 +16,13 @@ const PokemonProvider = ({ children }) => {
             await api.get(`/pokemon/${i}`)
                 .then(function (response) {
                     const { data } = response;
+                    console.log(data)
                    // console.log(data);
                     newPokemonData.push({
-                        id: i,
+                        id: data.id,
                         name: data.name,
-                        sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
-                        image: `https://pokeres.bastionbot.org/images/pokemon/${i}.png`,
+                        sprite: data.sprites.front_default,
+                        //image: data.image,
                         price: Math.floor(Math.random() * 100),
                         types:  data.types.map((t) => (
                             t.type.name
