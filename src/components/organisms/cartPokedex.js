@@ -18,7 +18,7 @@ import {
     Delete as DeleteIcon
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-import { useCart, CartContext } from '../../context/cartContext';
+import { usePokemon } from '../../hooks/usePokemon'
 import CashBackButton from './cashBackButton.js';
 import { ToastsStore } from 'react-toasts'
 import emptyCartImage from '../../assets/images/pokeLazyPB.png'
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
 
 const CartPokedex = (props) => {
     const classes = useStyles();
-    const { cartList, setCartList } = useCart(CartContext);
+    const { cartList, setCartList } = usePokemon();
     const [totalCart, setTotalCart] = useState(0);
 
     // Deleta pokemon selecionado
@@ -84,7 +84,7 @@ const CartPokedex = (props) => {
 
     useEffect(() => {
         totalPrice()
-    }, [cartList, totalPrice]);
+    }, [cartList]);
 
     return (
         <>
@@ -126,7 +126,7 @@ const CartPokedex = (props) => {
                             </Grid>
                             <Grid item >
                                 <Typography className={classes.emptyCartText} variant="caption" gutterBottom>
-                                    {`Para encher, basta capturar alguns pokemon.`}
+                                    {`Para encher, basta capturar alguns Pokémon.`}
                                 </Typography>
                             </Grid>
                         </Grid>

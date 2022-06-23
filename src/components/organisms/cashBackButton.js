@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Dialog, DialogContent, Slide, Grid, Typography } from '@material-ui/core';
-import { useCart, CartContext } from '../../context/cartContext';
+import { usePokemon } from '../../hooks/usePokemon'
 import Price from '../atoms/price';
 import PikachuFace from '../../assets/images/pikachu-face.png'
 
@@ -36,7 +36,7 @@ export default function AlertDialogSlide(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [cashBack, setCashBack] = useState(0);
-    const { setCartList } = useCart(CartContext);
+    const { setCartList } = usePokemon();
     var preco = props.resumeBuy;
 
     const handleClickOpen = () => {

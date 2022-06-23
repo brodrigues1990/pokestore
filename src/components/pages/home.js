@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, CircularProgress } from '@material-ui/core';
-import { usePokemon, PokemonContext } from '../../context/pokemonContext'
-import { usePokeFilter, PokeFilterContext } from '../../context/pokeFilterContext';
+import { Grid } from '@material-ui/core';
+import { usePokemon } from '../../hooks/usePokemon'
 import PokeLoading from '../atoms/pokeLoading'
 import CardPokemon from '../molecules/cardPokemon'
 import CardType from '../molecules/cardType'
@@ -21,10 +20,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props) => {
 
-    const { pokemon, setPokemon } = usePokemon(PokemonContext);
-    const { pokeFilter, setPokeFilter } = usePokeFilter(PokeFilterContext);
+    const { pokemon, pokeFilter, setPokeFilter } = usePokemon();
     const [pokemonCards, setPokemonCards] = useState([]);
-    // console.log(pokemon);
     const classes = useStyles();
     const newPokemonData = [];
 
@@ -48,8 +45,6 @@ const Home = (props) => {
         handlePokemonCards()
         console.log(pokeFilter);
     }, [pokemon, pokeFilter]);
-
-
 
 
 
@@ -93,8 +88,6 @@ const Home = (props) => {
                 ) : (
                         <Grid container className={classes.loadingContainer} direction="row" justify="center" alignItems="center">
                             <Grid item >
-                                {/* <CircularProgress /> */}
-                                {/* Novo Loading Pokeball */}
                                 <PokeLoading />
                             </Grid>
                         </Grid>

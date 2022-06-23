@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, CircularProgress } from '@material-ui/core';
-import { usePokemon, PokemonContext } from '../../context/pokemonContext'
+import { usePokemon } from '../../hooks/usePokemon'
 import PokeLoading from '../atoms/pokeLoading'
 import CardPokemon from '../molecules/cardPokemon'
 import MarketTemplate from '../template/marketTemplate'
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Type = (props) => {
 
-    const { pokemon, setPokemon } = usePokemon(PokemonContext);
+    const { pokemon } = usePokemon();
     const [pokemonByType, setPokemonByType] = useState([]);
     console.log('entrou na pagina Type');
     const classes = useStyles();
@@ -28,7 +28,7 @@ const Type = (props) => {
     const newPokemonData = [];
     const typePokemon = props.match.params.type;
 
-    //Traz os pokemon por Typo 
+    //Traz os pokemon por Tipo 
     const handlePokemonByType = () => {
         if (pokemon.length !== 0) {
             pokemon.map((p, key) => {

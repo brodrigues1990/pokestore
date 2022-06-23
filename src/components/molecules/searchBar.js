@@ -6,8 +6,7 @@ import { Search as SearchIcon } from '@material-ui/icons';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import { usePokemon, PokemonContext } from '../../context/pokemonContext';
-import { usePokeFilter, PokeFilterContext } from '../../context/pokeFilterContext';
+import { usePokemon } from '../../hooks/usePokemon'
 import Price from '../atoms/price';
 
 const useStyles = makeStyles((theme) => ({
@@ -90,12 +89,8 @@ const useStyles = makeStyles((theme) => ({
 const SearchBar = ({ value }) => {
     const classes = useStyles();
     const history = useHistory();
-    const { pokemon } = usePokemon(PokemonContext);
-    const { pokeFilter, setPokeFilter } = usePokeFilter(PokeFilterContext);
+    const { pokemon, pokeFilter, setPokeFilter } = usePokemon();
 
-    useEffect(() => {
-        console.log(pokeFilter)
-    }, [pokeFilter]);
 
     return (
         <Autocomplete
@@ -106,7 +101,7 @@ const SearchBar = ({ value }) => {
             onInputChange={(event, newInputValue) => {
                 setPokeFilter(newInputValue);
                 history.push({
-                    pathname: `/pokestore/`,
+                    pathname: `/pokestore`,
                 });
             }}
             renderInput={(params) => (

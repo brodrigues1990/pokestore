@@ -2,8 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, CardContent, CardActions, Typography, Grid, Button } from '@material-ui/core';
 import { AddShoppingCart as AddShoppingCartIcon } from '@material-ui/icons';
-import { usePokemon, PokemonContext } from '../../context/pokemonContext';
-import { useCart, CartContext } from '../../context/cartContext';
+import { usePokemon } from '../../hooks/usePokemon'
 import { ToastsStore } from 'react-toasts'
 import Price from '../atoms/price';
 
@@ -29,8 +28,7 @@ const useStyles = makeStyles((theme) => ({
 const CardPokemon = ({ xs, sm, md, lg, pokeCard }) => {
     console.log(pokeCard)
     const classes = useStyles();
-    const { pokemon } = usePokemon(PokemonContext);
-    const { cartList, setCartList } = useCart(CartContext);
+    const { pokemon, cartList, setCartList } = usePokemon();
     const { id, name, sprite, price, types } = pokeCard;
     const pokeItem = [];
 
