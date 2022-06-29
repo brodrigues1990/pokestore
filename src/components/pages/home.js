@@ -7,6 +7,7 @@ import CardPokemon from '../molecules/cardPokemon'
 import CardType from '../molecules/cardType'
 import MarketTemplate from '../template/marketTemplate'
 import { LaptopWindows } from '@material-ui/icons';
+import PokeApi, { EPokemonType } from "../../services/PokeApi";
 
 const windowHeight = window.innerHeight;
 
@@ -24,10 +25,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Home = (props) => {
 
-    const { pokemon, pokeFilter, setPokeFilter } = usePokemon();
+const Home = (props) => 
+{
+    // const { pokemon, pokeFilter, setPokeFilter } = usePokemon();
+    const [api]                       = useState(new PokeApi());
+    const [carregando, setCarregando] = useState(true);
+    const [montado, setMontado]       = useState(true);
+
+
     const [pokemonCards, setPokemonCards] = useState([]);
+    const [pokemonTypes, setPokemonTypes] = useState([]);
+
     const classes = useStyles();
     const newPokemonData = [];
 
@@ -47,48 +56,69 @@ const Home = (props) => {
     }, []);
 
     //Traz o pokemon pelo Filtro
-    const handlePokemonCards = () => {
-        console.log(pokemon.length)
+    // const handlePokemonCards = () => {
+    //     console.log(pokemon.length)
 
-        console.log(pokeFilter.length)
-        if (pokeFilter.length !== 0) {
-            pokemon.filter((elem) => {
-                if (elem.name === pokeFilter) { return newPokemonData.push(elem) }
-            });
-            console.log(newPokemonData)
-            setPokemonCards(newPokemonData)
-        } else {
-            console.log('entrou')
-            setPokemonCards(pokemon)
+    //     console.log(pokeFilter.length)
+    //     if (pokeFilter.length !== 0) {
+    //         pokemon.filter((elem) => {
+    //             if (elem.name === pokeFilter) { return newPokemonData.push(elem) }
+    //         });
+    //         console.log(newPokemonData)
+    //         setPokemonCards(newPokemonData)
+    //     } else {
+    //         console.log('entrou')
+    //         setPokemonCards(pokemon)
+    //     }
+    // }
+
+    // window.testDumb = handlePokemonCards;
+
+    // useEffect(() => {
+    //     //if (pokemon.length !== 0) {
+    //         handlePokemonCards()
+    //         console.log(pokemon);
+    //    // }
+    //     //setPokemonCards(pokemon);
+    //     console.log(pokemonCards);
+    // }, [pokemon, pokeFilter]);
+
+    // onLoad
+    useEffect( () => {
+        window.pokeApi = api;
+        setMontado(true);
+
+        if(montado) fnLoad();
+
+        return () => {
+            setMontado(false);
+        }
+    }, []);
+
+    async function fnLoad()
+    {
+        const lstPokemonDetalhe = await api.getLista();
+        // console.log(lstPokemonDetalhe);
+
+        if(montado) 
+        {
+            setPokemonCards(lstPokemonDetalhe)
+            setPokemonTypes(
+                api.lstTipos.map(item => { return {type: item, name: item} })
+            )
+            setCarregando(false);
         }
     }
 
-    window.testDumb = handlePokemonCards;
-
-    useEffect(() => {
-        //if (pokemon.length !== 0) {
-            handlePokemonCards()
-            console.log(pokemon);
-       // }
-        //setPokemonCards(pokemon);
-        console.log(pokemonCards);
-    }, [pokemon, pokeFilter]);
-
-    useEffect(() => {
-
-        console.log(pokemonCards);
-    }, [pokemonCards]);
-
-
-    const pokemonTypes = [
-        { 'type': 'water', 'name': 'agua' },
-        { 'type': 'fire', 'name': 'fogo' },
-        { 'type': 'grass', 'name': 'grama ' }
-    ]
+    // const pokemonTypes = [
+    //     { 'type': 'water', 'name': 'agua' },
+    //     { 'type': 'fire', 'name': 'fogo' },
+    //     { 'type': 'grass', 'name': 'grama ' }
+    // ]
     return (
         <>
             <MarketTemplate>
-                {pokemon.length !== 0 ? (
+                {!carregando ? (
                     <>
                         <Grid container spacing={2} className={classes.mainContainer}>
                             {
@@ -98,6 +128,9 @@ const Home = (props) => {
                                         key={index}
                                         xs={12}
                                         md={4}
+                                        fnClicou={(tipo)=>{
+                                            setPokemonCards(api.filterFromCacheByType(tipo))
+                                        }}
                                     />
                                 )
                             }

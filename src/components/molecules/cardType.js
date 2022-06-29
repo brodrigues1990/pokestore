@@ -26,16 +26,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const CardType = ({ xs, sm, md, lg, typePokemon }) => {
+const CardType = ({ xs, sm, md, lg, typePokemon, fnClicou }) => {
     const classes = useStyles();
     const history = useHistory();
     const [typeTheme, setTypeTheme] = useState({});
 
     // Direciona para a pagina do tipo selecionado
     const handleLinkTypePage = () => {
-        history.push({
-            pathname: `/pokestore/type=${typePokemon}`,
-        });
+        // history.push({
+        //     pathname: `/pokestore/type=${typePokemon}`,
+        // });
+        if(fnClicou) fnClicou(typePokemon);
     }
 
     const handleTypeTheme = async () => {
