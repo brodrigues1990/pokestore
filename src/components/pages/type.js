@@ -43,6 +43,7 @@ const Type = (props) => {
 
     useEffect(() => {
         handlePokemonByType()
+        console.log(pokemonByType)
     }, [pokemon]);
 
     return (

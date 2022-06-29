@@ -7,38 +7,46 @@ export const PokemonProvider = ({ children }) => {
     const [pokemon, setPokemon] = useState([]);
     const [pokeFilter, setPokeFilter] = useState([]);
     const [cartList, setCartList] = useState([]);
+    const [nextPage, setNextPage] = useState(false);
 
-    // Carrega todas os pokemons
-    const loadPokemonByType = async () => {
 
-        const qtdPokemon = 10;
-        const newPokemonData = [];
-
-        for (let i = 1; i <= qtdPokemon; i++) {
-            await api.get(`/pokemon/${i}`)
-                .then(function (response) {
-                    const { data } = response;
-                    console.log(data)
-                    // console.log(data);
-                    newPokemonData.push({
-                        id: data.id,
-                        name: data.name,
-                        sprite: data.sprites.front_default,
-                        //image: data.image,
-                        price: Math.floor(Math.random() * 100),
-                        types: data.types.map((t) => (
-                            t.type.name
-                        ))
-                    });
-                });
-
+    const fetchPokemon = async (pokemon) => {
+        try {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
+            return await response.json();
+        } catch (e) {
+            throw new Error(`fetching ${pokemon.name}'s details went wrong`);
         }
-        console.log(newPokemonData);
-        setPokemon(newPokemonData);
+    };
+
+    const loadPokemon = async () => {
+
+        let pokemons = [];
+    
+        await api.get(`/pokemon`)
+            .then(response => {
+                var next = response.data.next;
+                var pokemonData = response.data.results
+                console.log(pokemonData)
+
+                pokemonData.map(async pokemon => {
+                    const result = await fetchPokemon(pokemon);
+                    result.price = Math.floor(Math.random() * 100);
+                    //console.log(result)
+                    pokemons.push(result);
+                })
+                console.log(pokemons)
+                setPokemon(pokemons)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
     }
 
+
     useEffect(() => {
-        loadPokemonByType();
+        loadPokemon();
     }, []);
 
     return (
@@ -62,4 +70,4 @@ export const PokemonProvider = ({ children }) => {
 //     return { pokemon, setPokemon };
 // }
 
- export default PokemonProvider;
+export default PokemonProvider;

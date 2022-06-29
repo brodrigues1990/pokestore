@@ -29,7 +29,7 @@ const CardPokemon = ({ xs, sm, md, lg, pokeCard }) => {
     console.log(pokeCard)
     const classes = useStyles();
     const { pokemon, cartList, setCartList } = usePokemon();
-    const { id, name, sprite, price, types } = pokeCard;
+    const { id, name, sprites, price } = pokeCard;
     const pokeItem = [];
 
     // adiciona pokemon ao carrinho
@@ -46,7 +46,7 @@ const CardPokemon = ({ xs, sm, md, lg, pokeCard }) => {
     return (
         <Grid item xs={xs} sm={sm} md={md} lg={lg}>
             <Card >
-                <CardMedia className={classes.cardMedia} image={sprite} />
+                <CardMedia className={classes.cardMedia} image={sprites.front_default} />
                 <CardContent className={classes.cardContent}>
                     <Typography>{name}</Typography>
                     <Price type="pokeame" value={price} />
