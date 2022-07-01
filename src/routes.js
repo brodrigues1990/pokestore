@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './components/pages/home';
-import Type from './components/pages/type';
+//import Type from './components/pages/type';
 import Error404 from './components/pages/error404'
 
 
@@ -11,7 +11,7 @@ export default function Routes() {
 			<Switch>
 				<Route exact path="/" component={Home} />
 				<Route exact path="/pokestore" component={Home} />
-				<Route path="/pokestore/type=:type" component={Type} />
+				<Route path="/pokestore/type=:type" component={Home} />
 				<Route path="*" component={Error404} />
 			</Switch>
 		</BrowserRouter>

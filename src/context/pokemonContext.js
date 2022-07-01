@@ -46,7 +46,7 @@ export const PokemonProvider = ({ children }) => {
 
 
     useEffect(() => {
-        loadPokemon();
+        //loadPokemon();
     }, []);
 
     return (

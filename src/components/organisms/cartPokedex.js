@@ -100,7 +100,7 @@ const CartPokedex = (props) => {
 
                         <ListItem key={index} >
                             <ListItemAvatar>
-                                <Avatar className={classes.avatarContainer} alt={cartItem.name} src={cartItem.sprite} />
+                                <Avatar className={classes.avatarContainer} alt={cartItem.name} src={cartItem.sprites.front_default} />
                             </ListItemAvatar>
                             <ListItemText
                                 primary={cartItem.name}

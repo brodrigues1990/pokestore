@@ -33,14 +33,17 @@ const CardType = ({ xs, sm, md, lg, typePokemon, fnClicou }) => {
 
     // Direciona para a pagina do tipo selecionado
     const handleLinkTypePage = () => {
-        // history.push({
-        //     pathname: `/pokestore/type=${typePokemon}`,
-        // });
-        if(fnClicou) fnClicou(typePokemon);
+        history.push({
+            pathname: `/pokestore/type=${typePokemon.type}`,
+        });
+        if(fnClicou){
+            fnClicou(typePokemon.type);
+            console.log(typePokemon.type)
+        }
     }
 
-    const handleTypeTheme = async () => {
-        switch (typePokemon) {
+    const handleTypeTheme = () => {
+        switch (typePokemon.type) {
             case 'water':
                 setTypeTheme(waterTheme)
                 break
@@ -69,12 +72,12 @@ const CardType = ({ xs, sm, md, lg, typePokemon, fnClicou }) => {
                     <CardActions className={classes.cardActions} aligh="center">
                         <Button
                             className={classes.cardButton}
-                            onClick={() => handleLinkTypePage(typePokemon)}
-                            startIcon={<TypeIcon type={typePokemon} />}
+                            onClick={() => handleLinkTypePage(typePokemon.type)}
+                            startIcon={<TypeIcon type={typePokemon.type} />}
                             color="primary"
                             variant="contained"
                         >
-                            {typePokemon}
+                            {typePokemon.name}
                         </Button>
                     </CardActions>
                 </Card>

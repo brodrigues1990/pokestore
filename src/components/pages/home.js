@@ -33,7 +33,7 @@ const Home = (props) =>
     const [carregando, setCarregando] = useState(true);
     const [montado, setMontado]       = useState(true);
 
-
+    
     const [pokemonCards, setPokemonCards] = useState([]);
     const [pokemonTypes, setPokemonTypes] = useState([]);
 
@@ -55,66 +55,51 @@ const Home = (props) =>
         return () => observer.disconnect();
     }, []);
 
-    //Traz o pokemon pelo Filtro
-    // const handlePokemonCards = () => {
-    //     console.log(pokemon.length)
-
-    //     console.log(pokeFilter.length)
-    //     if (pokeFilter.length !== 0) {
-    //         pokemon.filter((elem) => {
-    //             if (elem.name === pokeFilter) { return newPokemonData.push(elem) }
-    //         });
-    //         console.log(newPokemonData)
-    //         setPokemonCards(newPokemonData)
-    //     } else {
-    //         console.log('entrou')
-    //         setPokemonCards(pokemon)
-    //     }
-    // }
-
-    // window.testDumb = handlePokemonCards;
-
-    // useEffect(() => {
-    //     //if (pokemon.length !== 0) {
-    //         handlePokemonCards()
-    //         console.log(pokemon);
-    //    // }
-    //     //setPokemonCards(pokemon);
-    //     console.log(pokemonCards);
-    // }, [pokemon, pokeFilter]);
 
     // onLoad
     useEffect( () => {
+        console.log(montado)
         window.pokeApi = api;
         setMontado(true);
 
         if(montado) fnLoad();
-
+        
         return () => {
             setMontado(false);
         }
     }, []);
 
+    useEffect(() => {
+        if(!props.match.params.type) setPokemonCards(api.lstPokemon)
+    
+    },[props.match.params.type])
+    
+
+
+    const pokemonTypesTranslate = [
+        { 'type': 'water', 'name': 'agua' },
+        { 'type': 'fire', 'name': 'fogo' },
+        { 'type': 'grass', 'name': 'grama ' }
+    ]
+
     async function fnLoad()
     {
         const lstPokemonDetalhe = await api.getLista();
-        // console.log(lstPokemonDetalhe);
+        console.log(lstPokemonDetalhe);
 
         if(montado) 
         {
             setPokemonCards(lstPokemonDetalhe)
             setPokemonTypes(
-                api.lstTipos.map(item => { return {type: item, name: item} })
+                //traz todos os tipos de pokemon
+                //api.lstTipos.map(item => { return {type: item, name: item} })
+                pokemonTypesTranslate
             )
             setCarregando(false);
         }
     }
 
-    // const pokemonTypes = [
-    //     { 'type': 'water', 'name': 'agua' },
-    //     { 'type': 'fire', 'name': 'fogo' },
-    //     { 'type': 'grass', 'name': 'grama ' }
-    // ]
+  
     return (
         <>
             <MarketTemplate>
@@ -124,7 +109,7 @@ const Home = (props) =>
                             {
                                 pokemonTypes.map((t, index) =>
                                     <CardType
-                                        typePokemon={t.type}
+                                        typePokemon={t}
                                         key={index}
                                         xs={12}
                                         md={4}

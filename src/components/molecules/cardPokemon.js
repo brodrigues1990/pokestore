@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const CardPokemon = ({ xs, sm, md, lg, pokeCard }) => {
-    console.log(pokeCard)
+    //console.log(pokeCard)
     const classes = useStyles();
     const { pokemon, cartList, setCartList } = usePokemon();
     const { id, name, sprites, price } = pokeCard;
