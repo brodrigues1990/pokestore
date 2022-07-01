@@ -16,9 +16,6 @@ const useStyles = makeStyles((theme) => ({
     cardContent: {
         textAlign: "center",
     },
-    cardActions: {
-        padding: 0,
-    },
     cardButton: {
         width: "100%",
         opacity: '0.7',
@@ -36,7 +33,7 @@ const CardType = ({ xs, sm, md, lg, typePokemon, fnClicou }) => {
         history.push({
             pathname: `/pokestore/type=${typePokemon.type}`,
         });
-        if(fnClicou){
+        if (fnClicou) {
             fnClicou(typePokemon.type);
             console.log(typePokemon.type)
         }
@@ -67,20 +64,15 @@ const CardType = ({ xs, sm, md, lg, typePokemon, fnClicou }) => {
 
         <Grid item xs={xs} sm={sm} md={md} lg={lg} >
             <ThemeProvider theme={typeTheme}>
-                <Card >
-                    {/* <CardMedia className={classes.cardMedia} image={image} /> */}
-                    <CardActions className={classes.cardActions} aligh="center">
-                        <Button
-                            className={classes.cardButton}
-                            onClick={() => handleLinkTypePage(typePokemon.type)}
-                            startIcon={<TypeIcon type={typePokemon.type} />}
-                            color="primary"
-                            variant="contained"
-                        >
-                            {typePokemon.name}
-                        </Button>
-                    </CardActions>
-                </Card>
+                <Button
+                    className={classes.cardButton}
+                    onClick={() => handleLinkTypePage(typePokemon.type)}
+                    startIcon={<TypeIcon type={typePokemon.type} />}
+                    color="primary"
+                    variant="contained"
+                >
+                    {typePokemon.name}
+                </Button>
             </ThemeProvider>
         </Grid>
 

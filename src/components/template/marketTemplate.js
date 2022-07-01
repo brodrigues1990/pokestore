@@ -123,7 +123,7 @@ const MarketTemplate = (props) => {
 						</Link>
 
 
-						<SearchBar />
+						<SearchBar pokemonList={props.pokemonList}/>
 
 						<IconButton
 							color="inherit"

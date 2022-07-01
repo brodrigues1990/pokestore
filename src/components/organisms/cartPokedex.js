@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
     //'calc(100% - 85px)'
+    headerCart: {
+        marginTop: '5px'
+    },
     resumeBuy: {
         position: 'absolute',
         bottom: '55px',
@@ -89,7 +92,7 @@ const CartPokedex = (props) => {
     return (
         <>
             <div className={classes.toolbar} />
-            <ListSubheader component="div" id="nested-list-subheader">
+            <ListSubheader component="div" id="nested-list-subheader" className={classes.headerCart}>
                 <ShoppingCartIcon className={classes.cartIcon} />Carrinho
             </ListSubheader>
             <Divider />

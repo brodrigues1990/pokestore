@@ -1,15 +1,14 @@
 import axios, { AxiosInstance } from "axios";
 import IPokemonDetalhe from "./PokeApiInterfaces";
 
-export default class PokeApi
-{
+export default class PokeApi {
     // private lastResult: any;
 
-    private http : AxiosInstance;
+    private http: AxiosInstance;
     lstPokemon: IPokemonDetalhe[];
     lstTipos: string[];
 
-    constructor(){
+    constructor() {
         this.lstPokemon = [];
         this.lstTipos = [];
 
@@ -18,24 +17,21 @@ export default class PokeApi
         })
     }
 
-    async getLista() : Promise<IPokemonDetalhe[]>
-    {
-        const res = (await this.http.get<ApiResponseLista>("/pokemon")).data;
+    async getLista(): Promise<IPokemonDetalhe[]> {
+        const res = (await this.http.get<ApiResponseLista>("/pokemon/?offset=0&limit=150")).data;
+        console.log(res)
 
-        for(let i = 0; i < res.results.length; i++)
-        {
+        for (let i = 0; i < res.results.length; i++) {
             const item = res.results[i];
-            const pokemonDetalhe = (await axios.get<IPokemonDetalhe>(`https://pokeapi.co/api/v2/pokemon/${item.name}`)).data;
-            pokemonDetalhe.price = Math.floor(Math.random() * 100);
+            const pokemonDetalhe = (await this.http.get<IPokemonDetalhe>(`/pokemon/${item.name}`)).data;
+            pokemonDetalhe.price = Math.floor(Math.random() * (1000 - 50) + 50);
             this.lstPokemon.push(pokemonDetalhe);
 
             pokemonDetalhe.types.forEach(item => {
                 const typeName = item.type.name;
 
-                if(typeof typeName === "string" && typeName.trim().length)
-                {
-                    if(this.lstTipos.indexOf(typeName) < 0)
-                    {
+                if (typeof typeName === "string" && typeName.trim().length) {
+                    if (this.lstTipos.indexOf(typeName) < 0) {
                         this.lstTipos.push(typeName);
                     }
                 }
@@ -45,11 +41,21 @@ export default class PokeApi
         return this.lstPokemon;
     }
 
-    filterFromCacheByType(type: EPokemonType)
-    {
-        return this.lstPokemon.filter((item) => 
-             item.types.some((tipoPoke) => tipoPoke.type.name == type)
+    filterFromCacheByType(type: EPokemonType) {
+        return this.lstPokemon.filter((item) =>
+            item.types.some((tipoPoke) => tipoPoke.type.name == type)
         );
+    }
+
+    //Traz o pokemon pelo Filtro
+    handlePokemonSearch(search: String) {
+        //console.log(pokemon.length)
+
+        console.log(search)
+
+        return this.lstPokemon.filter((elem) => elem.name === search);
+
+
     }
 }
 
@@ -59,8 +65,7 @@ export enum EPokemonType {
     grass = "grass"
 }
 
-export interface IPokemonItem 
-{
+export interface IPokemonItem {
     name: string;
     url: string;
 }
@@ -68,6 +73,6 @@ export interface IPokemonItem
 export interface ApiResponseLista {
     count: number
     next: string
-    previous: any|null
+    previous: any | null
     results: IPokemonItem[]
 }

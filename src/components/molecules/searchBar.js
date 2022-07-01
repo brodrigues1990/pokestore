@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const SearchBar = ({ value }) => {
+const SearchBar = (props) => {
     const classes = useStyles();
     const history = useHistory();
     const { pokemon, pokeFilter, setPokeFilter } = usePokemon();
@@ -96,12 +96,13 @@ const SearchBar = ({ value }) => {
         <Autocomplete
             id="search-pokemon"
             className={classes.autoComplete}
-            options={pokemon}
+            options={props.pokemonList}
             getOptionLabel={(option) => option.name}
             onInputChange={(event, newInputValue) => {
                 setPokeFilter(newInputValue);
+                console.log(newInputValue)
                 history.push({
-                    pathname: `/pokestore`,
+                    pathname: `/pokestore/search=${newInputValue}`,
                 });
             }}
             renderInput={(params) => (

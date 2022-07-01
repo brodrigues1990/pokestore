@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from '@material-ui/core';
 import { usePokemon } from '../../hooks/usePokemon'
 import PokeLoading from '../atoms/pokeLoading'
+import ButtonType from '../atoms/buttonType'
 import CardPokemon from '../molecules/cardPokemon'
-import CardType from '../molecules/cardType'
 import MarketTemplate from '../template/marketTemplate'
 import { LaptopWindows } from '@material-ui/icons';
 import PokeApi, { EPokemonType } from "../../services/PokeApi";
@@ -40,6 +40,66 @@ const Home = (props) =>
     const classes = useStyles();
     const newPokemonData = [];
 
+    const pokemonTypesTranslate = [
+        { 'type': 'water', 'name': 'agua' },
+        { 'type': 'fire', 'name': 'fogo' },
+        { 'type': 'grass', 'name': 'grama ' }
+    ]
+
+    async function fnLoad()
+    {
+        const lstPokemonDetalhe = await api.getLista();
+        console.log(lstPokemonDetalhe);
+
+        if(montado) 
+        {
+            if(props.match.params.type){
+                setPokemonCards(api.filterFromCacheByType(props.match.params.type))
+            }else{
+                setPokemonCards(lstPokemonDetalhe)
+            }
+            setPokemonTypes(
+                //traz todos os tipos de pokemon
+                //api.lstTipos.map(item => { return {type: item, name: item} })
+                pokemonTypesTranslate
+            )
+            setCarregando(false);
+        }
+    }
+
+    // onLoad
+    useEffect( () => {
+        console.log(montado)
+        window.pokeApi = api;
+        setMontado(true);
+
+        if(montado) fnLoad();
+        
+        return () => {
+            setMontado(false);
+        }
+    }, []);
+
+    //Filtra Busca
+    useEffect(() => {
+        
+        if(props.match.params.search){
+            console.log('Filtro Busca ' + props.match.params.search)
+            setPokemonCards(api.handlePokemonSearch(props.match.params.search))
+        } 
+        
+    },[props.match.params.search])
+
+    //Reseta Filtro de Tipo
+    useEffect(() => {
+        
+        if(!props.match.params.type){
+            console.log('Filtro Tipo ' + props.match.params.type)
+            setPokemonCards(api.lstPokemon)
+        }
+        
+    },[props.match.params.type])
+    
     //Observer ScrollInfinito
     useEffect(() => {
         const sentinela = document.querySelector('#sentinela');
@@ -56,59 +116,17 @@ const Home = (props) =>
     }, []);
 
 
-    // onLoad
-    useEffect( () => {
-        console.log(montado)
-        window.pokeApi = api;
-        setMontado(true);
-
-        if(montado) fnLoad();
-        
-        return () => {
-            setMontado(false);
-        }
-    }, []);
-
-    useEffect(() => {
-        if(!props.match.params.type) setPokemonCards(api.lstPokemon)
-    
-    },[props.match.params.type])
-    
-
-
-    const pokemonTypesTranslate = [
-        { 'type': 'water', 'name': 'agua' },
-        { 'type': 'fire', 'name': 'fogo' },
-        { 'type': 'grass', 'name': 'grama ' }
-    ]
-
-    async function fnLoad()
-    {
-        const lstPokemonDetalhe = await api.getLista();
-        console.log(lstPokemonDetalhe);
-
-        if(montado) 
-        {
-            setPokemonCards(lstPokemonDetalhe)
-            setPokemonTypes(
-                //traz todos os tipos de pokemon
-                //api.lstTipos.map(item => { return {type: item, name: item} })
-                pokemonTypesTranslate
-            )
-            setCarregando(false);
-        }
-    }
 
   
     return (
         <>
-            <MarketTemplate>
+            <MarketTemplate pokemonList={pokemonCards}>
                 {!carregando ? (
                     <>
                         <Grid container spacing={2} className={classes.mainContainer}>
                             {
                                 pokemonTypes.map((t, index) =>
-                                    <CardType
+                                    <ButtonType
                                         typePokemon={t}
                                         key={index}
                                         xs={12}
