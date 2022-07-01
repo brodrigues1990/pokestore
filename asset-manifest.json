@@ -1,30 +1,21 @@
 {
   "files": {
-    "main.css": "/pokestore/static/css/main.8bc326e6.chunk.css",
-    "main.js": "/pokestore/static/js/main.11d40505.chunk.js",
-    "main.js.map": "/pokestore/static/js/main.11d40505.chunk.js.map",
-    "runtime-main.js": "/pokestore/static/js/runtime-main.8508d414.js",
-    "runtime-main.js.map": "/pokestore/static/js/runtime-main.8508d414.js.map",
-    "static/js/2.2c65e1d3.chunk.js": "/pokestore/static/js/2.2c65e1d3.chunk.js",
-    "static/js/2.2c65e1d3.chunk.js.map": "/pokestore/static/js/2.2c65e1d3.chunk.js.map",
+    "main.css": "/pokestore/static/css/main.437e1676.css",
+    "main.js": "/pokestore/static/js/main.6268186b.js",
+    "static/media/pikachu-face.png": "/pokestore/static/media/pikachu-face.790743bc00e0a5eede7a.png",
+    "static/media/pokeAmeLogo.png": "/pokestore/static/media/pokeAmeLogo.67909d5108afeb7b15cd.png",
+    "static/media/PokeStoreLogo.png": "/pokestore/static/media/PokeStoreLogo.f52e1521507779e53746.png",
+    "static/media/pokeLazyPB.png": "/pokestore/static/media/pokeLazyPB.56e3fa6f26d89b035bd6.png",
+    "static/media/Error404.png": "/pokestore/static/media/Error404.d70aae09068213c78aad.png",
+    "static/media/fire.svg": "/pokestore/static/media/fire.e0bd7fcab2121e7ac1ffbbe09a3ca5dd.svg",
     "index.html": "/pokestore/index.html",
-    "precache-manifest.ec42c76e445a33ec3a5a69cb9ec2bd54.js": "/pokestore/precache-manifest.ec42c76e445a33ec3a5a69cb9ec2bd54.js",
-    "service-worker.js": "/pokestore/service-worker.js",
-    "static/css/main.8bc326e6.chunk.css.map": "/pokestore/static/css/main.8bc326e6.chunk.css.map",
-    "static/js/2.2c65e1d3.chunk.js.LICENSE.txt": "/pokestore/static/js/2.2c65e1d3.chunk.js.LICENSE.txt",
-    "static/media/Error404.png": "/pokestore/static/media/Error404.dd00f18e.png",
-    "static/media/PokeStoreLogo.png": "/pokestore/static/media/PokeStoreLogo.7cc2f872.png",
-    "static/media/fire.svg": "/pokestore/static/media/fire.33d14b30.svg",
-    "static/media/grass.svg": "/pokestore/static/media/grass.d589dd00.svg",
-    "static/media/pikachu-face.png": "/pokestore/static/media/pikachu-face.70afa18b.png",
-    "static/media/pokeAmeLogo.png": "/pokestore/static/media/pokeAmeLogo.d273d896.png",
-    "static/media/pokeLazyPB.png": "/pokestore/static/media/pokeLazyPB.a6e18362.png",
-    "static/media/water.svg": "/pokestore/static/media/water.fba54fcd.svg"
+    "static/media/water.svg": "/pokestore/static/media/water.b6d13329535e4be9e9b4f8da4694faba.svg",
+    "static/media/grass.svg": "/pokestore/static/media/grass.e09623e3345d5bf5286f5323dd923c60.svg",
+    "main.437e1676.css.map": "/pokestore/static/css/main.437e1676.css.map",
+    "main.6268186b.js.map": "/pokestore/static/js/main.6268186b.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.8508d414.js",
-    "static/js/2.2c65e1d3.chunk.js",
-    "static/css/main.8bc326e6.chunk.css",
-    "static/js/main.11d40505.chunk.js"
+    "static/css/main.437e1676.css",
+    "static/js/main.6268186b.js"
   ]
 }
