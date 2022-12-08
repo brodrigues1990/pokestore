@@ -102,15 +102,12 @@ const Home = (props) =>
     
     //Observer ScrollInfinito
     useEffect(() => {
-        const sentinela = document.querySelector('#sentinela');
         const options = {};
         const observer = new IntersectionObserver((entries) => {
             if (entries.some(entry => entry.isIntersecting)) {
                 console.log("elemento visivel");
             }
         }, options);
-
-        observer.observe(sentinela);
 
         return () => observer.disconnect();
     }, []);
@@ -120,7 +117,7 @@ const Home = (props) =>
   
     return (
         <>
-            <MarketTemplate pokemonList={pokemonCards}>
+            <MarketTemplate pokemonList={api.lstPokemon}>
                 {!carregando ? (
                     <>
                         <Grid container spacing={2} className={classes.mainContainer}>
@@ -160,7 +157,6 @@ const Home = (props) =>
                         </Grid>
                     </Grid>
                 )}
-                <div id="sentinela" className={classes.sentinel}></div>
             </MarketTemplate>
         </>
     )

@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const CardType = ({ xs, sm, md, lg, typePokemon, fnClicou }) => {
+const ButtonType = ({ xs, sm, md, lg, typePokemon, fnClicou }) => {
     const classes = useStyles();
     const history = useHistory();
     const [typeTheme, setTypeTheme] = useState({});
@@ -79,4 +79,4 @@ const CardType = ({ xs, sm, md, lg, typePokemon, fnClicou }) => {
     );
 };
 
-export default CardType;
+export default ButtonType;

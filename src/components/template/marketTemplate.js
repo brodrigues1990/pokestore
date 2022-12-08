@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter, useLocation, useHistory, Link } from 'react-router-dom';
 import {
 	AppBar,
@@ -85,6 +85,8 @@ const MarketTemplate = (props) => {
 	const [mobileOpen, setMobileOpen] = useState(false);
 	const [typeTheme, setTypeTheme] = useState(defaultTheme);
 	const typePokemon = props.match.params.type;
+	const history = useHistory();
+
 	const handleTypeTheme = async () => {
 		switch (props.match.params.type) {
 			case 'water':
@@ -108,8 +110,8 @@ const MarketTemplate = (props) => {
 	};
 
 	useEffect(() => {
-        handleTypeTheme()
-    }, [typePokemon]);
+		handleTypeTheme()
+	}, [typePokemon]);
 
 	const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -122,8 +124,16 @@ const MarketTemplate = (props) => {
 							<img src={Logo} alt="PokeStore" className={classes.logoImage} />
 						</Link>
 
+						<SearchBar pokemonList={props.pokemonList} fnSearch={(InputSearch) => {
+							//setPokeFilter(newInputValue);
+							console.log(InputSearch)
+							if (InputSearch) {
+								history.push({
+									pathname: `/pokestore/search=${InputSearch}`,
+								});
+							}
 
-						<SearchBar pokemonList={props.pokemonList}/>
+						}} />
 
 						<IconButton
 							color="inherit"

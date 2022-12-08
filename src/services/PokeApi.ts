@@ -50,12 +50,8 @@ export default class PokeApi {
     //Traz o pokemon pelo Filtro
     handlePokemonSearch(search: String) {
         //console.log(pokemon.length)
-
         console.log(search)
-
         return this.lstPokemon.filter((elem) => elem.name === search);
-
-
     }
 }
 

@@ -67,7 +67,6 @@ const Type = (props) => {
                 ) : (
                         <Grid container className={classes.loadingContainer} direction="row" justify="center" alignItems="center">
                             <Grid item >
-                                {/* <CircularProgress /> */}
                                 {/* Novo Loading Pokeball */}
                                 <PokeLoading />
                             </Grid>
